@@ -1,0 +1,6 @@
+db_name = ""
+db_user = "dian_user"
+db_pass = "dian_pass"
+db_host = "127.0.0.1"
+db_port = "3306"
+dd_type = ""

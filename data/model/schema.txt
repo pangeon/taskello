@@ -1,0 +1,45 @@
+Profiles
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name      | varchar(255) | NO   |     | NULL    |                |
+| surname   | varchar(255) | YES  |     | NULL    |                |
+| email     | varchar(255) | NO   | UNI | NULL    |                |
+| password  | varchar(255) | YES  |     | NULL    |                |
+| is_active | tinyint(1)   | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+
+Types
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| id               | int(11)      | NO   | PRI | NULL    | auto_increment |
+| specification    | text         | NO   |     | NULL    |                |
+| responsibilities | text         | NO   |     | NULL    |                |
+| color            | varchar(255) | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+
+Tasks
++-----------------+--------------+------+-----+---------+----------------+
+| Field           | Type         | Null | Key | Default | Extra          |
++-----------------+--------------+------+-----+---------+----------------+
+| id              | int(11)      | NO   | PRI | NULL    | auto_increment |
+| type_id         | int(11)      | NO   | MUL | NULL    |                |
+| name            | varchar(255) | NO   | UNI | NULL    |                |
+| description     | text         | YES  |     | NULL    |                |
+| attachment_link | text         | YES  |     | NULL    |                |
+| priority        | smallint(6)  | YES  |     | NULL    |                |
++-----------------+--------------+------+-----+---------+----------------+
+
+Assigned Tasks
++------------------+--------------+------+-----+---------------------+----------------+
+| Field            | Type         | Null | Key | Default             | Extra          |
++------------------+--------------+------+-----+---------------------+----------------+
+| id               | int(11)      | NO   | PRI | NULL                | auto_increment |
+| profile_id       | int(11)      | NO   | MUL | NULL                |                |
+| task_id          | int(11)      | NO   | MUL | NULL                |                |
+| progress_details | varchar(255) | YES  |     | NULL                |                |
+| activation_date  | timestamp    | NO   |     | current_timestamp() |                |
+| expired_date     | timestamp    | YES  |     | NULL                |                |
++------------------+--------------+------+-----+---------------------+----------------+
