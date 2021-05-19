@@ -51,10 +51,10 @@ Dianet company CRM
 - 0.0.5 - create connector util for MySQL
 - 0.0.6 - preparing sample data to insert
 - 0.0.7 - select data using app interface
+- 0.0.8 - insert data using app interface
 
 # Preview
 
-- 0.0.8 - insert data using app interface
 - 0.1.8 - create controllers for app
 - 0.1.9 - support for all CRUD operations
 - 0.2.8 - config virtual env for Django

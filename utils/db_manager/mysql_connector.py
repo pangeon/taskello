@@ -21,7 +21,7 @@ def close_conn(conn):
         conn.close()
         print("close_conn: ", id(conn), info.conn_close_info)
 
-def sql_querry(conn, sql, close_conn = False):
+def sql_querry(conn, sql):
     try:
         cursor = conn.cursor()
         cursor.execute(sql)
@@ -32,7 +32,16 @@ def sql_querry(conn, sql, close_conn = False):
         print("sql_querry: ", info.conn_error_info, e)
 
 
-def connection_info(conn, close_conn = False):
+def sql_insert(conn, sql, val):
+    try:
+        cursor = conn.cursor()
+        cursor.execute(sql, val)
+        conn.commit()
+    except mysql.connector.Error as e:
+        print("sql_insert: ", info.error_insert_info, e)
+
+
+def connection_info(conn):
     try:
         sql_use_querry = "select database();"
         if conn.is_connected():

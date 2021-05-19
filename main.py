@@ -51,14 +51,41 @@ def inspect_all_data(conn):
         print(record)
 
 
+def insert_profile(conn, val):
+    sql = "INSERT INTO Profiles (name, surname, email, password, is_active) VALUES (%s, %s, %s, %s, %s)"
+    db.sql_insert(conn, sql, val)
+
+
+def insert_task(conn, val):
+    sql = "INSERT INTO Tasks (type_id, name, description, attachment_link, priority) VALUES (%s, %s, %s, %s, %s)"
+    db.sql_insert(conn, sql, val)
+
+
+def insert_type(conn, val):
+    sql = "INSERT INTO Types (specification, responsibilities, color) VALUES (%s, %s, %s)"
+    db.sql_insert(conn, sql, val)
+
+
+def insert_assign_task(conn, val):
+    sql = "INSERT INTO Assigned_tasks (profile_id, task_id, progress_details) VALUES (%s, %s, %s)"
+    db.sql_insert(conn, sql, val) 
+
 if __name__ == "__main__":
     welcome()  
     db.connection_info(conn)
     
-    show_all_profiles(conn)
-    show_all_tasks(conn)
-    show_all_types(conn)
-    show_assigned_tasks(conn)
+    # show_all_profiles(conn)
+
+    # show_all_tasks(conn)
+    # show_all_types(conn)
+    # show_assigned_tasks(conn)
+
+    # sql = '''
+    #     INSERT INTO Profiles (name, surname, email, password, is_active)
+    #     VALUES ("Adam", "Kos", "kos.adam@wp.pl", "BralemHere10", True);
+    # '''
+    # insert_profile(conn, ("Jan", "Mazurek", "mazurek@yahoo.com", "Nic123", False))
+    # insert_assign_task(conn, (10, 1, "TO DO"))
 
     inspect_all_data(conn)
 

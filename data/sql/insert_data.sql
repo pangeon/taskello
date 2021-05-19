@@ -14,6 +14,9 @@ VALUES ("Agnieszka", "Lasota", "agnieszka.lasota1@gmail.com", "Laseczka", False)
 INSERT INTO Profiles (name, surname, email, password, is_active)
 VALUES ("Radosław", "Ignasiak", "radekignasiak13@gmail.com", "radini+ola", True);
 
+INSERT INTO Profiles (name, surname, email, password, is_active)
+VALUES ("Adam", "Kos", "kos.adam@wp.pl", "BralemHere10", True);
+
 -- Types --
 INSERT INTO Types (specification, responsibilities, color)
 VALUES ("IT online support", "answers to customers' question and help solve problems", "yellow");
