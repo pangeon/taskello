@@ -10,7 +10,7 @@ def show_all_tasks(conn):
 
 def insert_task(conn, val):
     sql = "INSERT INTO Tasks (type_id, name, description, attachment_link, priority) VALUES (%s, %s, %s, %s, %s)"
-    db.sql_insert(conn, sql, val)
+    db.sql_execute(conn, sql, val)
 
 
 def update_task_name_and_description(conn, val):

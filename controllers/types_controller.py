@@ -10,7 +10,7 @@ def show_all_types(conn):
 
 def insert_type(conn, val):
     sql = "INSERT INTO Types (specification, responsibilities, color) VALUES (%s, %s, %s)"
-    db.sql_insert(conn, sql, val)
+    db.sql_execute(conn, sql, val)
 
 
 def update_type_specication(conn, val):

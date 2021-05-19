@@ -54,10 +54,10 @@ Dianet company CRM
 - 0.0.8 - insert data using app interface
 - 0.1.8 - create controllers for app
 - 0.1.9 - support for all CRUD operations
+- 0.1.10 - create inititiation data files
 
 # Preview
 
-- 0.1.10 - create inititiation data files
 - 0.2.10 - create sample command line user interface
 - 0.3.11 - config virtual env for Django
 

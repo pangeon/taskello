@@ -40,6 +40,19 @@ def sql_execute(conn, sql, val):
     except mysql.connector.Error as e:
         print("sql_insert: ", info.error_insert_info, e)
 
+def sql_create(conn, sql):
+    try:
+        cursor = conn.cursor()
+        cursor.execute(sql)
+    except mysql.connector.Error as e:
+        print("sql_create: ", info.error_create_info, e)
+
+def sql_drop(conn, sql):
+    try:
+        cursor = conn.cursor()
+        cursor.execute(sql)
+    except mysql.connector.Error as e:
+        print("sql_drop: ", info.error_drop_info, e)
 
 def connection_info(conn):
     try:

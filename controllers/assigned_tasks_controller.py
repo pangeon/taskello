@@ -10,7 +10,7 @@ def show_assigned_tasks(conn):
 
 def insert_assign_task(conn, val):
     sql = "INSERT INTO Assigned_tasks (profile_id, task_id, progress_details) VALUES (%s, %s, %s)"
-    db.sql_insert(conn, sql, val)
+    db.sql_execute(conn, sql, val)
 
 
 def delete_assigned_task_for_id(conn, val):
