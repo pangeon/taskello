@@ -2,7 +2,12 @@ from utils import path_finder as path
 from utils.db_manager import mysql_connector as db
 from data import _variables as app
 from data import _db_config as cfg_db
-from data import _querries as sql_select
+
+from controllers import profiles_controller as profile_man
+from controllers import tasks_controller as task_man
+from controllers import types_controller as type_man
+from controllers import assigned_tasks_controller as ass_task_man
+from controllers import all_data_controller as all_data_man
 
 
 def welcome():
@@ -15,64 +20,13 @@ conn = db.define_db(
     cfg_db.db_pass
 )
 
-
-def show_all_profiles(conn):
-    profiles = db.sql_querry(conn, sql_select.all_profiles)
-
-    for profile in profiles:
-        print(profile)
-
-
-def show_all_tasks(conn):
-    tasks = db.sql_querry(conn, sql_select.all_tasks)
-
-    for task in tasks:
-        print(task)
-
-
-def show_all_types(conn):
-    types = db.sql_querry(conn, sql_select.all_types)
-
-    for type in types:
-        print(type)
-
-
-def show_assigned_tasks(conn):
-    assigned_tasks = db.sql_querry(conn, sql_select.all_assigned_tasks)
-
-    for assigned_task in assigned_tasks:
-        print(assigned_tasks)
-
-
-def inspect_all_data(conn):
-    records = db.sql_querry(conn, sql_select.all_data_inspect)
-
-    for record in records:
-        print(record)
-
-
-def insert_profile(conn, val):
-    sql = "INSERT INTO Profiles (name, surname, email, password, is_active) VALUES (%s, %s, %s, %s, %s)"
-    db.sql_insert(conn, sql, val)
-
-
-def insert_task(conn, val):
-    sql = "INSERT INTO Tasks (type_id, name, description, attachment_link, priority) VALUES (%s, %s, %s, %s, %s)"
-    db.sql_insert(conn, sql, val)
-
-
-def insert_type(conn, val):
-    sql = "INSERT INTO Types (specification, responsibilities, color) VALUES (%s, %s, %s)"
-    db.sql_insert(conn, sql, val)
-
-
-def insert_assign_task(conn, val):
-    sql = "INSERT INTO Assigned_tasks (profile_id, task_id, progress_details) VALUES (%s, %s, %s)"
-    db.sql_insert(conn, sql, val) 
-
 if __name__ == "__main__":
     welcome()  
     db.connection_info(conn)
+    #profile_man.show_all_profiles(conn)
+    all_data_man.inspect_all_data(conn)
+
+    db.close_conn(conn)
     
     # show_all_profiles(conn)
 
@@ -84,9 +38,12 @@ if __name__ == "__main__":
     #     INSERT INTO Profiles (name, surname, email, password, is_active)
     #     VALUES ("Adam", "Kos", "kos.adam@wp.pl", "BralemHere10", True);
     # '''
-    # insert_profile(conn, ("Jan", "Mazurek", "mazurek@yahoo.com", "Nic123", False))
+    # profile.insert_profile(conn, ("Sebastian", "Zupa", "zupa@netflix.com", "#daszek", True))
     # insert_assign_task(conn, (10, 1, "TO DO"))
+    # profile.update_profile_name_and_surname(conn, ("Sebastian", "Supa", 11))
+    # profile.delete_profile_for_id(conn, (11, ))
 
-    inspect_all_data(conn)
+    # inspect_all_data(conn)
+    
 
 

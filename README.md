@@ -52,12 +52,14 @@ Dianet company CRM
 - 0.0.6 - preparing sample data to insert
 - 0.0.7 - select data using app interface
 - 0.0.8 - insert data using app interface
+- 0.1.8 - create controllers for app
+- 0.1.9 - support for all CRUD operations
 
 # Preview
 
-- 0.1.8 - create controllers for app
-- 0.1.9 - support for all CRUD operations
-- 0.2.8 - config virtual env for Django
+- 0.1.10 - create inititiation data files
+- 0.2.10 - create sample command line user interface
+- 0.3.11 - config virtual env for Django
 
 # Problems and solutions:
 

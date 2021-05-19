@@ -32,7 +32,7 @@ def sql_querry(conn, sql):
         print("sql_querry: ", info.conn_error_info, e)
 
 
-def sql_insert(conn, sql, val):
+def sql_execute(conn, sql, val):
     try:
         cursor = conn.cursor()
         cursor.execute(sql, val)
