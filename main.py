@@ -1,4 +1,5 @@
 import sys
+import cmd_messages as display
 from utils import path_finder as path
 from utils.db_manager import mysql_connector as db
 from data import _variables as app
@@ -20,48 +21,10 @@ conn = db.define_db(
     cfg_db.db_user, 
     cfg_db.db_pass
 )
-def collection_options():
-    print(
-        " 0. Exit\n"
-        " 1. Connection info\n",
-        "2. Profiles\n",
-        "3. Types\n",
-        "4. Tasks\n",
-        "5. Assigned Tasks\n",
-    )
-
-def crud_options():
-    print(
-        " 1. Show all\n",
-        "2. Add new\n",
-        "3. Edit\n",
-        "4. Delete\n"
-    )
-
-def profile_update_options():
-    print(
-        " 1. Update name and surname\n",
-        "2. Update password\n",
-        "3. Grant active\n",
-    )
-
-def type_update_options():
-    print(
-        " 1. Update specication\n",
-        "2. Update responsibilities\n",
-        "3. Update color\n",
-    )
-
-def task_update_options():
-    print(
-        " 1. Update name and description\n",
-        "2. Update attachment link\n",
-        "3. Update priority\n",
-    )
 
 if __name__ == "__main__":
     welcome()  
-    collection_options()
+    display.collection_options()
     
     operation = int(input("Enter collection name from list above: "))
 
@@ -71,7 +34,7 @@ if __name__ == "__main__":
     
     ## Profiles ##   
     elif operation == 2:
-        crud_options()
+        display.crud_options()
         choice = int(input("Enter name of operation for Profiles: "))
 
         if choice == 1:
@@ -82,7 +45,7 @@ if __name__ == "__main__":
             new_record = input("Add new record pattern: name, surmame, email, password, is_active: ")
             profile_man.insert_profile(conn, tuple(new_record.split(",")))
         elif choice == 3:
-            profile_update_options()
+            display.profile_update_options()
             update_option = int(input("Choose update option: "))
             
             ## Update ##
@@ -109,7 +72,7 @@ if __name__ == "__main__":
     
     ## Types ##
     elif operation == 3:
-        crud_options()
+        display.crud_options()
         choice = int(input("Enter name of operation for Types: "))
 
         if choice == 1:
@@ -136,6 +99,7 @@ if __name__ == "__main__":
             else:
                 raise Exception("Unsupported operation")
             ## Update ##
+
         elif choice == 4:
             id = input("Enter type id: ")
             type_man.delete_type_for_id(conn, tuple(id, ))
@@ -146,7 +110,7 @@ if __name__ == "__main__":
     
     ## Tasks ##
     elif operation == 4:
-        crud_options()
+        display.crud_options()
         choice = int(input("Enter name of operation for Tasks: "))
 
         if choice == 1:
@@ -156,22 +120,23 @@ if __name__ == "__main__":
             new_record = input("Add new record pattern: type_id, name, description, attachment_link, priority: ")
             task_man.insert_task(conn, tuple(new_record.split(",")))
         elif choice == 3:
-            task_update_options()
+            display.task_update_options()
             update_option = int(input("Choose update option: "))
             
             ## Update ##
             if update_option == 1:
                 changed_record = input("You change data: enter name, description, id: ")
-                task_man.update_task_name_and_description(conn, tuple(new_record.split(",")))
+                task_man.update_task_name_and_description(conn, tuple(changed_record.split(",")))
             elif update_option == 2:
                 changed_record = input("You change data: enter attachment link, id: ")
-                task_man.update_task_attachment_link(conn, tuple(new_record.split(",")))
+                task_man.update_task_attachment_link(conn, tuple(changed_record.split(",")))
             elif update_option == 3:
                 changed_record = input("You change data: enter priority, id: ")
-                task_man.update_task_priority(conn, tuple(new_record.split(",")))
+                task_man.update_task_priority(conn, tuple(changed_record.split(",")))
             else:
                 raise Exception("Unsupported operation")
             ## Update ##
+
         elif choice == 4:
             id = input("Enter task id: ")
             task_man.delete_task_for_id(conn, tuple(id, ))
@@ -182,7 +147,7 @@ if __name__ == "__main__":
     
     ## Assigned tasks ##
     elif operation == 5:
-        crud_options()
+        display.crud_options()
         choice = int(input("Enter name of operation for Assigned Tasks: "))
 
         if choice == 1:
@@ -200,10 +165,12 @@ if __name__ == "__main__":
             raise Exception("Unsupported operation")
     ## Assigned tasks ##
 
+    ## End ##
     elif operation == 0:
         sys.exit("You closed programme.")
     else:
         raise Exception("Unsupported operation")
+    ## End ##
 
     db.close_conn(conn)
     
