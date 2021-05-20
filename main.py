@@ -23,27 +23,11 @@ conn = db.define_db(
 if __name__ == "__main__":
     welcome()  
     db.connection_info(conn)
-    #profile_man.show_all_profiles(conn)
     all_data_man.inspect_all_data(conn)
 
     db.close_conn(conn)
     
-    # show_all_profiles(conn)
-
-    # show_all_tasks(conn)
-    # show_all_types(conn)
-    # show_assigned_tasks(conn)
-
-    # sql = '''
-    #     INSERT INTO Profiles (name, surname, email, password, is_active)
-    #     VALUES ("Adam", "Kos", "kos.adam@wp.pl", "BralemHere10", True);
-    # '''
-    # profile.insert_profile(conn, ("Sebastian", "Zupa", "zupa@netflix.com", "#daszek", True))
-    # insert_assign_task(conn, (10, 1, "TO DO"))
-    # profile.update_profile_name_and_surname(conn, ("Sebastian", "Supa", 11))
-    # profile.delete_profile_for_id(conn, (11, ))
-
-    # inspect_all_data(conn)
+    
     
 
 
