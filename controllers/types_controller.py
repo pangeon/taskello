@@ -29,5 +29,5 @@ def update_type_color(conn, val):
 
 
 def delete_type_for_id(conn, val):
-    sql = "DELETE FROM WHERE id = %s"
+    sql = "DELETE FROM Types WHERE id = %s"
     db.sql_execute(conn, sql, val)
