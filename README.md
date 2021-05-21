@@ -70,7 +70,9 @@ Dianet company CRM
 
 # Preview
 
-- 0.3.11 - config virtual env for Django
+- 0.3.0 - first sample web page with Flask
+- 0.3.1 - create view for data from database
+- 0.4.0 - build web services
 
 # Problems and solutions:
 

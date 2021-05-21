@@ -21,11 +21,8 @@ conn = db.define_db(
 )
 
 if __name__ == "__main__":
-    welcome()  
-    db.connection_info(conn)
-    all_data_man.inspect_all_data(conn)
-
-    db.close_conn(conn)
+    welcome()
+    
     
     
     
