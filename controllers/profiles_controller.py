@@ -4,8 +4,10 @@ from utils.db_manager import mysql_connector as db
 def show_all_profiles(conn):
     profiles = db.sql_querry(conn, sql_select.all_profiles)
 
-    for profile in profiles:
-        print(profile)
+    # for profile in profiles:
+    #     print(profile)
+
+    return profiles
 
 
 def insert_profile(conn, val):

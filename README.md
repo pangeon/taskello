@@ -30,6 +30,7 @@ Dianet company CRM
 
   ```
   pip install mysql-connector-python
+  pip install Flask
   ```
 
 ## Model
@@ -67,11 +68,11 @@ Dianet company CRM
 - 0.1.9 - support for all CRUD operations
 - 0.1.10 - create inititiation data files
 - 0.2.10b - create sample command line user interface
+- 0.3.0c - first sample web page with Flask
+- 0.3.1c - create view for data from database
 
 # Preview
 
-- 0.3.0 - first sample web page with Flask
-- 0.3.1 - create view for data from database
 - 0.4.0 - build web services
 
 # Problems and solutions:
