@@ -70,6 +70,7 @@ Dianet company CRM
 - 0.2.10b - create sample command line user interface
 - 0.3.0c - first sample web page with Flask
 - 0.3.1c - create view for data from database
+- 0.3.2c - first HTML view and data handle
 
 # Preview
 

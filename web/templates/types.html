@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/css/main.css') }}"
+    />
+  </head>
+  <body>
+    <table>
+      {% for type in types %}
+      <tr>
+        <td style="border: 1px solid black">{{ type }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
