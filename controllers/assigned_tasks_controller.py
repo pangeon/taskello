@@ -3,9 +3,7 @@ from utils.db_manager import mysql_connector as db
 
 def show_assigned_tasks(conn):
     assigned_tasks = db.sql_querry(conn, sql_select.all_assigned_tasks)
-
-    for assigned_task in assigned_tasks:
-        print(assigned_tasks)
+    return assigned_task
 
 
 def insert_assign_task(conn, val):

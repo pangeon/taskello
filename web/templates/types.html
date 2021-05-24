@@ -8,10 +8,20 @@
     />
   </head>
   <body>
+    <h1>:: Types list ::</h1>
     <table>
+      <thead>
+        <td>Id</td>
+        <td>Specification</td>
+        <td>Responsibilities</td>
+        <td>Color</td>
+      </thead>
       {% for type in types %}
       <tr>
-        <td style="border: 1px solid black">{{ type }}</td>
+        <td>{{ type[0] }}</td>
+        <td>{{ type[1] }}</td>
+        <td>{{ type[2] }}</td>
+        <td>{{ type[3] }}</td>
       </tr>
       {% endfor %}
     </table>

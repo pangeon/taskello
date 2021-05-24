@@ -54,6 +54,13 @@ Dianet company CRM
    python init.py
    ```
 
+## Run
+
+```
+venv\Scripts\activate
+flask run
+```
+
 # Changelog
 
 - 0.0.1 - root of application
@@ -71,10 +78,12 @@ Dianet company CRM
 - 0.3.0c - first sample web page with Flask
 - 0.3.1c - create view for data from database
 - 0.3.2c - first HTML view and data handle
+- 0.4.0c - build web service - full view
 
 # Preview
 
-- 0.4.0 - build web services
+- 0.5.0c - add posibility to add new profile
+- 0.6.0c - add posibility to add new task
 
 # Problems and solutions:
 

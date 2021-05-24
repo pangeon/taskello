@@ -1,3 +1,45 @@
 html {
   background-color: beige;
 }
+th,
+td {
+  border: 1px solid black;
+}
+td {
+  padding: 10px;
+}
+thead {
+  font-weight: bold;
+  background-color: coral;
+}
+span {
+  color: red;
+}
+ul > li > a {
+  font-size: 22px;
+}
+h1 {
+  font-size: 40px;
+}
+h2 {
+  font-size: 30px;
+}
+.button {
+  background-color: coral; /* Green */
+  border: none;
+  color: black;
+  font-weight: bold;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 1px solid grey;
+}
+.button:hover {
+  background-color: orangered;
+  color: white;
+}
+.center {
+  text-align: center;
+}

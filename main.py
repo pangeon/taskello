@@ -24,13 +24,23 @@ conn = db.define_db(
     
 if __name__ == "__main__":
     welcome()
-    profiles_records = profile_man.show_all_profiles(conn)
-    record = str_utils.tup_to_str(profiles_records[0]) 
+    types_map_list = []
+    types_map = {}
     
-    print(record)
-    print(str_utils.build_data_str(profiles_records))
-        
+    types = list(type_man.show_all_types(conn))
+    # for type in types:
+    #     print(type)
     
+    # specification, responsibilities, color
+    types_map["id"] = types[0][0]
+    types_map["specification"] = types[0][1]
+    types_map["responsibilities"] = types[0][2]
+    types_map["color"] = types[0][3]
+    
+    types_map_list.append(types_map)
+
+    print(types_map_list)
+    #print(types)
     
     
     

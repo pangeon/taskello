@@ -1,71 +1,66 @@
 from controllers import profiles_controller as profile_man
 from controllers import types_controller as type_man
+from controllers import tasks_controller as task_man
+from controllers import all_data_controller as all_data_man
 
 from data import _db_config as cfg_db
 from utils.db_manager import mysql_connector as db
 from markupsafe import escape
 
-from utils import str_utils
-from flask import Flask, request
+from flask import Flask
 from flask import render_template
 
 app = Flask(__name__, static_url_path='', static_folder='web/static', template_folder='web/templates')
 
 conn = db.define_db(
-        cfg_db.db_host, 
-        cfg_db.db_name, 
-        cfg_db.db_user, 
-        cfg_db.db_pass
+    cfg_db.db_host, 
+    cfg_db.db_name, 
+    cfg_db.db_user, 
+    cfg_db.db_pass
 )
-start_html = "<!DOCTYPE html><html><head><title>Profiles</title><link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\" /></head><body>"
-end_html = "</body></html>"
-
-profiles_records = profile_man.show_all_profiles(conn)
-
 @app.route('/')
 def index():
     return app.send_static_file("index.html")
 
 
 ## Profiles ##
-@app.route("/profiles")
+@app.route("/admin/edit/profiles")
 def show_all_profiles():
-    body = ""
-
-    for i in range(len(profiles_records)):
-        record = "<tr><td>" + str_utils.tup_to_str(profiles_records[i]) + "</td></tr>"
-        body += record
-    
-    table_html_records = "<table table style=\"width:100%\">" + body + "</table>"
-    web_page = start_html + table_html_records + end_html
-
-    return web_page
+    profiles = list(profile_man.show_all_profiles(conn))
+    return render_template('profiles.html', title='Profiles list', profiles=profiles)
 
 
-@app.route("/profile/<id>")
+@app.route("/user/profile/<id>")
 def show_profile(id):
-    body = ""
+    profiles = list(profile_man.show_all_profiles(conn))
     try:
-        record = "<tr><td>" + str_utils.tup_to_str(profiles_records[int(escape(id))]) + "</td></tr>"
-        body += record
-        
-        table_html_records = "<table table style=\"width:100%\">" + body + "</table>"
-        web_page = start_html + table_html_records + end_html
-
-        return web_page
+        profile = profiles[int(escape(id))]
+        print(profile)
+        return render_template('profile.html', title='Profile account', profile=profile) 
     except IndexError as e:
-        body = "<h1>Profile with indicated number doesn't exist<h1>"
-        return start_html + body + end_html 
+        return app.send_static_file("errors/error.html")
 ## Profiles ##
 
 
 ## Types ##
-@app.route("/types")
+@app.route("/admin/edit/types")
 def show_all_types():    
     types = list(type_man.show_all_types(conn))
-    #out = [item for t in types for item in t]
-    
-    out = map(list, zip(*types))
-    print(out)
-    return render_template('types.html', title='Types of Tasks', types=out)
+    return render_template('types.html', title='Types of Tasks', types=types)
 ## Types ##
+
+
+## Tasks
+@app.route("/user/all/tasks")
+def show_all_tasks():
+    tasks = list(task_man.show_all_tasks(conn))
+    return render_template('tasks.html', title='List of all Tasks', tasks=tasks)
+## Tasks
+
+
+## Assignment tasks and details
+@app.route("/user/all/tasks/table")
+def show_all_tasks_details():
+    task_details = list(all_data_man.show_task_full_details(conn))
+    return render_template('tasks_details.html', title='Tasks table', tasks_details=task_details)
+## Assignment tasks and details
