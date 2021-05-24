@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/css/main.css') }}"
+    />
+  </head>
+  <body>
+    <h1>:: Tasks list ::</h1>
+    <table>
+      <thead>
+        <td>Id</td>
+        <td>Type id</td>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Attachment link</td>
+        <td>Priority</td>
+      </thead>
+      {% for task in tasks %}
+      <tr>
+        <td>{{ task[0] }}</td>
+        <td>{{ task[1] }}</td>
+        <td>{{ task[2] }}</td>
+        <td>{{ task[3] }}</td>
+        <td>{{ task[4] }}</td>
+        <td>{{ task[5] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

@@ -1,4 +1,5 @@
 from utils import path_finder as path
+from utils import str_utils
 from utils.db_manager import mysql_connector as db
 from data import _variables as app
 from data import _db_config as cfg_db
@@ -9,6 +10,7 @@ from controllers import types_controller as type_man
 from controllers import assigned_tasks_controller as ass_task_man
 from controllers import all_data_controller as all_data_man
 
+import itertools
 
 def welcome():
     print("--- {}, ver {} ---\n".format(app.name, app.version))
@@ -19,9 +21,26 @@ conn = db.define_db(
     cfg_db.db_user, 
     cfg_db.db_pass
 )
-
+    
 if __name__ == "__main__":
     welcome()
+    types_map_list = []
+    types_map = {}
+    
+    types = list(type_man.show_all_types(conn))
+    # for type in types:
+    #     print(type)
+    
+    # specification, responsibilities, color
+    types_map["id"] = types[0][0]
+    types_map["specification"] = types[0][1]
+    types_map["responsibilities"] = types[0][2]
+    types_map["color"] = types[0][3]
+    
+    types_map_list.append(types_map)
+
+    print(types_map_list)
+    #print(types)
     
     
     

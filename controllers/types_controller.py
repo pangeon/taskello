@@ -3,9 +3,7 @@ from utils.db_manager import mysql_connector as db
 
 def show_all_types(conn):
     types = db.sql_querry(conn, sql_select.all_types)
-
-    for type in types:
-        print(type)
+    return types
 
 
 def insert_type(conn, val):

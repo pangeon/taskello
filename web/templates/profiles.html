@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/css/main.css') }}"
+    />
+  </head>
+  <body>
+    <h1>:: Profiles list ::</h1>
+    <table>
+      <thead>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>Email</td>
+        <td>Password</td>
+        <td>Active</td>
+      </thead>
+      {% for profile in profiles %}
+      <tr>
+        <td>{{ profile[0] }}</td>
+        <td>{{ profile[1] }}</td>
+        <td>{{ profile[2] }}</td>
+        <td>{{ profile[3] }}</td>
+        <td>{{ profile[4] }}</td>
+        <td>{{ profile[5] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
