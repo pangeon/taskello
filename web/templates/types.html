@@ -15,6 +15,7 @@
         <td>Specification</td>
         <td>Responsibilities</td>
         <td>Color</td>
+        <td>Actions</td>
       </thead>
       {% for type in types %}
       <tr>
@@ -22,6 +23,12 @@
         <td>{{ type[1] }}</td>
         <td>{{ type[2] }}</td>
         <td>{{ type[3] }}</td>
+        <td>
+          <button>Edit specification</button>
+          <button>Edit responsibilities</button>
+          <button>Edit color</button>
+          <button>Remove</button>
+        </td>
       </tr>
       {% endfor %}
     </table>

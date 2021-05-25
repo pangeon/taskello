@@ -43,3 +43,18 @@ h2 {
 .center {
   text-align: center;
 }
+input,
+select {
+  border: 2px solid #ccc;
+  width: 100%;
+  font-size: 20px;
+  padding: 2% 0%;
+}
+form {
+  width: 30%;
+  margin: auto 35%;
+}
+label {
+  font-size: 20px;
+  text-align: center;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/css/main.css') }}"
+    />
+  </head>
+  <body>
+    <h1 class="center">:: Add new task ::</h1>
+    <form action="#" method="post">
+      <label>Type:</label>
+      <select name="task_type_id">
+        <option value="1">IT online support</option>
+        <option value="2">Server maintenance</option>
+        <option value="3">Database managment</option>
+        <option value="4">Backend dev</option>
+        <option value="5">UI/UX</option>
+      </select>
+
+      <label>Name:</label>
+      <input type="text" name="task_name" />
+
+      <label>Description:</label>
+      <input type="text" name="task_description" value="NULL" />
+
+      <label>Link:</label>
+      <input type="text" name="task_attachment_link" value="NULL" />
+
+      <label>Priority:</label>
+      <input type="text" name="task_priority" value="NULL" />
+      <br /><br />
+      <input type="submit" class="button" value="Send" />
+    </form>
+  </body>
+</html>
