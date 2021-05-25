@@ -17,6 +17,7 @@
         <td>Email</td>
         <td>Password</td>
         <td>Active</td>
+        <td>Actions</td>
       </thead>
       {% for profile in profiles %}
       <tr>
@@ -26,6 +27,10 @@
         <td>{{ profile[3] }}</td>
         <td>{{ profile[4] }}</td>
         <td>{{ profile[5] }}</td>
+        <td>
+          <button>Enable profile</button>
+          <button>Remove user</button>
+        </td>
       </tr>
       {% endfor %}
     </table>

@@ -56,19 +56,20 @@ Dianet company CRM
 1. Using **MySQL** and create database dian_db, use file [create_database.sql](./data/sql/create_database.sql)
 
 2. Start mysql service and run **init.py**
+
 - Windows
 
-   ```
-   venv\Scripts\activate
-   python init.py
-   ```
+  ```
+  venv\Scripts\activate
+  python init.py
+  ```
 
 - Linux
 
-   ```
-   source venv/bin/activate
-   python init.py
-   ```
+  ```
+  source venv/bin/activate
+  python init.py
+  ```
 
 ## Run
 
@@ -96,10 +97,10 @@ flask run -h 0.0.0.0 -p 5000
 - 0.3.2c - first HTML view and data handle
 - 0.4.0c - build web service - full view
 - 0.4.1c - production version for vm ubuntu linux
+- 0.5.0c - add posibility to add new profile
 
 # Preview
 
-- 0.5.0c - add posibility to add new profile
 - 0.6.0c - add posibility to add new task
 
 # Problems and solutions:

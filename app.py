@@ -7,7 +7,7 @@ from data import _db_config as cfg_db
 from utils.db_manager import mysql_connector as db
 from markupsafe import escape
 
-from flask import Flask
+from flask import Flask, request, redirect
 from flask import render_template
 
 app = Flask(__name__, static_url_path='', static_folder='web/static', template_folder='web/templates')
@@ -35,7 +35,6 @@ def show_profile(id):
     profiles = list(profile_man.show_all_profiles(conn))
     try:
         profile = profiles[int(escape(id))]
-        print(profile)
         return render_template('profile.html', title='Profile account', profile=profile) 
     except IndexError as e:
         return app.send_static_file("errors/error.html")
@@ -54,7 +53,28 @@ def show_all_types():
 @app.route("/user/all/tasks")
 def show_all_tasks():
     tasks = list(task_man.show_all_tasks(conn))
-    return render_template('tasks.html', title='List of all Tasks', tasks=tasks)
+    return render_template('tasks.html', title='Your task list', tasks=tasks)
+
+@app.route("/user/edit/add_task", methods=['POST', 'GET'])
+def add_task():
+    if request.method == "POST":
+        task_type_id = request.form['task_type_id']
+        task_name = request.form['task_name']
+        task_description = request.form['task_description']
+        task_attachment_link = request.form['task_attachment_link']
+        task_priority = request.form['task_priority']
+
+        val = (
+            task_type_id, 
+            task_name, 
+            task_description,
+            task_attachment_link,
+            task_priority
+        )
+        task_man.insert_task(conn, val)
+        return redirect('/')
+    else:    
+        return render_template('add_task.html')
 ## Tasks
 
 
