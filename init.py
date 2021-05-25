@@ -22,7 +22,6 @@ if __name__ == "__main__":
     db.sql_drop(conn, struct_db.sql_drop_tables)
     if(create == "YES"):
 
-        
         ## Profiles ##
         db.sql_create(conn, struct_db.sql_create_profiles)
         profile_list = [

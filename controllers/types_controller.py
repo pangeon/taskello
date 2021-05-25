@@ -7,22 +7,22 @@ def show_all_types(conn):
 
 
 def insert_type(conn, val):
-    sql = "INSERT INTO Types (specification, responsibilities, color) VALUES (%s, %s, %s)"
+    sql = "INSERT INTO types (specification, responsibilities, color) VALUES (%s, %s, %s)"
     db.sql_execute(conn, sql, val)
 
 
 def update_type_specication(conn, val):
-    sql = "UPDATE Types SET specification = %s WHERE id = %s"
+    sql = "UPDATE types SET specification = %s WHERE id = %s"
     db.sql_execute(conn, sql, val)
 
 
 def update_type_responsibilities(conn, val):
-    sql = "UPDATE Types SET responsibilities = %s WHERE id = %s"
+    sql = "UPDATE types SET responsibilities = %s WHERE id = %s"
     db.sql_execute(conn, sql, val)
 
 
 def update_type_color(conn, val):
-    sql = "UPDATE Types SET color = %s WHERE id = %s"
+    sql = "UPDATE types SET color = %s WHERE id = %s"
     db.sql_execute(conn, sql, val)
 
 

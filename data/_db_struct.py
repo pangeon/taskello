@@ -28,7 +28,7 @@ CREATE TABLE `dian_db`.`tasks` (
     `attachment_link` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL , 
     `priority` SMALLINT DEFAULT NULL , 
     PRIMARY KEY (`id`) ,
-    FOREIGN KEY (`type_id`) REFERENCES Types(`id`) ,
+    FOREIGN KEY (`type_id`) REFERENCES types(`id`) ,
     UNIQUE (`name`)
 ) ENGINE = InnoDB;
 '''
@@ -41,15 +41,15 @@ CREATE TABLE `dian_db`.`assigned_tasks` (
     `progress_details` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
     `activation_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
     `expired_date` TIMESTAMP NULL DEFAULT NULL , 
-    FOREIGN KEY (`profile_id`) REFERENCES Profiles(`id`) ,
-    FOREIGN KEY (`task_id`) REFERENCES Tasks(`id`) ,
+    FOREIGN KEY (`profile_id`) REFERENCES profiles(`id`) ,
+    FOREIGN KEY (`task_id`) REFERENCES tasks(`id`) ,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 '''
 
 sql_drop_tables = '''
-DROP TABLE Assigned_tasks;
-DROP TABLE Tasks;
-DROP TABLE Profiles;
-DROP TABLE Types;
+DROP TABLE assigned_tasks;
+DROP TABLE tasks;
+DROP TABLE profiles;
+DROP TABLE types;
 '''

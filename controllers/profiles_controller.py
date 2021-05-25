@@ -7,25 +7,25 @@ def show_all_profiles(conn):
 
 
 def insert_profile(conn, val):
-    sql = "INSERT INTO Profiles (name, surname, email, password, is_active) VALUES (%s, %s, %s, %s, %s)"
+    sql = "INSERT INTO profiles (name, surname, email, password, is_active) VALUES (%s, %s, %s, %s, %s)"
     db.sql_execute(conn, sql, val)
 
 
 def update_profile_name_and_surname(conn, val):
-    sql = "UPDATE Profiles SET name = %s, surname = %s WHERE id = %s"
+    sql = "UPDATE profiles SET name = %s, surname = %s WHERE id = %s"
     db.sql_execute(conn, sql, val)
 
 
 def update_profile_password(conn, val):
-    sql = "UPDATE Profiles SET password = %s WHERE id = %s"
+    sql = "UPDATE profiles SET password = %s WHERE id = %s"
     db.sql_execute(conn, sql, val)
 
 
 def grant_profile_active_status(conn, val):
-    sql = "UPDATE Profiles SET is_active = 1 WHERE id = %s"
+    sql = "UPDATE profiles SET is_active = 1 WHERE id = %s"
     db.sql_execute(conn, sql, val)
 
 
 def delete_profile_for_id(conn, val):
-    sql = "DELETE FROM Profiles WHERE id = %s"
+    sql = "DELETE FROM profiles WHERE id = %s"
     db.sql_execute(conn, sql, val)

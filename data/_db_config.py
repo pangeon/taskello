@@ -1,5 +1,5 @@
 db_name = "dian_db"
 db_user = "dian_user"
-db_pass = "dian_pass"
-db_host = "127.0.0.1"
-db_port = "3306"
+db_pass = "dian_pass_2021MAY"
+db_host = "192.168.0.69"
+db_port = "5000"
