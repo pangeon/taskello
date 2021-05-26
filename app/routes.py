@@ -64,7 +64,7 @@ def add_task():
         )
         return redirect('/')
     else:    
-        return render_template('add_task.html')
+        return render_template('add_task.html', title='Add new task')
 ## Tasks
 
 

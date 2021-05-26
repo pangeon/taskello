@@ -99,6 +99,7 @@ flask run -h 0.0.0.0 -p 5000
 - 0.4.1c - production version for vm ubuntu linux
 - 0.5.0c - add posibility to add new task
 - 0.5.1c - refactoring code for flask app
+- 0.5.2c - refactoring flask templates
 
 # Preview
 

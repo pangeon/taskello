@@ -1,43 +1,36 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{ title }}</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='/css/main.css') }}"
-    />
-  </head>
-  <body>
-    <h1>:: Tasks table ::</h1>
-    <table>
-      <thead>
-        <td>Id</td>
-        <td>Email</td>
-        <td>Description</td>
-        <td>Specification</td>
-        <td>Attachment link</td>
-        <td>Priority</td>
-        <td>Progress</td>
-        <td>Start</td>
-        <td>End</td>
-        <td>Actions</td>
-      </thead>
-      {% for task in tasks_details %}
-      <tr>
-        <td>{{ task[0] }}</td>
-        <td>{{ task[1] }}</td>
-        <td>{{ task[2] }}</td>
-        <td>{{ task[3] }}</td>
-        <td>{{ task[4] }}</td>
-        <td>{{ task[5] }}</td>
-        <td>{{ task[6] }}</td>
-        <td>{{ task[7] }}</td>
-        <td>{{ task[8] }}</td>
-        <td>
-          <button>Assign a task</button>
-        </td>
-      </tr>
-      {% endfor %}
-    </table>
-  </body>
-</html>
+{% extends "base.html" %}
+<!-- CONTENT -->
+{% block content %}
+<h1>:: Tasks table ::</h1>
+<table>
+  <thead>
+    <td>Id</td>
+    <td>Email</td>
+    <td>Description</td>
+    <td>Specification</td>
+    <td>Attachment link</td>
+    <td>Priority</td>
+    <td>Progress</td>
+    <td>Start</td>
+    <td>End</td>
+    <td>Actions</td>
+  </thead>
+  {% for task in tasks_details %}
+  <tr>
+    <td>{{ task[0] }}</td>
+    <td>{{ task[1] }}</td>
+    <td>{{ task[2] }}</td>
+    <td>{{ task[3] }}</td>
+    <td>{{ task[4] }}</td>
+    <td>{{ task[5] }}</td>
+    <td>{{ task[6] }}</td>
+    <td>{{ task[7] }}</td>
+    <td>{{ task[8] }}</td>
+    <td>
+      <button>Assign a task</button>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
+<!-- CONTENT -->

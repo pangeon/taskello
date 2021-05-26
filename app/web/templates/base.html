@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Welcome to Dianetello</title>
+    {% endif %}
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/css/main.css') }}"
+    />
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+  </body>
+</html>
