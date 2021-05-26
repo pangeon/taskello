@@ -21,10 +21,10 @@ def close_conn(conn):
         conn.close()
         print("close_conn: ", id(conn), info.conn_close_info)
 
-def sql_querry(conn, sql):
+def sql_querry(conn, sql, val=""):
     try:
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, val)
         records = cursor.fetchall()
         cursor.close()
         return records

@@ -39,6 +39,7 @@ Dianet company CRM
   ```
   pip install mysql-connector-python
   pip install Flask
+  pip install flask-wtf
   ```
 
 ## Model

@@ -5,6 +5,10 @@ def show_all_profiles(conn):
     profiles = db.sql_querry(conn, sql_select.all_profiles)
     return profiles
 
+def login_profile(conn, val):
+    sql = "SELECT * FROM profiles WHERE email = %s AND password = %s"
+    log_usr = db.sql_querry(conn, sql, val) 
+    return log_usr
 
 def insert_profile(conn, val):
     sql = "INSERT INTO profiles (name, surname, email, password, is_active) VALUES (%s, %s, %s, %s, %s)"

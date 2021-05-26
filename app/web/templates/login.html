@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block content %}
+<h1>Sign In</h1>
+<form action="{{ url_for('login') }}" method="post" novalidate>
+  {{ form.hidden_tag() }}
+  <p>
+    {{ form.e_mail.label }}<br />
+    {{ form.e_mail(size=64) }}
+
+    <!-- errors email -->
+    {% for error in form.e_mail.errors %}
+    <span>[{{ error }}]</span>
+    {% endfor %}
+    <!-- errors email -->
+  </p>
+  <p>
+    {{ form.password.label }}<br />
+    {{ form.password(size=32) }}
+
+    <!-- errors password -->
+    {% for error in form.password.errors %}
+    <span>[{{ error }}]</span>
+    {% endfor %}
+    <!-- errors password -->
+  </p>
+  <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+  <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}

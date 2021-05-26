@@ -23,24 +23,26 @@ conn = db.define_db(
 )
     
 if __name__ == "__main__":
-    welcome()
-    types_map_list = []
-    types_map = {}
+    # welcome()
+    # types_map_list = []
+    # types_map = {}
     
-    types = list(type_man.show_all_types(conn))
+    # types = list(type_man.show_all_types(conn))
     # for type in types:
     #     print(type)
     
     # specification, responsibilities, color
-    types_map["id"] = types[0][0]
-    types_map["specification"] = types[0][1]
-    types_map["responsibilities"] = types[0][2]
-    types_map["color"] = types[0][3]
+    # types_map["id"] = types[0][0]
+    # types_map["specification"] = types[0][1]
+    # types_map["responsibilities"] = types[0][2]
+    # types_map["color"] = types[0][3]
     
-    types_map_list.append(types_map)
+    # types_map_list.append(types_map)
 
-    print(types_map_list)
+    # print(types_map_list)
     #print(types)
+    profile = profile_man.login_profile(conn, ("pangeon@tlen.pl", "78ABC"))
+    print(profile)
     
     
     

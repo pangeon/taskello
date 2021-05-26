@@ -17,6 +17,9 @@ conn = db.define_db(
 def all_profiles():
     return profile_man.show_all_profiles(conn)
 
+def login():
+    return profile_man.login_profile(conn, val)
+
 def all_types():
     return type_man.show_all_types(conn)
 
