@@ -97,11 +97,11 @@ flask run -h 0.0.0.0 -p 5000
 - 0.3.2c - first HTML view and data handle
 - 0.4.0c - build web service - full view
 - 0.4.1c - production version for vm ubuntu linux
-- 0.5.0c - add posibility to add new profile
+- 0.5.0c - add posibility to add new task
 
 # Preview
 
-- 0.6.0c - add posibility to add new task
+- 0.6.0c - add posibility to add new profile
 
 # Problems and solutions:
 
