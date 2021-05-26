@@ -98,10 +98,11 @@ flask run -h 0.0.0.0 -p 5000
 - 0.4.0c - build web service - full view
 - 0.4.1c - production version for vm ubuntu linux
 - 0.5.0c - add posibility to add new task
+- 0.5.1c - refactoring code for flask app
 
 # Preview
 
-- 0.6.0c - add posibility to add new profile
+- 0.6.0c - add posibility to registry new user
 
 # Problems and solutions:
 
