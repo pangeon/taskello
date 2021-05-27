@@ -11,15 +11,25 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='/css/main.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    />
   </head>
   <body>
     <div class="topnav">
-      <a href="{{ url_for('index') }}" class="active">Home</a>
+      <a href="{{ url_for('index') }}" class="active"
+        ><i class="fas fa-home"></i>Home</a
+      >
       {% if session.username %}
-      <a href="{{ url_for('logout') }}">Logout</a>
+      <a href="{{ url_for('logout') }}"
+        ><i class="fas fa-sign-out-alt"></i>Logout</a
+      >
       <div id="login_info">Logged in as: {{session.username}}</div>
       {% else %}
-      <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('login') }}"
+        ><i class="fas fa-user-circle"></i>Login</a
+      >
       <a href="{{ url_for('register') }}">Register</a>
       {% endif %}
     </div>

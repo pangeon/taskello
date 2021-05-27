@@ -112,3 +112,6 @@ div#login_info {
   text-decoration: none;
   font-size: 17px;
 }
+i {
+  padding-right: 10px;
+}
