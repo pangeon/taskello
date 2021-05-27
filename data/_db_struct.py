@@ -1,10 +1,10 @@
 sql_create_profiles = '''
 CREATE TABLE `dian_db`.`profiles` ( 
     `id` INT NOT NULL AUTO_INCREMENT, 
-    `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
+    `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT DEFAULT NULL , 
     `surname` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL , 
     `email` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
-    `password` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL , 
+    `password` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
     `is_active` BOOLEAN NULL DEFAULT NULL , PRIMARY KEY (`id`), UNIQUE (`email`)
 ) ENGINE = InnoDB; 
 '''

@@ -1,6 +1,7 @@
 from app import app
 from app import data_service_adapter as data
 from app.forms import LoginForm
+from app.forms import RegistrationForm
 
 from flask import request, redirect, flash, session, url_for
 from flask import render_template
@@ -11,6 +12,26 @@ from markupsafe import escape
 @app.route('/')
 def index():
     return render_template('main.html')
+
+
+## Security ##
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+
+    if form.validate_on_submit():
+        if request.method == 'POST' and 'e_mail' in request.form and 'password' in request.form:
+            e_mail = request.form['e_mail']
+            password = request.form['password']
+            data.registry(
+                val = (
+                    e_mail,
+                    password
+                )
+            )
+        return redirect(url_for('login'))
+            
+    return render_template('register.html',  title='Register', form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -37,6 +58,7 @@ def login():
 
     return render_template('login.html', title='Sign In', form=form)
 
+
 @app.route('/logout')
 def logout():
     session.pop('loggedin', None)
@@ -44,6 +66,8 @@ def logout():
     session.pop('username', None)
 
     return redirect(url_for('login'))
+## Security ##
+
 
 ## Profiles ##
 @app.route("/admin/edit/profiles")

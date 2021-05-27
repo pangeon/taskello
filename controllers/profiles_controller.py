@@ -19,6 +19,10 @@ def insert_profile(conn, val):
     sql = "INSERT INTO profiles (name, surname, email, password, is_active) VALUES (%s, %s, %s, %s, %s)"
     db.sql_execute(conn, sql, val)
 
+def create_profile_to_registry(conn, val):
+    sql = "INSERT INTO profiles (email, password) VALUES (%s, %s)"
+    db.sql_execute(conn, sql, val)
+
 
 def update_profile_name_and_surname(conn, val):
     sql = "UPDATE profiles SET name = %s, surname = %s WHERE id = %s"

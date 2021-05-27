@@ -40,6 +40,7 @@ Dianet company CRM
   pip install mysql-connector-python
   pip install Flask
   pip install flask-wtf
+  pip install email-validator
   ```
 
 ## Model
@@ -102,10 +103,9 @@ flask run -h 0.0.0.0 -p 5000
 - 0.5.1c - refactoring code for flask app
 - 0.5.2c - refactoring flask templates
 - 0.6.0c - added posibility to login existing user
+- 0.7.0c - add posibility to registry new user
 
 # Preview
-
-- 0.7.0c - add posibility to registry new user
 
 # Problems and solutions:
 

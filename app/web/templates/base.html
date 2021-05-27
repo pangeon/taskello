@@ -20,16 +20,17 @@
       <div id="login_info">Logged in as: {{session.username}}</div>
       {% else %}
       <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('register') }}">Register</a>
       {% endif %}
     </div>
     <!-- messages -->
-    {% with messages = get_flashed_messages() %} {% if messages %}
+    <!-- {% with messages = get_flashed_messages() %} {% if messages %}
     <ul>
       {% for message in messages %}
       <li>{{ message }}</li>
       {% endfor %}
     </ul>
-    {% endif %} {% endwith %}
+    {% endif %} {% endwith %} -->
     <!-- messages -->
     {% block content %}{% endblock %}
   </body>

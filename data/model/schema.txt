@@ -3,10 +3,10 @@ Profiles
 | Field     | Type         | Null | Key | Default | Extra          |
 +-----------+--------------+------+-----+---------+----------------+
 | id        | int(11)      | NO   | PRI | NULL    | auto_increment |
-| name      | varchar(255) | NO   |     | NULL    |                |
+| name      | varchar(255) | YES  |     | NULL    |                |
 | surname   | varchar(255) | YES  |     | NULL    |                |
 | email     | varchar(255) | NO   | UNI | NULL    |                |
-| password  | varchar(255) | YES  |     | NULL    |                |
+| password  | varchar(255) | NO   |     | NULL    |                |
 | is_active | tinyint(1)   | YES  |     | NULL    |                |
 +-----------+--------------+------+-----+---------+----------------+
 

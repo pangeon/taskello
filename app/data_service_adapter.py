@@ -20,6 +20,21 @@ def all_profiles():
 def login(val):
     return profile_man.login_profile(conn, val)
 
+def is_email_exist(e_mail):
+    profile_list = profile_man.show_all_profiles(conn)
+    profiles_emails = []
+    for unpack_item in profile_list:
+        (id, name, surname, email, password, active) = unpack_item
+        profiles_emails.append(email)
+
+    if e_mail in profiles_emails:
+        return True
+    else:
+        return False
+
+def registry(val):
+    return profile_man.create_profile_to_registry(conn, val)
+
 def all_types():
     return type_man.show_all_types(conn)
 

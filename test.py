@@ -21,17 +21,6 @@ conn = db.define_db(
     cfg_db.db_user, 
     cfg_db.db_pass
 )
-    
+
 if __name__ == "__main__":
-    # welcome()
-    profile = profile_man.login_profile(conn, ("pangeon@tlen.pl", "78ABC"))
-    print(profile[0])
-    print(profile[1])
-    print(profile[2])
-    print(profile[3])
-    
-    
-    
-    
-
-
+    print(is_email_exist("pangeon@tlen.pl"))
