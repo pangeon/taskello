@@ -4,7 +4,7 @@
   {{ form.hidden_tag() }}
   <p>
     {{ form.e_mail.label }}<br />
-    {{ form.e_mail(size=64) }}
+    {{ form.e_mail(size=64, placeholder="pangeon@tlen.pl") }}
 
     <!-- errors email -->
     {% for error in form.e_mail.errors %}
@@ -14,7 +14,7 @@
   </p>
   <p>
     {{ form.password.label }}<br />
-    {{ form.password(size=32) }}
+    {{ form.password(size=32, placeholder="78ABC") }}
 
     <!-- errors password -->
     {% for error in form.password.errors %}

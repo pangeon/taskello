@@ -82,29 +82,30 @@ flask run -h 0.0.0.0 -p 5000
 # Changelog
 
 - 0.0.1 - root of application
-- 0.0.2 - add simple project structure
-- 0.0.3 - create database model to project
-- 0.0.4 - add virtual env
-- 0.0.5 - create connector util for MySQL
+- 0.0.2 - added simple project structure
+- 0.0.3 - created database model to project
+- 0.0.4 - added virtual env
+- 0.0.5 - created connector util for MySQL
 - 0.0.6 - preparing sample data to insert
-- 0.0.7 - select data using app interface
-- 0.0.8 - insert data using app interface
-- 0.1.8 - create controllers for app
+- 0.0.7 - selected data using app interface
+- 0.0.8 - inserted data using app interface
+- 0.1.8 - created controllers for app
 - 0.1.9 - support for all CRUD operations
-- 0.1.10 - create inititiation data files
-- 0.2.10b - create sample command line user interface
+- 0.1.10 - created inititiation data files
+- 0.2.10b - created sample command line user interface
 - 0.3.0c - first sample web page with Flask
-- 0.3.1c - create view for data from database
+- 0.3.1c - created view for data from database
 - 0.3.2c - first HTML view and data handle
-- 0.4.0c - build web service - full view
+- 0.4.0c - built web service - full view
 - 0.4.1c - production version for vm ubuntu linux
-- 0.5.0c - add posibility to add new task
+- 0.5.0c - added posibility to add new task
 - 0.5.1c - refactoring code for flask app
 - 0.5.2c - refactoring flask templates
+- 0.6.0c - added posibility to login existing user
 
 # Preview
 
-- 0.6.0c - add posibility to registry new user
+- 0.7.0c - add posibility to registry new user
 
 # Problems and solutions:
 

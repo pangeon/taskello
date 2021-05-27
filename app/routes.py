@@ -10,7 +10,7 @@ from markupsafe import escape
 
 @app.route('/')
 def index():
-    return app.send_static_file("index.html")
+    return render_template('main.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -18,21 +18,32 @@ def login():
     form = LoginForm()
     
     if form.validate_on_submit():
-        flash('Login requested for user {}, remember_me={}'.format(
-            form.e_mail.data, form.remember_me.data))
         if request.method == 'POST' and 'e_mail' in request.form and 'password' in request.form:
             e_mail = request.form['e_mail']
             password = request.form['password']
-            # data.login(
-            #     val = (
-            #         e_mail,
-            #         password
-            #     )
-            # )
+            profile = data.login(
+                val = (
+                    e_mail,
+                    password
+                )
+            )
+            if profile == None:
+                return render_template('error.html')
+            else:
+                session['loggedin'] = True
+                session['id'] = profile[0]
+                session['username'] = profile[3]
+                return render_template('main.html')
 
-        return redirect(url_for('index'))
     return render_template('login.html', title='Sign In', form=form)
 
+@app.route('/logout')
+def logout():
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('username', None)
+
+    return redirect(url_for('login'))
 
 ## Profiles ##
 @app.route("/admin/edit/profiles")
@@ -85,7 +96,7 @@ def add_task():
                 task_priority
             )
         )
-        return redirect(url_for('index'))
+        return render_template('main.html')
     else:    
         return render_template('add_task.html', title='Add new task')
 ## Tasks

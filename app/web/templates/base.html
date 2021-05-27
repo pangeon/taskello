@@ -15,9 +15,13 @@
   <body>
     <div class="topnav">
       <a href="{{ url_for('index') }}" class="active">Home</a>
+      {% if session.username %}
+      <a href="{{ url_for('logout') }}">Logout</a>
+      <div id="login_info">Logged in as: {{session.username}}</div>
+      {% else %}
       <a href="{{ url_for('login') }}">Login</a>
+      {% endif %}
     </div>
-    <hr />
     <!-- messages -->
     {% with messages = get_flashed_messages() %} {% if messages %}
     <ul>
