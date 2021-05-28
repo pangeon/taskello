@@ -48,11 +48,12 @@ def login():
                     password
                 )
             )
+            print(profile)
             if profile == None:
                 return render_template('error.html')
             else:
                 session['loggedin'] = True
-                session['id'] = profile[0]
+                session['id'] = profile[0] - 1
                 session['username'] = profile[3]
                 return render_template('main.html')
 
@@ -75,12 +76,22 @@ def show_all_profiles():
     profiles = list(data.all_profiles())
     return render_template('profiles.html', title='Profiles list', profiles=profiles)
 
-
+##! deprecated
 @app.route("/user/profile/<id>")
 def show_profile(id):
     profiles = list(data.all_profiles())
     try:
         profile = profiles[int(escape(id))]
+        return render_template('profile.html', title='Profile account', profile=profile) 
+    except IndexError as e:
+        return app.send_static_file("errors/error.html")
+##! deprecated
+
+@app.route("/account/profile")
+def show_login_profile():
+    
+    try:
+        profile = data.email(session.get('username', 'not set'))
         return render_template('profile.html', title='Profile account', profile=profile) 
     except IndexError as e:
         return app.send_static_file("errors/error.html")

@@ -104,6 +104,7 @@ flask run -h 0.0.0.0 -p 5000
 - 0.5.2c - refactoring flask templates
 - 0.6.0c - added posibility to login existing user
 - 0.7.0c - add posibility to registry new user
+- 0.7.1c - fixed bugs with profile account and login
 
 # Preview
 

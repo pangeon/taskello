@@ -32,6 +32,9 @@ def is_email_exist(e_mail):
     else:
         return False
 
+def email(val):
+    return profile_man.get_profile_email(conn, val)
+
 def registry(val):
     return profile_man.create_profile_to_registry(conn, val)
 

@@ -25,12 +25,25 @@
       <a href="{{ url_for('logout') }}"
         ><i class="fas fa-sign-out-alt"></i>Logout</a
       >
-      <div id="login_info">Logged in as: {{session.username}}</div>
+      <div id="login_info">
+        <a href="#">
+          <i class="far fa-user-circle"></i>
+          Logged in as: <strong>{{session.username}}</strong>
+        </a>
+        <a href="{{ url_for('show_login_profile')}}">
+          <i class="fas fa-user-edit"></i>
+          Edit
+        </a>
+      </div>
       {% else %}
-      <a href="{{ url_for('login') }}"
-        ><i class="fas fa-user-circle"></i>Login</a
+      <a href="{{ url_for('login') }}">
+        <i class="fas fa-user-circle"></i>
+        Login</a
       >
-      <a href="{{ url_for('register') }}">Register</a>
+      <a href="{{ url_for('register') }}">
+        <i class="fas fa-marker"></i>
+        Register</a
+      >
       {% endif %}
     </div>
     <!-- messages -->

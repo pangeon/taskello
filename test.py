@@ -23,4 +23,14 @@ conn = db.define_db(
 )
 
 if __name__ == "__main__":
-    print(is_email_exist("pangeon@tlen.pl"))
+    prof = profile_man.get_profile_email(conn, "pangeon@tlen.pl")
+    print(prof)
+    # str = "'pangeon@tlen.pl'"
+    # sql = "SELECT * FROM profiles WHERE email = " + str
+    # result = db.sql_single_querry(conn, sql)
+    # print(result)
+    # l_prof = profile_man.login_profile(conn, val = (
+    #     "pangeon@tlen.pl", "78ABC"
+    # ))
+    # print(l_prof)
+    pass

@@ -6,7 +6,6 @@ def show_all_profiles(conn):
     return profiles
 
 def login_profile(conn, val):
-
     sql = "SELECT * FROM profiles WHERE email = %s AND password = %s"
     profile = db.sql_querry(conn, sql, val)
     try: 
@@ -15,9 +14,21 @@ def login_profile(conn, val):
         print("Profile with the given email and password does not exist.")
         return None
 
+
+def get_profile_email(conn, val):
+    sql = "SELECT * FROM profiles WHERE email = '{}'".format(val)
+    profile = db.sql_single_querry(conn, sql)
+    try: 
+        return profile
+    except IndexError as e:
+        print("Profile with the given email does not exist.")
+        return None
+
+
 def insert_profile(conn, val):
     sql = "INSERT INTO profiles (name, surname, email, password, is_active) VALUES (%s, %s, %s, %s, %s)"
     db.sql_execute(conn, sql, val)
+
 
 def create_profile_to_registry(conn, val):
     sql = "INSERT INTO profiles (email, password) VALUES (%s, %s)"

@@ -21,6 +21,7 @@ def close_conn(conn):
         conn.close()
         print("close_conn: ", id(conn), info.conn_close_info)
 
+
 def sql_querry(conn, sql, val=""):
     try:
         cursor = conn.cursor()
@@ -32,6 +33,17 @@ def sql_querry(conn, sql, val=""):
         print("sql_querry: ", info.conn_error_info, e)
 
 
+def sql_single_querry(conn, sql, val=""):
+    try:
+        cursor = conn.cursor()
+        cursor.execute(sql, val)
+        record = cursor.fetchone()
+        cursor.close()
+        return record
+    except Error as e:
+        print("sql_single_querry: ", info.conn_error_info, e)
+
+
 def sql_execute(conn, sql, val):
     try:
         cursor = conn.cursor()
@@ -40,6 +52,7 @@ def sql_execute(conn, sql, val):
     except mysql.connector.Error as e:
         print("sql_insert: ", info.error_insert_info, e)
 
+
 def sql_create(conn, sql):
     try:
         cursor = conn.cursor()
@@ -47,12 +60,14 @@ def sql_create(conn, sql):
     except mysql.connector.Error as e:
         print("sql_create: ", info.error_create_info, e)
 
+
 def sql_drop(conn, sql):
     try:
         cursor = conn.cursor()
         cursor.execute(sql)
     except mysql.connector.Error as e:
         print("sql_drop: ", info.error_drop_info, e)
+
 
 def connection_info(conn):
     try:
