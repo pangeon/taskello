@@ -48,12 +48,11 @@ def login():
                     password
                 )
             )
-            print(profile)
             if profile == None:
                 return render_template('error.html')
             else:
                 session['loggedin'] = True
-                session['id'] = profile[0] - 1
+                session['id'] = profile[0]
                 session['username'] = profile[3]
                 return render_template('main.html')
 
