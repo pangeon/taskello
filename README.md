@@ -1,10 +1,27 @@
 # Dianetello
 
-Dianet company CRM
+Dianet company CRM.<br />
+See working appplication on page: [here](http://192.168.0.69:5000/)
 
 # Deployment guide
 
-## Virtual environment
+## 1) Requirements
+
+- **Windows**, download and install:
+
+  - [Python 3](https://www.python.org/downloads/)
+  - [MySQL Server](https://dev.mysql.com/downloads/mysql/)
+
+- **Linux**, run command in bash shell:
+  ```
+  sudo apt update
+  sudo apt -y upgrade
+  sudo apt install -y python3-pip
+  sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
+  sudo apt install -y python3-venv
+  ```
+
+## 2) Virtual environment
 
 - Create in master dir:
 
@@ -32,7 +49,7 @@ Dianet company CRM
   deactivate
   ```
 
-## Install dependencies
+## 3) Install dependencies
 
 - When you're running virtual env download files with pip:
 
@@ -75,10 +92,19 @@ Dianet company CRM
 
 ## Run
 
-```
-venv\Scripts\activate
-flask run -h 0.0.0.0 -p 5000
-```
+1. Activate virtual environment in your machine:
+2. Run HTTP server with Flask:
+
+   ```
+   flask run  -h <host>  -p <port>
+   ```
+
+- example:
+
+  ```
+  flask run
+  flask run -h 0.0.0.0 -p 5000
+  ```
 
 # Changelog
 
@@ -108,6 +134,15 @@ flask run -h 0.0.0.0 -p 5000
 
 # Preview
 
+- 0.8.0c - posibility profile data edit
+  - 0.8.1c - enable name na surname edition
+  - 0.8.2c - change password
+  - 0.8.3c - function delete own profile
+- 0.9.0c - possiblity assign tasks to profile
+- 1.0.0c - full data edition via page
+- 1.1.0c - secure password, hash function
+- 2.1.0c - new look with bootstrap 4
+
 # Problems and solutions:
 
 ## Windows:
@@ -115,6 +150,16 @@ flask run -h 0.0.0.0 -p 5000
 - [PowerShell says “execution of scripts is disabled on this system.”](./hints/venv-windows-problem.md)
 
 ## Linux
+
+# Online documentation
+
+## Flask
+
+- [Official documentation](https://flask.palletsprojects.com/en/2.0.x/)
+- [Mega Flask Tutorial by Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+- [Flask with raw SQL](https://codeshack.io/login-system-python-flask-mysql/)
+
+## MySQL
 
 # Contact and support
 
