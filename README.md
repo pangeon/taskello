@@ -129,15 +129,15 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
 - 0.5.1c - refactoring code for flask app
 - 0.5.2c - refactoring flask templates
 - 0.6.0c - added posibility to login existing user
-- 0.7.0c - add posibility to registry new user
+- 0.7.0c - added posibility to registry new user
 - 0.7.1c - fixed bugs with profile account and login
+- 0.8.0c - added posibility profile data edit:
+  - 0.8.1c - enabled name na surname edition
 
 # Preview
 
-- 0.8.0c - posibility profile data edit
-  - 0.8.1c - enable name na surname edition
-  - 0.8.2c - change password
-  - 0.8.3c - function delete own profile
+- 0.8.2c - change password
+- 0.8.3c - function delete own profile
 - 0.9.0c - possiblity assign tasks to profile
 - 1.0.0c - full data edition via page
 - 1.1.0c - secure password, hash function

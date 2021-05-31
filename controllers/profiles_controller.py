@@ -36,12 +36,12 @@ def create_profile_to_registry(conn, val):
 
 
 def update_profile_name_and_surname(conn, val):
-    sql = "UPDATE profiles SET name = %s, surname = %s WHERE id = %s"
+    sql = "UPDATE profiles SET name = %s, surname = %s WHERE email = %s"
     db.sql_execute(conn, sql, val)
 
 
 def update_profile_password(conn, val):
-    sql = "UPDATE profiles SET password = %s WHERE id = %s"
+    sql = "UPDATE profiles SET password = %s WHERE email = %s"
     db.sql_execute(conn, sql, val)
 
 

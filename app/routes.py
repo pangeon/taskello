@@ -31,7 +31,7 @@ def register():
             )
         return redirect(url_for('login'))
             
-    return render_template('register.html',  title='Register', form=form)
+    return render_template('profile/register.html',  title='Register', form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -56,7 +56,7 @@ def login():
                 session['username'] = profile[3]
                 return render_template('main.html')
 
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('profile/login.html', title='Sign In', form=form)
 
 
 @app.route('/logout')
@@ -73,7 +73,7 @@ def logout():
 @app.route("/admin/edit/profiles")
 def show_all_profiles():
     profiles = list(data.all_profiles())
-    return render_template('profiles.html', title='Profiles list', profiles=profiles)
+    return render_template('profile/profiles.html', title='Profiles list', profiles=profiles)
 
 ##! deprecated
 @app.route("/user/profile/<id>")
@@ -81,19 +81,40 @@ def show_profile(id):
     profiles = list(data.all_profiles())
     try:
         profile = profiles[int(escape(id))]
-        return render_template('profile.html', title='Profile account', profile=profile) 
+        return render_template('profile/profile.html', title='Profile account', profile=profile) 
     except IndexError as e:
         return app.send_static_file("errors/error.html")
 ##! deprecated
+
 
 @app.route("/account/profile")
 def show_login_profile():
     
     try:
         profile = data.email(session.get('username', 'not set'))
-        return render_template('profile.html', title='Profile account', profile=profile) 
+        return render_template('profile/profile.html', title='Profile account', profile=profile) 
     except IndexError as e:
         return app.send_static_file("errors/error.html")
+
+
+@app.route("/account/edit/profile", methods=['POST', 'GET'])
+def edit_profile():
+    if request.method == "POST":
+        name = request.form['profile_name']
+        surname = request.form['profile_surname']
+        e_mail = session.get('username', 'not set')
+
+        data.edit_profile_data(
+            val = (
+                name,
+                surname,
+                e_mail
+            )
+        )
+        print(name, surname, e_mail)
+        return redirect('/')
+    else:
+        return render_template('profile/edit_profile_data.html', title='Edit Profile data')
 ## Profiles ##
 
 

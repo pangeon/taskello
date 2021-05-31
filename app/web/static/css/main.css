@@ -12,6 +12,10 @@ thead {
   font-weight: bold;
   background-color: coral;
 }
+.thead {
+  font-weight: bold;
+  background-color: coral;
+}
 span {
   color: red;
 }
@@ -113,4 +117,7 @@ div#login_info {
 }
 i {
   padding-right: 10px;
+}
+.profile_table {
+  float: left;
 }

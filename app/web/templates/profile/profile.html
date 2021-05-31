@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+<!-- CONTENT -->
+{% block content %}
+<h1>:: Profile account ::</h1>
+<table class="profile_table">
+  <tr>
+    <td class="thead">Name</td>
+    <td>{{ profile[1] }}</td>
+  </tr>
+  <tr>
+    <td class="thead">Surname</td>
+    <td>{{ profile[2] }}</td>
+  </tr>
+  <tr>
+    <td class="thead">Email</td>
+    <td>{{ profile[3] }}</td>
+  </tr>
+  <tr>
+    <td class="thead">Password</td>
+    <td>{{ profile[4] }}</td>
+  </tr>
+  <tr></tr>
+</table>
+
+<div>
+  <table>
+    <tr>
+      <td class="thead">Actions</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ url_for('edit_profile') }}">
+          <button>Edit personality</button>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button>Change password</button>
+      </td>
+    </tr>
+  </table>
+</div>
+{% endblock %}
+<!-- CONTENT -->

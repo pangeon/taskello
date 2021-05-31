@@ -38,6 +38,9 @@ def email(val):
 def registry(val):
     return profile_man.create_profile_to_registry(conn, val)
 
+def edit_profile_data(val):
+    return profile_man.update_profile_name_and_surname(conn, val)
+
 def all_types():
     return type_man.show_all_types(conn)
 
