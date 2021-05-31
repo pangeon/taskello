@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+<!-- CONTENT -->
+{% block content %}
+<h1 class="center">:: Edit profile password ::</h1>
+<form action="#" method="post">
+  <label>New password:</label>
+  <input type="text" required name="profile_password" />
+
+  <label>Reapeat password:</label>
+  <input type="text" required name="profile_password_repeat" />
+  <br /><br />
+  <input type="submit" class="button" value="Send" />
+</form>
+{% endblock %}
+<!-- CONTENT -->

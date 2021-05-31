@@ -41,6 +41,9 @@ def registry(val):
 def edit_profile_data(val):
     return profile_man.update_profile_name_and_surname(conn, val)
 
+def edit_profile_pass(val):
+    return profile_man.update_profile_password(conn, val)
+
 def all_types():
     return type_man.show_all_types(conn)
 

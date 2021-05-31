@@ -111,10 +111,30 @@ def edit_profile():
                 e_mail
             )
         )
-        print(name, surname, e_mail)
         return redirect('/')
     else:
         return render_template('profile/edit_profile_data.html', title='Edit Profile data')
+
+
+@app.route("/account/edit/profile/pass", methods=['POST', 'GET'])
+def edit_profile_password():
+    if request.method == "POST":
+        pass_1 = request.form['profile_password']
+        pass_2 = request.form['profile_password_repeat']
+        e_mail = session.get('username', 'not set')
+        if pass_1 == pass_2:
+            data.edit_profile_pass(
+                val = (
+                    pass_1,
+                    e_mail
+                )
+            )
+        else:
+            msg = "Passwords do not match"
+            return render_template('profile/edit_profile_pass.html', title='Edit Profile password', msg=msg)
+        return redirect('/')
+    else:
+        return render_template('profile/edit_profile_pass.html', title='Edit Profile password')
 ## Profiles ##
 
 
