@@ -12,6 +12,11 @@ def insert_task(conn, val):
     db.sql_execute(conn, sql, val)
 
 
+def insert_task_with_id(conn, val):
+    sql = "INSERT INTO tasks (id, type_id, name, description, attachment_link, priority) VALUES (%s, %s, %s, %s, %s, %s)"
+    db.sql_execute(conn, sql, val)
+
+
 def update_task_name_and_description(conn, val):
     sql = "UPDATE tasks SET name = %s, description = %s WHERE id = %s"
     db.sql_execute(conn, sql, val)

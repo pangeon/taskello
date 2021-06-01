@@ -32,11 +32,15 @@ def is_email_exist(e_mail):
     else:
         return False
 
+
 def email(val):
     return profile_man.get_profile_email(conn, val)
 
 def registry(val):
     return profile_man.create_profile_to_registry(conn, val)
+
+def profile_id(val):
+    return profile_man.get_profile_id(conn, val)
 
 def edit_profile_data(val):
     return profile_man.update_profile_name_and_surname(conn, val)
@@ -54,10 +58,13 @@ def all_tasks():
     return task_man.show_all_tasks(conn)
 
 def insert_task(val):
-    return task_man.insert_task(conn, val)
+    return task_man.insert_task_with_id(conn, val)
 
 def all_tasks_details():
     return all_data_man.show_task_full_details(conn)
 
 def user_tasks(val):
     return all_data_man.show_task_assign_for_login_profile(conn, val)
+
+def assign_task(val):
+    return ass_task_man.insert_assign_task(conn, val)

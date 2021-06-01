@@ -8,10 +8,26 @@ from flask import render_template
 
 from markupsafe import escape
 
+from random import randint as gen
+
+
 
 @app.route('/')
 def index():
     return render_template('main.html')
+
+
+## Utils
+def __id_generator():
+    return gen(0, 10000)
+
+def __profile_id():
+    e_mail = session.get('username', 'not set')
+    profile_id = data.profile_id(val = (
+        e_mail
+    ))
+    return profile_id
+## Utils
 
 
 ## Security ##
@@ -179,6 +195,7 @@ def show_profile_tasks():
 @app.route("/user/edit/add_task", methods=['POST', 'GET'])
 def add_task():
     if request.method == "POST":
+        task_id = __id_generator()
         task_type_id = request.form['task_type_id']
         task_name = request.form['task_name']
         task_description = request.form['task_description']
@@ -187,6 +204,7 @@ def add_task():
 
         data.insert_task(
             val = (
+                task_id,
                 task_type_id, 
                 task_name, 
                 task_description,
@@ -194,10 +212,17 @@ def add_task():
                 task_priority
             )
         )
+        data.assign_task(val = (
+            __profile_id(),
+            task_id,
+            "TO DO"
+        ))
         return redirect("/")
     else:    
         return render_template('add_task.html', title='Add new task')
 ## Tasks
+
+
 
 
 ## Assignment tasks and details

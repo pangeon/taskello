@@ -28,5 +28,9 @@ if __name__ == "__main__":
     tasks = all_data_man.show_task_assign_for_login_profile(conn, val = (
         "wolnygosc@interia.pl"
     ))
+    profile_id = profile_man.get_profile_id(conn, val = (
+        "wolnygosc@interia.pl"
+    ))
     print(tasks)
+    print(profile_id)
     pass
