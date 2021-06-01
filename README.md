@@ -139,10 +139,11 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
   - 0.8.2c - change password
   - 0.8.3c - function delete own profile
 - 0.8.4c - fixed password form and validation data
+- 0.9.0c - show task assign only login profile
 
 # Preview
 
-- 0.9.0c - possiblity assign tasks to profile
+- 0.10.0c - possiblity assign tasks to profile
 - 1.0.0c - full data edition via page
 - 1.1.0c - secure password, hash function
 - 2.1.0c - new look with bootstrap 4

@@ -13,7 +13,9 @@
     <td>Progress</td>
     <td>Start</td>
     <td>End</td>
+    {% if session.username %}
     <td>Actions</td>
+    {% endif %}
   </thead>
   {% for task in tasks_details %}
   <tr>
@@ -26,9 +28,11 @@
     <td>{{ task[6] }}</td>
     <td>{{ task[7] }}</td>
     <td>{{ task[8] }}</td>
+    {% if session.username %}
     <td>
       <button>Assign a task</button>
     </td>
+    {% endif %}
   </tr>
   {% endfor %}
 </table>

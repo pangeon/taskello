@@ -5,21 +5,25 @@
 <table>
   <thead>
     <td>Id</td>
-    <td>Type id</td>
-    <td>Name</td>
     <td>Description</td>
+    <td>Specification</td>
     <td>Attachment link</td>
     <td>Priority</td>
+    <td>Progress</td>
+    <td>Start</td>
+    <td>End</td>
     <td>Actions</td>
   </thead>
   {% for task in tasks %}
   <tr>
     <td>{{ task[0] }}</td>
-    <td>{{ task[1] }}</td>
     <td>{{ task[2] }}</td>
     <td>{{ task[3] }}</td>
     <td>{{ task[4] }}</td>
     <td>{{ task[5] }}</td>
+    <td>{{ task[6] }}</td>
+    <td>{{ task[7] }}</td>
+    <td>{{ task[8] }}</td>
     <td>
       <button>Sign off</button>
       <button>Edit name and description</button>

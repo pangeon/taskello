@@ -34,17 +34,25 @@
           <i class="fas fa-user-edit"></i>
           Edit
         </a>
+        <a href="{{ url_for('show_profile_tasks') }}"
+          ><i class="fas fa-thumbtack"></i>Pinned Tasks</a
+        >
       </div>
+      <a href="{{ url_for('add_task') }}"
+        ><i class="fas fa-thumbtack"></i>Add Task</a
+      >
       {% else %}
       <a href="{{ url_for('login') }}">
         <i class="fas fa-user-circle"></i>
         Login</a
       >
       <a href="{{ url_for('register') }}">
-        <i class="fas fa-marker"></i>
-        Register</a
+        <i class="fas fa-marker"></i>Register</a
       >
       {% endif %}
+      <a href="{{ url_for('show_all_tasks_details') }}"
+        ><i class="fas fa-tasks"></i>Task Table</a
+      >
     </div>
     <!-- messages -->
     <!-- {% with messages = get_flashed_messages() %} {% if messages %}

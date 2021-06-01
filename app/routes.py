@@ -70,10 +70,13 @@ def logout():
 
 
 ## Profiles ##
+##! test only
 @app.route("/admin/edit/profiles")
 def show_all_profiles():
     profiles = list(data.all_profiles())
     return render_template('profile/profiles.html', title='Profiles list', profiles=profiles)
+##! test only
+
 
 ##! deprecated
 @app.route("/user/profile/<id>")
@@ -87,9 +90,8 @@ def show_profile(id):
 ##! deprecated
 
 
-@app.route("/account/profile")
+@app.route("/user/show/profile")
 def show_login_profile():
-    
     try:
         profile = data.email(session.get('username', 'not set'))
         return render_template('profile/profile.html', title='Profile account', profile=profile) 
@@ -97,7 +99,7 @@ def show_login_profile():
         return app.send_static_file("errors/error.html")
 
 
-@app.route("/account/edit/profile", methods=['POST', 'GET'])
+@app.route("/user/edit/profile/name_surname", methods=['POST', 'GET'])
 def edit_profile():
     if request.method == "POST":
         name = request.form['profile_name']
@@ -116,7 +118,7 @@ def edit_profile():
         return render_template('profile/edit_profile_data.html', title='Edit Profile data')
 
 
-@app.route("/account/edit/profile/pass", methods=['POST', 'GET'])
+@app.route("/user/edit/profile/pass", methods=['POST', 'GET'])
 def edit_profile_password():
     if request.method == "POST":
         pass_1 = request.form['profile_password']
@@ -137,7 +139,7 @@ def edit_profile_password():
         return render_template('profile/edit_profile_pass.html', title='Edit Profile password')
 
 
-@app.route("/account/edit/profile/remove")
+@app.route("/user/remove/profile")
 def remove_profile():
     e_mail = session.get('username', 'not set')
     data.remove(
@@ -145,22 +147,32 @@ def remove_profile():
             e_mail
         )
     )
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('username', None)
     return redirect('/')
 ## Profiles ##
 
 
 ## Types ##
+##! test only
 @app.route("/admin/edit/types")
 def show_all_types():    
     types = list(data.all_types())
     return render_template('types.html', title='Types of Tasks', types=types)
+##! test only
 ## Types ##
 
 
 ## Tasks
-@app.route("/user/all/tasks")
-def show_all_tasks():
-    tasks = list(data.all_tasks())
+@app.route("/user/show/tasks")
+def show_profile_tasks():
+    e_mail = session.get('username', 'not set')
+    tasks = list(data.user_tasks(
+        val = (
+            e_mail
+        )
+    ))
     return render_template('tasks.html', title='Your task list', tasks=tasks)
 
 
@@ -182,14 +194,14 @@ def add_task():
                 task_priority
             )
         )
-        return render_template('main.html')
+        return redirect("/")
     else:    
         return render_template('add_task.html', title='Add new task')
 ## Tasks
 
 
 ## Assignment tasks and details
-@app.route("/user/all/tasks/table")
+@app.route("/show/all_tasks")
 def show_all_tasks_details():
     task_details = list(data.all_tasks_details())
     return render_template('tasks_details.html', title='Tasks table', tasks_details=task_details)

@@ -58,3 +58,6 @@ def insert_task(val):
 
 def all_tasks_details():
     return all_data_man.show_task_full_details(conn)
+
+def user_tasks(val):
+    return all_data_man.show_task_assign_for_login_profile(conn, val)
