@@ -135,6 +135,17 @@ def edit_profile_password():
         return redirect('/')
     else:
         return render_template('profile/edit_profile_pass.html', title='Edit Profile password')
+
+
+@app.route("/account/edit/profile/remove")
+def remove_profile():
+    e_mail = session.get('username', 'not set')
+    data.remove(
+        val = (
+            e_mail
+        )
+    )
+    return redirect('/')
 ## Profiles ##
 
 

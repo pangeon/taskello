@@ -44,6 +44,9 @@ def edit_profile_data(val):
 def edit_profile_pass(val):
     return profile_man.update_profile_password(conn, val)
 
+def remove(val):
+    return profile_man.delete_profile_for_email(conn, val)
+
 def all_types():
     return type_man.show_all_types(conn)
 

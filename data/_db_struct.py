@@ -1,11 +1,12 @@
 sql_create_profiles = '''
 CREATE TABLE `dian_db`.`profiles` ( 
     `id` INT NOT NULL AUTO_INCREMENT, 
-    `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT DEFAULT NULL , 
+    `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL , 
     `surname` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL , 
     `email` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
     `password` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
-    `is_active` BOOLEAN NULL DEFAULT NULL , PRIMARY KEY (`id`), UNIQUE (`email`)
+    `is_active` BOOLEAN NULL DEFAULT NULL , 
+    PRIMARY KEY (`id`), UNIQUE (`email`)
 ) ENGINE = InnoDB; 
 '''
 
@@ -28,7 +29,7 @@ CREATE TABLE `dian_db`.`tasks` (
     `attachment_link` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL , 
     `priority` SMALLINT DEFAULT NULL , 
     PRIMARY KEY (`id`) ,
-    FOREIGN KEY (`type_id`) REFERENCES types(`id`) ,
+    FOREIGN KEY (`type_id`) REFERENCES types(`id`) ON DELETE CASCADE ,
     UNIQUE (`name`)
 ) ENGINE = InnoDB;
 '''
@@ -41,8 +42,8 @@ CREATE TABLE `dian_db`.`assigned_tasks` (
     `progress_details` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL ,
     `activation_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
     `expired_date` TIMESTAMP NULL DEFAULT NULL , 
-    FOREIGN KEY (`profile_id`) REFERENCES profiles(`id`) ,
-    FOREIGN KEY (`task_id`) REFERENCES tasks(`id`) ,
+    FOREIGN KEY (`profile_id`) REFERENCES profiles(`id`) ON DELETE CASCADE ,
+    FOREIGN KEY (`task_id`) REFERENCES tasks(`id`) ON DELETE CASCADE ,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 '''

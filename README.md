@@ -76,6 +76,9 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
 
 2. Start mysql service and run **init.py**
 
+   - If you want create new database, set **create** variable to **YES**.<br />
+   - If you want delete database, set **create** variable to **NO**.
+
 - Windows
 
   ```
@@ -134,10 +137,11 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
 - 0.8.0c - added posibility profile data edit:
   - 0.8.1c - enabled name na surname edition
   - 0.8.2c - change password
+  - 0.8.3c - function delete own profile
+- 0.8.4c - fixed password form and validation data
 
 # Preview
 
-- 0.8.3c - function delete own profile
 - 0.9.0c - possiblity assign tasks to profile
 - 1.0.0c - full data edition via page
 - 1.1.0c - secure password, hash function

@@ -16,10 +16,9 @@ conn = db.define_db(
     cfg_db.db_user, 
     cfg_db.db_pass
 )
-create = "YES"
+create = "YES" 
 
 if __name__ == "__main__":
-    db.sql_drop(conn, struct_db.sql_drop_tables)
     if(create == "YES"):
 
         ## Profiles ##
@@ -75,4 +74,7 @@ if __name__ == "__main__":
         ]
         for record in assigned_tasks_list: ass_task_man.insert_assign_task(conn, record)
         ## Assigned tasks ##
+    
+    else:
+        db.sql_drop(conn, struct_db.sql_drop_tables)
 

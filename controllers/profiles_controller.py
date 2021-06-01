@@ -50,6 +50,6 @@ def grant_profile_active_status(conn, val):
     db.sql_execute(conn, sql, val)
 
 
-def delete_profile_for_id(conn, val):
-    sql = "DELETE FROM profiles WHERE id = %s"
+def delete_profile_for_email(conn, val):
+    sql = "DELETE FROM profiles WHERE email = '{}'".format(val)
     db.sql_execute(conn, sql, val)
