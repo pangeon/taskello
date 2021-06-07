@@ -124,3 +124,11 @@ i {
 .profile_table {
   float: left;
 }
+a.icon-task-edit {
+  color: orangered;
+  text-align: justify;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 0px;
+  margin: 0px;
+}

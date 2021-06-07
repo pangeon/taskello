@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+<!-- CONTENT -->
+{% block content %}
+<h1>:: Profile tasks list ::</h1>
+<table>
+  <thead>
+    <td>Name</td>
+    <td>Category</td>
+    <td>Specification</td>
+    <td>Attachment link</td>
+    <td>Priority</td>
+    <td>Progress</td>
+    <td>Start</td>
+    <td>End</td>
+    <td>Actions</td>
+  </thead>
+  {% for task in tasks %}
+  <tr>
+    <td>{{ task[0] }}</td>
+    <td>{{ task[1] }}</td>
+    <td>{{ task[2] }}</td>
+    <td>{{ task[3] }}</td>
+    <td>{{ task[4] }}</td>
+    <td>{{ task[5] }}</td>
+    <td>{{ task[6] }}</td>
+    <td>{{ task[7] }}</td>
+    <td>
+      <div>
+        <a
+          href="#"
+          class="icon-task-edit"
+          alt="Edit name and describtion"
+          title="Edit name and describtion"
+          ><i class="fas fa-file-signature"></i>
+        </a>
+      </div>
+      <div>
+        <a
+          href="#"
+          class="icon-task-edit"
+          alt="Edit attachment link"
+          title="Edit attachment link"
+          ><i class="fas fa-paperclip"></i
+        ></a>
+      </div>
+      <div>
+        <a
+          href="#"
+          class="icon-task-edit"
+          alt="Edit priority"
+          title="Edit priority"
+          ><i class="fas fa-caret-up"></i
+        ></a>
+      </div>
+      <div>
+        <a
+          href="#"
+          class="icon-task-edit"
+          alt="Edit Progress"
+          title="Edit Progress"
+          ><i class="fas fa-chart-line"></i
+        ></a>
+      </div>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

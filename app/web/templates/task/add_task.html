@@ -5,13 +5,13 @@
 <form action="#" method="post">
   <label>Type:</label>
   <select name="task_type_id">
-    {% for specification in specification_list %}
-    <option value="{{ specification }}">{{ specification }}</option>
+    {% for task_type in task_type_list %}
+    <option value="{{ task_type[0] }}">{{ task_type[1] }}</option>
     {% endfor %}
   </select>
 
   <label>Name:</label>
-  <input type="text" name="task_name" />
+  <input type="text" name="task_name" required />
 
   <label>Description:</label>
   <input type="text" name="task_description" value="NULL" />

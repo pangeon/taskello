@@ -142,12 +142,14 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
 - 0.9.0c - show task assign only login profile and fixed nav
 - 0.10.0c - possibility assign task to logined profile during add it via form
 - 0.10.1c - improved data displaying
+- 0.11.0c - possibility to add categories
 
 # Preview
 
-- 0.11.0c - assign tasks to profile from general task view
-- 0.12.0c - possibility to remove task
-- 0.14.0c - possibility edit task
+- 0.11.0c - possiblity to add new category/types task
+- 0.12.0c - assign tasks to profile from general task view
+- 0.13.0c - possibility to remove task
+
 - 1.0.0c - full data edition via page without assignments
 - 1.1.0c - manage assignments to tasks
 - 1.2.0c - secure password, hash function

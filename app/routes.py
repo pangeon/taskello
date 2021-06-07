@@ -175,8 +175,26 @@ def remove_profile():
 @app.route("/admin/edit/types")
 def show_all_types():    
     types = list(data.all_types())
-    return render_template('types.html', title='Types of Tasks', types=types)
+    return render_template('category/types.html', title='Types of Tasks', types=types)
 ##! test only
+
+@app.route("/user/edit/add_category", methods=['POST', 'GET'])
+def add_category():
+    if request.method == "POST":
+        specification = request.form['type_specification']
+        responsibilities = request.form['type_responsibilities']
+        color = request.form['type_color']
+
+        data.insert_type( 
+            val = (
+                specification,
+                responsibilities,
+                color
+            )
+        )
+        return redirect('/')
+    else:
+        return render_template('category/add_type.html', title='Add new category')
 ## Types ##
 
 
@@ -189,7 +207,7 @@ def show_profile_tasks():
             e_mail
         )
     ))
-    return render_template('tasks.html', title='Your task list', tasks=tasks)
+    return render_template('task/tasks.html', title='Your task list', tasks=tasks)
 
 
 @app.route("/user/edit/add_task", methods=['POST', 'GET'])
@@ -220,11 +238,7 @@ def add_task():
         return redirect("/")
     else:
         task_type_list = data.all_types()
-        specification_list = []
-        for type in task_type_list:
-            specification_list.append(type[1])
-
-        return render_template('add_task.html', title='Add new task', specification_list=specification_list)
+        return render_template('task/add_task.html', title='Add new task', task_type_list=task_type_list)
 ## Tasks
 
 
@@ -234,5 +248,5 @@ def add_task():
 @app.route("/show/all_tasks")
 def show_all_tasks_details():
     task_details = list(data.all_tasks_details())
-    return render_template('tasks_details.html', title='Tasks table', tasks_details=task_details)
+    return render_template('task/tasks_details.html', title='Tasks table', tasks_details=task_details)
 ## Assignment tasks and details

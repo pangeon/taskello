@@ -54,6 +54,9 @@ def remove(val):
 def all_types():
     return type_man.show_all_types(conn)
 
+def insert_type(val):
+    return type_man.insert_type(conn, val)
+
 def all_tasks():
     return task_man.show_all_tasks(conn)
 
