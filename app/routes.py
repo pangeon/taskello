@@ -218,8 +218,13 @@ def add_task():
             "TO DO"
         ))
         return redirect("/")
-    else:    
-        return render_template('add_task.html', title='Add new task')
+    else:
+        task_type_list = data.all_types()
+        specification_list = []
+        for type in task_type_list:
+            specification_list.append(type[1])
+
+        return render_template('add_task.html', title='Add new task', specification_list=specification_list)
 ## Tasks
 
 

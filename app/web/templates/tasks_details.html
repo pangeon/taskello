@@ -4,9 +4,9 @@
 <h1>:: Tasks table ::</h1>
 <table>
   <thead>
-    <td>Id</td>
-    <td>Email</td>
-    <td>Description</td>
+    <td>Task name</td>
+    <td>Owner</td>
+    <td>Category</td>
     <td>Specification</td>
     <td>Attachment link</td>
     <td>Priority</td>
@@ -29,9 +29,21 @@
     <td>{{ task[7] }}</td>
     <td>{{ task[8] }}</td>
     {% if session.username %}
-    <td>
-      <button>Assign a task</button>
+    <!-- IF -->
+    {% if session.username != task[1] %}
+    <td class="center">
+      <a href="#">
+        <i class="fas fa-link"></i>
+      </a>
     </td>
+    {% else %}
+    <td class="center">
+      <a href="#">
+        <i class="fas fa-unlink"></i>
+      </a>
+    </td>
+    {% endif %}
+    <!-- IF -->
     {% endif %}
   </tr>
   {% endfor %}

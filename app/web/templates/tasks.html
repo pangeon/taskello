@@ -4,8 +4,8 @@
 <h1>:: Profile tasks list ::</h1>
 <table>
   <thead>
-    <td>Id</td>
-    <td>Description</td>
+    <td>Name</td>
+    <td>Category</td>
     <td>Specification</td>
     <td>Attachment link</td>
     <td>Priority</td>
@@ -17,15 +17,14 @@
   {% for task in tasks %}
   <tr>
     <td>{{ task[0] }}</td>
+    <td>{{ task[1] }}</td>
     <td>{{ task[2] }}</td>
     <td>{{ task[3] }}</td>
     <td>{{ task[4] }}</td>
     <td>{{ task[5] }}</td>
     <td>{{ task[6] }}</td>
     <td>{{ task[7] }}</td>
-    <td>{{ task[8] }}</td>
     <td>
-      <button>Sign off</button>
       <button>Edit name and description</button>
       <button>Edit attachment link</button>
       <button>Edit priority</button>

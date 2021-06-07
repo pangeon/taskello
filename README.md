@@ -141,6 +141,7 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
 - 0.8.4c - fixed password form and validation data
 - 0.9.0c - show task assign only login profile and fixed nav
 - 0.10.0c - possibility assign task to logined profile during add it via form
+- 0.10.1c - improved data displaying
 
 # Preview
 
