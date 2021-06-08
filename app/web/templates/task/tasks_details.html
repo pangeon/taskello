@@ -10,11 +10,11 @@
     <td>Specification</td>
     <td>Attachment link</td>
     <td>Priority</td>
-    <td>Progress</td>
+    <td>Progress status</td>
     <td>Start</td>
-    <td>End</td>
+    <td>Expired time</td>
     {% if session.username %}
-    <td>Actions</td>
+    <td>Assignment</td>
     {% endif %}
   </thead>
   {% for task in tasks_details %}
@@ -31,15 +31,20 @@
     {% if session.username %}
     <!-- IF -->
     {% if session.username != task[1] %}
-    <td class="center">
-      <a href="#">
-        <i class="fas fa-link"></i>
+    <td class="td-icon-check-no">
+      <a
+        href="#"
+        class="icon-task-edit"
+        alt="Foreign task"
+        title="Foreign task"
+      >
+        <i class="fas fa-dot-circle"></i>
       </a>
     </td>
     {% else %}
-    <td class="center">
-      <a href="#">
-        <i class="fas fa-unlink"></i>
+    <td class="td-icon-check-yes">
+      <a href="#" class="icon-task-edit" alt="Your task" title="Your task">
+        <i class="fas fa-user-check"></i>
       </a>
     </td>
     {% endif %}

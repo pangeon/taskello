@@ -125,10 +125,27 @@ i {
   float: left;
 }
 a.icon-task-edit {
-  color: orangered;
-  text-align: justify;
+  color: white;
   font-size: 20px;
   text-decoration: none;
-  padding: 0px;
-  margin: 0px;
+}
+a.icon-task-edit > i {
+  padding: 5px;
+}
+.td-icon {
+  background-color: coral;
+  border: none;
+}
+.td-icon:hover {
+  background-color: orangered;
+}
+.td-icon-check-yes {
+  background-color: orangered;
+  text-align: center;
+  border: none;
+}
+.td-icon-check-no {
+  background-color: coral;
+  text-align: center;
+  border: none;
 }

@@ -8,7 +8,7 @@
     <td>Specification</td>
     <td>Responsibilities</td>
     <td>Color</td>
-    <td>Actions</td>
+    <td colspan="2">Actions</td>
   </thead>
   {% for type in types %}
   <tr>
@@ -16,11 +16,19 @@
     <td>{{ type[1] }}</td>
     <td>{{ type[2] }}</td>
     <td>{{ type[3] }}</td>
-    <td>
-      <button>Edit specification</button>
-      <button>Edit responsibilities</button>
-      <button>Edit color</button>
-      <button>Remove</button>
+    <td class="td-icon">
+      <a href="#" class="icon-task-edit" alt="Edit data" title="Edit data"
+        ><i class="fas fa-file-signature"></i>
+      </a>
+    </td>
+    <td class="td-icon">
+      <a
+        href="#"
+        class="icon-task-edit"
+        alt="Remove category"
+        title="Remove category"
+        ><i class="fas fa-trash"></i>
+      </a>
     </td>
   </tr>
   {% endfor %}

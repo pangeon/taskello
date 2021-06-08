@@ -10,17 +10,33 @@
     {% endfor %}
   </select>
 
-  <label>Name:</label>
+  <label>Name <span>*</span></label>
   <input type="text" name="task_name" required />
 
-  <label>Description:</label>
-  <input type="text" name="task_description" value="NULL" />
+  <label>Description</label>
+  <input type="text" name="task_description" />
 
-  <label>Link:</label>
-  <input type="text" name="task_attachment_link" value="NULL" />
+  <label>Link</label>
+  <input type="text" name="task_attachment_link" />
 
-  <label>Priority:</label>
-  <input type="text" name="task_priority" value="NULL" />
+  <label>Priority</label>
+  <input type="text" name="task_priority" />
+
+  <label>Progress status</label>
+  <select name="task_progress_status">
+    <option value="UPCOMING">UPCOMING</option>
+    <option value="PENDING">PENDING</option>
+    <option value="BLOCKED">BLOCKED</option>
+    <option value="TO DO">TO DO</option>
+    <option value="DOING">DOING</option>
+    <option value="TO TEST">TO TEST</option>
+    <option value="DONE">DONE</option>
+  </select>
+
+  <label>Expired date:</label>
+  <input type="date" name="task_expired_date" />
+  <br />
+  <input type="time" name="task_expired_time" />
   <br /><br />
   <input type="submit" class="button" value="Send" />
 </form>

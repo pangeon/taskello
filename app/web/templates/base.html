@@ -44,6 +44,9 @@
       <a href="{{ url_for('add_category') }}"
         ><i class="fas fa-box"></i>New Category</a
       >
+      <a href="{{ url_for('show_all_types') }}"
+        ><i class="fas fa-boxes"></i>Categories</a
+      >
       {% else %}
       <a href="{{ url_for('login') }}">
         <i class="fas fa-user-circle"></i>

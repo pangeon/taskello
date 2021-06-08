@@ -9,10 +9,10 @@
     <td>Specification</td>
     <td>Attachment link</td>
     <td>Priority</td>
-    <td>Progress</td>
+    <td>Progress status</td>
     <td>Start</td>
-    <td>End</td>
-    <td>Actions</td>
+    <td>Expired time</td>
+    <td colspan="6">Actions</td>
   </thead>
   {% for task in tasks %}
   <tr>
@@ -24,43 +24,55 @@
     <td>{{ task[5] }}</td>
     <td>{{ task[6] }}</td>
     <td>{{ task[7] }}</td>
-    <td>
-      <div>
-        <a
-          href="#"
-          class="icon-task-edit"
-          alt="Edit name and describtion"
-          title="Edit name and describtion"
-          ><i class="fas fa-file-signature"></i>
-        </a>
-      </div>
-      <div>
-        <a
-          href="#"
-          class="icon-task-edit"
-          alt="Edit attachment link"
-          title="Edit attachment link"
-          ><i class="fas fa-paperclip"></i
-        ></a>
-      </div>
-      <div>
-        <a
-          href="#"
-          class="icon-task-edit"
-          alt="Edit priority"
-          title="Edit priority"
-          ><i class="fas fa-caret-up"></i
-        ></a>
-      </div>
-      <div>
-        <a
-          href="#"
-          class="icon-task-edit"
-          alt="Edit Progress"
-          title="Edit Progress"
-          ><i class="fas fa-chart-line"></i
-        ></a>
-      </div>
+    <td class="td-icon">
+      <a
+        href="#"
+        class="icon-task-edit"
+        alt="Name and describtion"
+        title="Name and describtion"
+        ><i class="fas fa-file-signature"></i>
+      </a>
+    </td>
+    <td class="td-icon">
+      <a
+        href="#"
+        class="icon-task-edit"
+        alt="Edit attachment link"
+        title="Edit attachment link"
+        ><i class="fas fa-paperclip"></i
+      ></a>
+    </td>
+    <td class="td-icon">
+      <a
+        href="#"
+        class="icon-task-edit"
+        alt="Change priority"
+        title="Change priority"
+        ><i class="fas fa-sort-amount-up"></i
+      ></a>
+    </td>
+    <td class="td-icon">
+      <a
+        href="#"
+        class="icon-task-edit"
+        alt="Change status of progress"
+        title="Change status of progress"
+        ><i class="fas fa-clipboard-check"></i
+      ></a>
+    </td>
+    <td class="td-icon">
+      <a
+        href="#"
+        class="icon-task-edit"
+        alt="Edit expired time"
+        title="Edit expired time"
+        ><i class="fas fa-clock"></i
+      ></a>
+    </td>
+    <td class="td-icon">
+      <a href="#" class="icon-task-edit" alt="Remove" title="Remove">
+        <i class="fas fa-trash"></i
+      ></a>
     </td>
   </tr>
   {% endfor %}

@@ -171,12 +171,12 @@ def remove_profile():
 
 
 ## Types ##
-##! test only
-@app.route("/admin/edit/types")
+
+@app.route("/user/edit/types")
 def show_all_types():    
     types = list(data.all_types())
     return render_template('category/types.html', title='Types of Tasks', types=types)
-##! test only
+
 
 @app.route("/user/edit/add_category", methods=['POST', 'GET'])
 def add_category():
@@ -220,6 +220,11 @@ def add_task():
         task_attachment_link = request.form['task_attachment_link']
         task_priority = request.form['task_priority']
 
+        task_progress_status = request.form['task_progress_status']
+        task_expired_date = request.form['task_expired_date']
+        task_expired_time = request.form['task_expired_time']
+        task_expired = task_expired_date + "T" + task_expired_time
+
         data.insert_task(
             val = (
                 task_id,
@@ -227,13 +232,14 @@ def add_task():
                 task_name, 
                 task_description,
                 task_attachment_link,
-                task_priority
+                task_priority,
             )
         )
         data.assign_task(val = (
             __profile_id(),
             task_id,
-            "TO DO"
+            task_progress_status,
+            task_expired
         ))
         return redirect("/")
     else:
