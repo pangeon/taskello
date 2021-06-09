@@ -165,7 +165,7 @@ def remove_profile():
 
 
 ## Types ##
-@app.route("/user/edit/types")
+@app.route("/user/show/types")
 def show_all_types():
     if session.get('username', None):    
         types = list(data.all_types())
@@ -174,7 +174,7 @@ def show_all_types():
         return redirect(url_for('login'))
 
 
-@app.route("/user/edit/add_category", methods=['POST', 'GET'])
+@app.route("/user/edit/add_type", methods=['POST', 'GET'])
 def add_category():
     if request.method == "POST":
         specification = request.form['type_specification']
@@ -191,6 +191,31 @@ def add_category():
         return redirect(url_for('show_all_types'))
     else:
         return render_template('category/add_type.html', title='Add new category')
+
+
+@app.route("/user/edit/type/<int:type_id>", methods=['POST', 'GET'])
+def edit_type(type_id):
+    if session.get('username', None):
+        if request.method == "POST":
+
+            specification = request.form['type_specification']
+            responsibilities = request.form['type_responsibilities']
+            color = request.form['type_color']
+
+            data.edit_type(
+                val = (
+                    specification,
+                    responsibilities,
+                    color,
+                    type_id
+                )
+            )
+            return redirect(url_for('show_all_types'))
+        else:
+            type_item = list(data.show_type(type_id))
+            return render_template('category/edit_type.html', title='Edit category', type_item=type_item)
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route("/user/remove/type/<int:type_id>")

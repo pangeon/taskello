@@ -54,8 +54,14 @@ def remove(val):
 def all_types():
     return type_man.show_all_types(conn)
 
+def show_type(val):
+    return type_man.show_type_for_id(conn, val)
+
 def insert_type(val):
     return type_man.insert_type(conn, val)
+
+def edit_type(val):
+    return type_man.update_type_properties(conn, val)
 
 def delete_type(val):
     return type_man.delete_type_for_id(conn, val)

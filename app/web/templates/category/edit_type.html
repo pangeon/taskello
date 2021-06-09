@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+<!-- CONTENT -->
+{% block content %}
+<h1 class="center">:: Edit category ::</h1>
+<form action="#" method="post">
+  <label>Specification <span>*</span></label>
+  <input
+    type="text"
+    value="{{ type_item[1] }}"
+    name="type_specification"
+    required
+  />
+
+  <label>Responsibilities <span>*</span></label>
+  <input
+    type="text"
+    value="{{ type_item[2] }}"
+    name="type_responsibilities"
+    required
+  />
+
+  <label>Color:</label>
+  <select name="type_color">
+    <option value="yellow">yellow</option>
+    <option value="orange">yellow</option>
+    <option value="red">red</option>
+    <option value="blue">blue</option>
+    <option value="green">green</option>
+    <option value="pink">pink</option>
+    <option value="purple">purple</option>
+    <option value="grey">grey</option>
+    <option value="black">black</option>
+  </select>
+  <br /><br />
+  <input type="submit" class="button" value="Send" />
+</form>
+{% endblock %}
+<!-- CONTENT -->

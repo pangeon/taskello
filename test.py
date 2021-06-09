@@ -23,4 +23,5 @@ conn = db.define_db(
 )
 
 if __name__ == "__main__":
-    pass
+    type_item = type_man.show_type_for_id(conn, 1)
+    print(type_item)

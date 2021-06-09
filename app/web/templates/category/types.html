@@ -20,7 +20,11 @@
     <td>{{ type[2] }}</td>
     <td>{{ type[3] }}</td>
     <td class="td-icon">
-      <a href="#" class="icon-task-edit" alt="Edit data" title="Edit data"
+      <a
+        href="{{ url_for('edit_type', type_id=type[0]) }}"
+        class="icon-task-edit"
+        alt="Edit data"
+        title="Edit data"
         ><i class="fas fa-file-signature"></i>
       </a>
     </td>

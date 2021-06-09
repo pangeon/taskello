@@ -145,11 +145,12 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
 - 0.11.0c - possibility to add categories
 - 0.12.0c - extended add forms and correct view - types, tasks
 - 0.13.0c - possiblity to add and remove new category/types task
+- 0.14.0c - possiblity to edit category/types task
 
 # Preview
 
-- 0.14.0c - possibility to remove task
-- 0.15.0c - possiblity to update task
+- 0.15.0c - possibility to remove task
+- 0.16.0c - possiblity to update task
 - 1.0.0c - full data edition via page without assignments
 - 1.1.0c - secure password, hash function
 - 1.2.0c - full validation data input form
