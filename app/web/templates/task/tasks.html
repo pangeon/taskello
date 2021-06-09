@@ -16,7 +16,6 @@
   </thead>
   {% for task in tasks %}
   <tr>
-    <td>{{ task[0] }}</td>
     <td>{{ task[1] }}</td>
     <td>{{ task[2] }}</td>
     <td>{{ task[3] }}</td>
@@ -24,6 +23,7 @@
     <td>{{ task[5] }}</td>
     <td>{{ task[6] }}</td>
     <td>{{ task[7] }}</td>
+    <td>{{ task[8] }}</td>
     <td class="td-icon">
       <a
         href="#"
@@ -70,7 +70,12 @@
       ></a>
     </td>
     <td class="td-icon">
-      <a href="#" class="icon-task-edit" alt="Remove" title="Remove">
+      <a
+        href="{{ url_for('remove_task', task_id=task[0]) }}"
+        class="icon-task-edit"
+        alt="Remove"
+        title="Remove"
+      >
         <i class="fas fa-trash"></i
       ></a>
     </td>

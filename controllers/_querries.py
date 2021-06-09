@@ -13,7 +13,7 @@ ORDER BY profiles.email;
 '''
 
 tasks_for_login_user = '''
-SELECT tasks.name, types.specification, tasks.description, tasks.attachment_link, tasks.priority, assigned_tasks.progress_details, assigned_tasks.activation_date, assigned_tasks.expired_date  
+SELECT tasks.id, tasks.name, types.specification, tasks.description, tasks.attachment_link, tasks.priority, assigned_tasks.progress_details, assigned_tasks.activation_date, assigned_tasks.expired_date  
 FROM profiles, types, tasks, assigned_tasks 
 WHERE profiles.id = assigned_tasks.profile_id 
 AND assigned_tasks.task_id = tasks.id 

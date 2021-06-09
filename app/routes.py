@@ -244,6 +244,7 @@ def show_profile_tasks():
     else:
         return redirect(url_for('login'))
 
+
 @app.route("/user/edit/add_task", methods=['POST', 'GET'])
 def add_task():
     if request.method == "POST":
@@ -269,12 +270,14 @@ def add_task():
                 task_priority,
             )
         )
-        data.assign_task(val = (
-            __profile_id(),
-            task_id,
-            task_progress_status,
-            task_expired
-        ))
+        data.assign_task(
+            val = (
+                __profile_id(),
+                task_id,
+                task_progress_status,
+                task_expired
+            )
+        )
         return redirect("/")
     else:
         if session.get('username', None): 
@@ -282,6 +285,18 @@ def add_task():
             return render_template('task/add_task.html', title='Add new task', task_type_list=task_type_list)
         else:
             return redirect(url_for('login'))
+
+
+@app.route("/user/remove/task/<int:task_id>")
+def remove_task(task_id):
+    e_mail = session.get('username', None)
+
+    if e_mail:
+        data.delete_task(task_id)
+        tasks = list(data.user_tasks(e_mail))
+        return render_template('task/tasks.html', title='Your task list', tasks=tasks)
+    else:
+        return redirect(url_for('login'))
 ## Tasks
 
 

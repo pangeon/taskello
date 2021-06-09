@@ -14,11 +14,14 @@ conn = db.define_db(
     cfg_db.db_pass
 )
 
+## Profiles
 def all_profiles():
     return profile_man.show_all_profiles(conn)
 
+
 def login(val):
     return profile_man.login_profile(conn, val)
+
 
 def is_email_exist(e_mail):
     profile_list = profile_man.show_all_profiles(conn)
@@ -36,47 +39,71 @@ def is_email_exist(e_mail):
 def email(val):
     return profile_man.get_profile_email(conn, val)
 
+
 def registry(val):
     return profile_man.create_profile_to_registry(conn, val)
+
 
 def profile_id(val):
     return profile_man.get_profile_id(conn, val)
 
+
 def edit_profile_data(val):
     return profile_man.update_profile_name_and_surname(conn, val)
+
 
 def edit_profile_pass(val):
     return profile_man.update_profile_password(conn, val)
 
+
 def remove(val):
     return profile_man.delete_profile_for_email(conn, val)
+## Profiles
 
+
+## Types
 def all_types():
     return type_man.show_all_types(conn)
+
 
 def show_type(val):
     return type_man.show_type_for_id(conn, val)
 
+
 def insert_type(val):
     return type_man.insert_type(conn, val)
+
 
 def edit_type(val):
     return type_man.update_type_properties(conn, val)
 
+
 def delete_type(val):
     return type_man.delete_type_for_id(conn, val)
+## Types
 
+
+## Tasks
 def all_tasks():
     return task_man.show_all_tasks(conn)
+
 
 def insert_task(val):
     return task_man.insert_task_with_id(conn, val)
 
+
 def all_tasks_details():
     return all_data_man.show_task_full_details(conn)
+
+
+def delete_task(val):
+    return task_man.delete_task_for_id(conn, val)
+
 
 def user_tasks(val):
     return all_data_man.show_task_assign_for_login_profile(conn, val)
 
+
 def assign_task(val):
     return ass_task_man.insert_assign_task(conn, val)
+## Tasks
