@@ -64,13 +64,13 @@ if __name__ == "__main__":
         ## Assigned tasks ##
         db.sql_create(conn, struct_db.sql_create_assigned_tasks)
         assigned_tasks_list = [
-            (1, 1, "to do - 0% progress"),
-            (1, 2, "in progress - 70% progress"),
-            (2, 2, "in progress - 50% progress only your part"),
-            (3, 5, "end - ready to test"),
-            (4, 3, "to do - 0% progress"),
-            (4, 4, "to do - 0% progress"),
-            (5, 5, "depracated")
+            (1, 1, "TO DO", "NULL"),
+            (1, 2, "TO DO", "NULL"),
+            (2, 2, "TO DO", "NULL"),
+            (3, 5, "PENDING", "NULL"),
+            (4, 3, "DONE", "NULL"),
+            (4, 4, "DOING", "NULL"),
+            (5, 5, "DONE", "NULL")
         ]
         for record in assigned_tasks_list: ass_task_man.insert_assign_task(conn, record)
         ## Assigned tasks ##

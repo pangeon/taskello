@@ -2,6 +2,9 @@
 <!-- CONTENT -->
 {% block content %}
 <h1>:: Types list ::</h1>
+<h3 style="color: red">
+  When you remove category computer will erase all task assigned to this type.
+</h3>
 <table>
   <thead>
     <td>Id</td>
@@ -23,7 +26,7 @@
     </td>
     <td class="td-icon">
       <a
-        href="#"
+        href="{{ url_for('remove_type', type_id=type[0]) }}"
         class="icon-task-edit"
         alt="Remove category"
         title="Remove category"

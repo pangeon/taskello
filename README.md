@@ -143,11 +143,11 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
 - 0.10.0c - possibility assign task to logined profile during add it via form
 - 0.10.1c - improved data displaying
 - 0.11.0c - possibility to add categories
-- 0.12.0c - extended add forms and correct view
+- 0.12.0c - extended add forms and correct view - types, tasks
+- 0.13.0c - possiblity to add and remove new category/types task
 
 # Preview
 
-- 0.13.0c - possiblity to add new category/types task
 - 0.14.0c - possibility to remove task
 - 0.15.0c - possiblity to update task
 - 1.0.0c - full data edition via page without assignments
