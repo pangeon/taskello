@@ -7,7 +7,6 @@ from flask import request, redirect, flash, session, url_for
 from flask import render_template
 
 from markupsafe import escape
-
 from random import randint as gen
 
 
@@ -21,11 +20,16 @@ def __id_generator():
     return gen(0, 10000)
 
 def __profile_id():
-    e_mail = session.get('username', 'not set')
+    e_mail = session.get('username', None)
     profile_id = data.profile_id(val = (
         e_mail
     ))
     return profile_id
+
+def session_invidate():
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('username', None)
 ## Utils
 
 
@@ -45,7 +49,11 @@ def register():
                 )
             )
         return redirect(url_for('login'))
-    return render_template('profile/register.html',  title='Register', form=form)
+    return render_template(
+        'profile/register.html', 
+        title = 'Register', 
+        form = form
+    )
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -69,15 +77,16 @@ def login():
                 session['id'] = profile[0]
                 session['username'] = profile[3]
                 return render_template('main.html')
-    return render_template('profile/login.html', title='Sign In', form=form)
+    return render_template(
+        'profile/login.html', 
+        title = 'Sign In', 
+        form = form
+    )
 
 
 @app.route('/logout')
 def logout():
-    session.pop('loggedin', None)
-    session.pop('id', None)
-    session.pop('username', None)
-
+    session_invidate()
     return redirect(url_for('login'))
 ## Security ##
 
@@ -87,7 +96,11 @@ def logout():
 @app.route("/admin/edit/profiles")
 def show_all_profiles():
     profiles = list(data.all_profiles())
-    return render_template('profile/profiles.html', title='Profiles list', profiles=profiles)
+    return render_template(
+        'profile/profiles.html', 
+        title = 'Profiles list', 
+        profiles = profiles
+        )
 ##! test only
 
 
@@ -96,7 +109,11 @@ def show_login_profile():
     try:
         if session.get('username', None): 
             profile = data.email(session.get('username', 'not set'))
-            return render_template('profile/profile.html', title='Profile account', profile=profile)
+            return render_template(
+                'profile/profile.html', 
+                title = 'Profile account', 
+                profile = profile
+            )
         else:
             return redirect(url_for('login'))
     except IndexError as e:
@@ -120,12 +137,15 @@ def edit_profile():
         return redirect(url_for('show_login_profile'))
     else:
         if session.get('username', None):
-            return render_template('profile/edit_profile_data.html', title='Edit Profile data')
+            return render_template(
+                'profile/edit_profile_data.html', 
+                title = 'Edit Profile data'
+            )
         else:
             return redirect(url_for('login'))
 
 
-@app.route("/user/edit/profile/pass", methods=['POST', 'GET'])
+@app.route("/user/edit/profile/pass", methods = ['POST', 'GET'])
 def edit_profile_password():
     if request.method == "POST":
         pass_1 = request.form['profile_password']
@@ -140,11 +160,18 @@ def edit_profile_password():
             )
         else:
             msg = "Passwords do not match"
-            return render_template('profile/edit_profile_pass.html', title='Edit Profile password', msg=msg)
+            return render_template(
+                'profile/edit_profile_pass.html', 
+                title = 'Edit Profile password', 
+                msg = msg
+            )
         return redirect(url_for('show_login_profile'))
     else:
         if session.get('username', None):
-            return render_template('profile/edit_profile_pass.html', title='Edit Profile password')
+            return render_template(
+                'profile/edit_profile_pass.html', 
+                title = 'Edit Profile password'
+            )
         else:
             return redirect(url_for('login'))
 
@@ -157,9 +184,7 @@ def remove_profile():
             e_mail
         )
     )
-    session.pop('loggedin', None)
-    session.pop('id', None)
-    session.pop('username', None)
+    session_invidate()
     return redirect('/')
 ## Profiles ##
 
@@ -168,8 +193,11 @@ def remove_profile():
 @app.route("/user/show/types")
 def show_all_types():
     if session.get('username', None):    
-        types = list(data.all_types())
-        return render_template('category/types.html', title='Types of Tasks', types=types)
+        return render_template(
+            'category/types.html', 
+            title = 'Types of Tasks', 
+            types = list(data.all_types())
+        )
     else:
         return redirect(url_for('login'))
 
@@ -177,43 +205,40 @@ def show_all_types():
 @app.route("/user/edit/add_type", methods=['POST', 'GET'])
 def add_category():
     if request.method == "POST":
-        specification = request.form['type_specification']
-        responsibilities = request.form['type_responsibilities']
-        color = request.form['type_color']
-
         data.insert_type( 
             val = (
-                specification,
-                responsibilities,
-                color
+                request.form['type_specification'],
+                request.form['type_responsibilities'],
+                request.form['type_color']
             )
         )
         return redirect(url_for('show_all_types'))
     else:
-        return render_template('category/add_type.html', title='Add new category')
+        return render_template(
+            'category/add_type.html', 
+            title='Add new category'
+        )
 
 
 @app.route("/user/edit/type/<int:type_id>", methods=['POST', 'GET'])
 def edit_type(type_id):
     if session.get('username', None):
         if request.method == "POST":
-
-            specification = request.form['type_specification']
-            responsibilities = request.form['type_responsibilities']
-            color = request.form['type_color']
-
             data.edit_type(
                 val = (
-                    specification,
-                    responsibilities,
-                    color,
+                    request.form['type_specification'],
+                    request.form['type_responsibilities'],
+                    request.form['type_color'],
                     type_id
                 )
             )
             return redirect(url_for('show_all_types'))
         else:
-            type_item = list(data.show_type(type_id))
-            return render_template('category/edit_type.html', title='Edit category', type_item=type_item)
+            return render_template(
+                'category/edit_type.html', 
+                title = 'Edit category', 
+                type_item = list(data.show_type(type_id))
+            )
     else:
         return redirect(url_for('login'))
 
@@ -221,9 +246,7 @@ def edit_type(type_id):
 @app.route("/user/remove/type/<int:type_id>")
 def remove_type(type_id):
     if session.get('username', None):
-        data.delete_type(val = (
-            type_id
-        ))
+        data.delete_type(type_id)
         return redirect(url_for('show_all_types'))
     else:
         return redirect(url_for('login'))
@@ -234,13 +257,12 @@ def remove_type(type_id):
 @app.route("/user/show/tasks")
 def show_profile_tasks():
     e_mail = session.get('username', 'not set')
-    tasks = list(data.user_tasks(
-        val = (
-            e_mail
-        )
-    ))
     if session.get('username', None): 
-        return render_template('task/tasks.html', title='Your task list', tasks=tasks)
+        return render_template(
+            'task/tasks.html', 
+            title = 'Your task list', 
+            tasks = list(data.user_tasks(e_mail))
+        )
     else:
         return redirect(url_for('login'))
 
@@ -249,40 +271,34 @@ def show_profile_tasks():
 def add_task():
     if request.method == "POST":
         task_id = __id_generator()
-        task_type_id = request.form['task_type_id']
-        task_name = request.form['task_name']
-        task_description = request.form['task_description']
-        task_attachment_link = request.form['task_attachment_link']
-        task_priority = request.form['task_priority']
-
-        task_progress_status = request.form['task_progress_status']
-        task_expired_date = request.form['task_expired_date']
-        task_expired_time = request.form['task_expired_time']
-        task_expired = task_expired_date + "T" + task_expired_time
-
+        
         data.insert_task(
             val = (
                 task_id,
-                task_type_id, 
-                task_name, 
-                task_description,
-                task_attachment_link,
-                task_priority,
+                request.form['task_type_id'],
+                request.form['task_name'],
+                request.form['task_description'],
+                request.form['task_attachment_link'],
+                request.form['task_priority']
             )
         )
+
         data.assign_task(
             val = (
                 __profile_id(),
                 task_id,
-                task_progress_status,
-                task_expired
+                request.form['task_progress_status'],
+                request.form['task_expired_date'] + "T" + request.form['task_expired_time']
             )
         )
         return redirect("/")
     else:
         if session.get('username', None): 
-            task_type_list = data.all_types()
-            return render_template('task/add_task.html', title='Add new task', task_type_list=task_type_list)
+            return render_template(
+                'task/add_task.html', 
+                title='Add new task', 
+                task_type_list=data.all_types()
+            )
         else:
             return redirect(url_for('login'))
 
@@ -293,8 +309,11 @@ def remove_task(task_id):
 
     if e_mail:
         data.delete_task(task_id)
-        tasks = list(data.user_tasks(e_mail))
-        return render_template('task/tasks.html', title='Your task list', tasks=tasks)
+        return render_template(
+            'task/tasks.html', 
+            title='Your task list', 
+            tasks=list(data.user_tasks(e_mail))
+        )
     else:
         return redirect(url_for('login'))
 ## Tasks
@@ -303,6 +322,9 @@ def remove_task(task_id):
 ## Assignment tasks and details
 @app.route("/show/all_tasks")
 def show_all_tasks_details():
-    task_details = list(data.all_tasks_details())
-    return render_template('task/tasks_details.html', title='Tasks table', tasks_details=task_details)
+    return render_template(
+        'task/tasks_details.html', 
+        title='Tasks table', 
+        tasks_details=list(data.all_tasks_details())
+    )
 ## Assignment tasks and details
