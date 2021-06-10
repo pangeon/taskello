@@ -15,7 +15,7 @@ def index():
     return render_template('main.html')
 
 
-## Utils
+## Utils private
 def __id_generator():
     return gen(0, 10000)
 
@@ -26,11 +26,18 @@ def __profile_id():
     ))
     return profile_id
 
-def session_invidate():
+def __session_invalidate():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
-## Utils
+
+
+def __task_dashboard_for_user(login_user_name):
+    return render_template(
+        'task/tasks.html', 
+        title='Your task list', 
+        tasks=list(data.user_tasks(login_user_name))) 
+## Utils private
 
 
 ## Security ##
@@ -86,7 +93,7 @@ def login():
 
 @app.route('/logout')
 def logout():
-    session_invidate()
+    __session_invalidate()
     return redirect(url_for('login'))
 ## Security ##
 
@@ -184,7 +191,7 @@ def remove_profile():
             e_mail
         )
     )
-    session_invidate()
+    __session_invalidate()
     return redirect('/')
 ## Profiles ##
 
@@ -303,17 +310,32 @@ def add_task():
             return redirect(url_for('login'))
 
 
+@app.route("/user/edit/task/priority/<int:task_id>/<int:operation>")
+def change_task_priority(task_id, operation):
+    e_mail = session.get('username', None)
+
+    if e_mail:
+        task_priority_to_change = data.show_task(task_id)[5]
+        if task_priority_to_change > 1 and operation == 0: 
+            task_priority_to_change -= 1
+        if task_priority_to_change < 6 and operation == 1: 
+            task_priority_to_change += 1
+
+        data.task_priority(val = (
+            task_priority_to_change,
+            task_id
+        ))
+        return __task_dashboard_for_user(e_mail)
+    else:
+        return redirect(url_for('login'))
+
 @app.route("/user/remove/task/<int:task_id>")
 def remove_task(task_id):
     e_mail = session.get('username', None)
 
     if e_mail:
         data.delete_task(task_id)
-        return render_template(
-            'task/tasks.html', 
-            title='Your task list', 
-            tasks=list(data.user_tasks(e_mail))
-        )
+        return __task_dashboard_for_user(e_mail)
     else:
         return redirect(url_for('login'))
 ## Tasks

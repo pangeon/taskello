@@ -6,6 +6,10 @@ def show_all_tasks(conn):
     tasks = db.sql_querry(conn, sql_select.all_tasks)
     return tasks
 
+def show_task_for_id(conn, val):
+    sql = "SELECT * FROM tasks WHERE id = '{}'".format(val)
+    task = db.sql_single_querry(conn, sql)
+    return task
 
 def insert_task(conn, val):
     sql = "INSERT INTO tasks (type_id, name, description, attachment_link, priority) VALUES (%s, %s, %s, %s, %s)"
@@ -23,12 +27,12 @@ def update_task_name_and_description(conn, val):
 
 
 def update_task_attachment_link(conn, val):
-    sql = "UPDATE tasks SET attachment_link = %s, WHERE id = %s"
+    sql = "UPDATE tasks SET attachment_link = %s WHERE id = %s"
     db.sql_execute(conn, sql, val)
 
 
 def update_task_priority(conn, val):
-    sql = "UPDATE tasks SET priority = %s, WHERE id = %s"
+    sql = "UPDATE tasks SET priority = %s WHERE id = %s"
     db.sql_execute(conn, sql, val)
 
 

@@ -12,7 +12,7 @@
     <td>Progress status</td>
     <td>Start</td>
     <td>Expired time</td>
-    <td colspan="6">Actions</td>
+    <td colspan="7">Actions</td>
   </thead>
   {% for task in tasks %}
   <tr>
@@ -44,11 +44,20 @@
     </td>
     <td class="td-icon">
       <a
-        href="#"
+        href="{{ url_for('change_task_priority', task_id=task[0], operation=0) }}"
         class="icon-task-edit"
-        alt="Change priority"
-        title="Change priority"
+        alt="Increase priority"
+        title="Increase priority"
         ><i class="fas fa-sort-amount-up"></i
+      ></a>
+    </td>
+    <td class="td-icon">
+      <a
+        href="{{ url_for('change_task_priority', task_id=task[0], operation=1) }}"
+        class="icon-task-edit"
+        alt="Deacrease priority"
+        title="Decrease priority"
+        ><i class="fas fa-sort-amount-down"></i
       ></a>
     </td>
     <td class="td-icon">
@@ -57,7 +66,8 @@
         class="icon-task-edit"
         alt="Change status of progress"
         title="Change status of progress"
-        ><i class="fas fa-clipboard-check"></i
+      >
+        <i class="fas fa-clipboard-check"></i
       ></a>
     </td>
     <td class="td-icon">

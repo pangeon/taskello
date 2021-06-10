@@ -23,5 +23,6 @@ conn = db.define_db(
 )
 
 if __name__ == "__main__":
-    type_item = type_man.show_type_for_id(conn, 1)
-    print(type_item)
+    task_item = task_man.show_task_for_id(conn, 1)[5]
+    task_item += 1
+    print(task_item)

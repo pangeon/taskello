@@ -149,3 +149,10 @@ a.icon-task-edit > i {
   text-align: center;
   border: none;
 }
+.priority-radio-choice {
+  display: inline-flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 0px;
+  width: 100%;
+}

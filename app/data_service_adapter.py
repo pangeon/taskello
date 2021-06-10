@@ -88,8 +88,16 @@ def all_tasks():
     return task_man.show_all_tasks(conn)
 
 
+def show_task(val):
+    return task_man.show_task_for_id(conn, val)
+
+
 def insert_task(val):
     return task_man.insert_task_with_id(conn, val)
+
+
+def task_priority(val):
+    return task_man.update_task_priority(conn, val)
 
 
 def all_tasks_details():
