@@ -123,11 +123,10 @@ def show_all_profiles():
 def show_login_profile():
     try:
         if session.get('username', None):
-            profile = data.email(session.get('username', None)) 
             return render_template(
                 'profile/profile.html', 
                 title = 'Profile account', 
-                profile = profile
+                profile = data.email(session.get('username', None)) 
             )
         else:
             return redirect(url_for('login'))
@@ -279,7 +278,7 @@ def remove_type(type_id):
 
 @app.route("/user/show/tasks")
 def show_profile_tasks():
-    e_mail = session.get('username', 'not set')
+    e_mail = session.get('username', None)
     if session.get('username', None): 
         return __task_dashboard_for_user(e_mail)
     else:
@@ -302,7 +301,7 @@ def add_task():
                 request.form['task_priority']
             )
         )
-
+        print(request.form['task_expired_date'] + "T" + request.form['task_expired_time'])
         data.assign_task(
             val = (
                 __profile_id(),

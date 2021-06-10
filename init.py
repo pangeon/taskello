@@ -64,13 +64,12 @@ if __name__ == "__main__":
         ## Assigned tasks ##
         db.sql_create(conn, struct_db.sql_create_assigned_tasks)
         assigned_tasks_list = [
-            (1, 1, "TO DO", "NULL"),
-            (1, 2, "TO DO", "NULL"),
-            (2, 2, "TO DO", "NULL"),
-            (3, 5, "PENDING", "NULL"),
-            (4, 3, "DONE", "NULL"),
-            (4, 4, "DOING", "NULL"),
-            (5, 5, "DONE", "NULL")
+            (1, 1, "TO DO", '2021-01-17T20:00'),
+            (1, 2, "TO DO", '2021-09-11T18:00'),
+            (3, 5, "PENDING", '2020-06-17T20:00'),
+            (4, 3, "DONE", '2020-06-04T10:00'),
+            (4, 4, "DOING", '2021-10-05T10:00'),
+            (5, 5, "DONE", '2020-01-11T15:00')
         ]
         for record in assigned_tasks_list: ass_task_man.insert_assign_task(conn, record)
         ## Assigned tasks ##

@@ -3,7 +3,7 @@ from utils.db_manager import mysql_connector as db
 
 
 def show_assigned_tasks(conn):
-    assigned_tasks = db.sql_querry(conn, sql_select.all_assigned_tasks)
+    assigned_task = db.sql_querry(conn, sql_select.all_assigned_tasks)
     return assigned_task
 
 
