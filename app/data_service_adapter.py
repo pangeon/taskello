@@ -100,6 +100,10 @@ def task_priority(val):
     return task_man.update_task_priority(conn, val)
 
 
+def task_progress_details(val):
+    return ass_task_man.update_ass_task_progress(conn, val)
+
+
 def all_tasks_details():
     return all_data_man.show_task_full_details(conn)
 
@@ -110,6 +114,10 @@ def delete_task(val):
 
 def user_tasks(val):
     return all_data_man.show_task_assign_for_login_profile(conn, val)
+
+
+def show_ass_task(val):
+    return ass_task_man.show_ass_task_for_task_id(conn, val)
 
 
 def assign_task(val):

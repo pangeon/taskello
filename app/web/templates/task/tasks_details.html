@@ -31,7 +31,7 @@
     {% if session.username %}
     <!-- IF -->
     {% if session.username != task[1] %}
-    <td class="td-icon-check-no">
+    <td class="td-icon-check-no" style="pointer-events: none">
       <a
         href="#"
         class="icon-task-edit"
@@ -42,7 +42,7 @@
       </a>
     </td>
     {% else %}
-    <td class="td-icon-check-yes">
+    <td class="td-icon-check-yes" style="pointer-events: none">
       <a href="#" class="icon-task-edit" alt="Your task" title="Your task">
         <i class="fas fa-user-check"></i>
       </a>

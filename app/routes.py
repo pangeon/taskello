@@ -15,9 +15,12 @@ def index():
     return render_template('main.html')
 
 
-## Utils private
+################################# UTILS ##############################################
+######################################################################################
+
 def __id_generator():
     return gen(0, 10000)
+
 
 def __profile_id():
     e_mail = session.get('username', None)
@@ -25,6 +28,7 @@ def __profile_id():
         e_mail
     ))
     return profile_id
+
 
 def __session_invalidate():
     session.pop('loggedin', None)
@@ -37,10 +41,11 @@ def __task_dashboard_for_user(login_user_name):
         'task/tasks.html', 
         title='Your task list', 
         tasks=list(data.user_tasks(login_user_name))) 
-## Utils private
 
 
-## Security ##
+#################################### SECURITY ########################################
+######################################################################################
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
@@ -62,6 +67,7 @@ def register():
         form = form
     )
 
+######################################################################################
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -90,42 +96,44 @@ def login():
         form = form
     )
 
+######################################################################################
 
 @app.route('/logout')
 def logout():
     __session_invalidate()
     return redirect(url_for('login'))
-## Security ##
 
 
-## Profiles ##
+###################################### PROFILES ######################################
+######################################################################################
+
 ##! test only
 @app.route("/admin/edit/profiles")
 def show_all_profiles():
-    profiles = list(data.all_profiles())
     return render_template(
         'profile/profiles.html', 
         title = 'Profiles list', 
-        profiles = profiles
-        )
+        profiles = list(data.all_profiles())
+    )
 ##! test only
 
+######################################################################################
 
 @app.route("/user/show/profile")
 def show_login_profile():
     try:
         if session.get('username', None): 
-            profile = data.email(session.get('username', 'not set'))
             return render_template(
                 'profile/profile.html', 
                 title = 'Profile account', 
-                profile = profile
+                profile = data.email(session.get('username', None))
             )
         else:
             return redirect(url_for('login'))
     except IndexError as e:
         return app.send_static_file("errors/error.html")
 
+######################################################################################
 
 @app.route("/user/edit/profile/name_surname", methods=['POST', 'GET'])
 def edit_profile():
@@ -151,6 +159,7 @@ def edit_profile():
         else:
             return redirect(url_for('login'))
 
+######################################################################################
 
 @app.route("/user/edit/profile/pass", methods = ['POST', 'GET'])
 def edit_profile_password():
@@ -182,6 +191,7 @@ def edit_profile_password():
         else:
             return redirect(url_for('login'))
 
+######################################################################################
 
 @app.route("/user/remove/profile")
 def remove_profile():
@@ -193,10 +203,11 @@ def remove_profile():
     )
     __session_invalidate()
     return redirect('/')
-## Profiles ##
 
 
-## Types ##
+###################################### TYPES #########################################
+######################################################################################
+
 @app.route("/user/show/types")
 def show_all_types():
     if session.get('username', None):    
@@ -208,6 +219,7 @@ def show_all_types():
     else:
         return redirect(url_for('login'))
 
+######################################################################################
 
 @app.route("/user/edit/add_type", methods=['POST', 'GET'])
 def add_category():
@@ -226,6 +238,7 @@ def add_category():
             title='Add new category'
         )
 
+######################################################################################
 
 @app.route("/user/edit/type/<int:type_id>", methods=['POST', 'GET'])
 def edit_type(type_id):
@@ -249,6 +262,7 @@ def edit_type(type_id):
     else:
         return redirect(url_for('login'))
 
+######################################################################################
 
 @app.route("/user/remove/type/<int:type_id>")
 def remove_type(type_id):
@@ -257,22 +271,20 @@ def remove_type(type_id):
         return redirect(url_for('show_all_types'))
     else:
         return redirect(url_for('login'))
-## Types ##
 
 
-## Tasks
+##################################### TASKS ##########################################
+######################################################################################
+
 @app.route("/user/show/tasks")
 def show_profile_tasks():
     e_mail = session.get('username', 'not set')
     if session.get('username', None): 
-        return render_template(
-            'task/tasks.html', 
-            title = 'Your task list', 
-            tasks = list(data.user_tasks(e_mail))
-        )
+        return __task_dashboard_for_user(e_mail)
     else:
         return redirect(url_for('login'))
 
+######################################################################################
 
 @app.route("/user/edit/add_task", methods=['POST', 'GET'])
 def add_task():
@@ -309,9 +321,28 @@ def add_task():
         else:
             return redirect(url_for('login'))
 
+######################################################################################
+
+@app.route("/user/edit/task/progress/<int:task_id>")
+def set_progress_done(task_id):
+    e_mail = session.get('username', None)
+    if e_mail:
+        progress_details_to_change = data.show_ass_task(task_id)[3]
+        progress_details_to_change = "DONE"
+
+        data.task_progress_details(val = (
+            progress_details_to_change,
+            task_id
+        ))
+        return __task_dashboard_for_user(e_mail)
+    else:
+        return redirect(url_for('login'))
+
+######################################################################################
 
 @app.route("/user/edit/task/priority/<int:task_id>/<int:operation>")
 def change_task_priority(task_id, operation):
+    
     e_mail = session.get('username', None)
 
     if e_mail:
@@ -329,6 +360,8 @@ def change_task_priority(task_id, operation):
     else:
         return redirect(url_for('login'))
 
+######################################################################################
+
 @app.route("/user/remove/task/<int:task_id>")
 def remove_task(task_id):
     e_mail = session.get('username', None)
@@ -338,10 +371,11 @@ def remove_task(task_id):
         return __task_dashboard_for_user(e_mail)
     else:
         return redirect(url_for('login'))
-## Tasks
 
 
-## Assignment tasks and details
+######################## ASSIGNMENT TASKS AND DETAILS ################################
+######################################################################################
+
 @app.route("/show/all_tasks")
 def show_all_tasks_details():
     return render_template(
@@ -349,4 +383,5 @@ def show_all_tasks_details():
         title='Tasks table', 
         tasks_details=list(data.all_tasks_details())
     )
-## Assignment tasks and details
+
+######################################################################################

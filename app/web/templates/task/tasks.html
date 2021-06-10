@@ -24,7 +24,7 @@
     <td>{{ task[6] }}</td>
     <td>{{ task[7] }}</td>
     <td>{{ task[8] }}</td>
-    <td class="td-icon">
+    <td class="td-icon inactive">
       <a
         href="#"
         class="icon-task-edit"
@@ -33,7 +33,7 @@
         ><i class="fas fa-file-signature"></i>
       </a>
     </td>
-    <td class="td-icon">
+    <td class="td-icon inactive">
       <a
         href="#"
         class="icon-task-edit"
@@ -62,15 +62,15 @@
     </td>
     <td class="td-icon">
       <a
-        href="#"
+        href="{{ url_for('set_progress_done', task_id=task[0]) }}"
         class="icon-task-edit"
-        alt="Change status of progress"
-        title="Change status of progress"
+        alt="End task"
+        title="End task"
       >
         <i class="fas fa-clipboard-check"></i
       ></a>
     </td>
-    <td class="td-icon">
+    <td class="td-icon inactive">
       <a
         href="#"
         class="icon-task-edit"
