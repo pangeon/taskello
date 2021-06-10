@@ -122,11 +122,12 @@ def show_all_profiles():
 @app.route("/user/show/profile")
 def show_login_profile():
     try:
-        if session.get('username', None): 
+        if session.get('username', None):
+            profile = data.email(session.get('username', None)) 
             return render_template(
                 'profile/profile.html', 
                 title = 'Profile account', 
-                profile = data.email(session.get('username', None))
+                profile = profile
             )
         else:
             return redirect(url_for('login'))
