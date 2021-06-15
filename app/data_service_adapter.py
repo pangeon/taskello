@@ -104,6 +104,10 @@ def task_progress_details(val):
     return ass_task_man.update_ass_task_progress(conn, val)
 
 
+def task_name_and_description(val):
+    return task_man.update_task_name_and_description(conn, val)
+
+
 def all_tasks_details():
     return all_data_man.show_task_full_details(conn)
 

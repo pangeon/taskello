@@ -24,9 +24,9 @@
     <td>{{ task[6] }}</td>
     <td>{{ task[7] }}</td>
     <td>{{ task[8] }}</td>
-    <td class="td-icon inactive">
+    <td class="td-icon">
       <a
-        href="#"
+        href="{{ url_for('change_task_name_and_description', task_id=task[0]) }}"
         class="icon-task-edit"
         alt="Name and describtion"
         title="Name and describtion"

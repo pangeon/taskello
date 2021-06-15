@@ -362,6 +362,38 @@ def change_task_priority(task_id, operation):
 
 ######################################################################################
 
+@app.route("/user/edit/task/name_description/<int:task_id>", methods=['POST', 'GET'])
+def change_task_name_and_description(task_id):
+
+    e_mail = session.get('username', None)
+
+    if e_mail:
+        
+        if request.method == "POST":
+            data.task_name_and_description(
+                val = (
+                    request.form['task_name'],
+                    request.form['task_description'],
+                    task_id
+                )
+            )
+            return __task_dashboard_for_user(e_mail)
+        else:
+            tasks_properties = [
+                data.show_task(task_id)[2],
+                data.show_task(task_id)[3]
+            ]
+            return render_template(
+                'task/edit_task.html',
+                title="Edit task properties",
+                tasks_properties = tasks_properties
+
+            )
+    else:
+        return redirect(url_for('login'))
+
+######################################################################################
+
 @app.route("/user/remove/task/<int:task_id>")
 def remove_task(task_id):
     e_mail = session.get('username', None)

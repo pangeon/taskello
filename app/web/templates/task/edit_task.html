@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+<!-- CONTENT -->
+{% block content %}
+<h1 class="center">:: Edit task properties ::</h1>
+<form action="#" method="post">
+  <label>Type:</label>
+  <label>Name <span>*</span></label>
+  <input
+    type="text"
+    name="task_name"
+    value="{{ tasks_properties[0] }}"
+    required
+  />
+  <label>Description</label>
+  <input
+    type="text"
+    name="task_description"
+    value="{{ tasks_properties[1] }}"
+  />
+  <br /><br />
+  <input type="submit" class="button" value="Send" />
+</form>
+{% endblock %}
+<!-- CONTENT -->

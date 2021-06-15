@@ -151,14 +151,29 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
 - 0.15.2c - added button #change to done# edition in task dashboard
 - 0.15.3c - fixed bugs with delete functionality
 - 0.15.4c - fixed bugs with sql drop
+- 0.16.0c - possibility to update task: name, description
 
 # Preview
 
-- 0.16.0c - possibility to update task
+- 0.17.0c - possibility to update task: expired date
+- 0.18.0c - possibility to update task: attachment link
 - 1.0.0c - full data edition via page without assignments
 - 1.1.0c - secure password, hash function
 - 1.2.0c - full validation data input form
 - 2.0.0c - new look with bootstrap 4
+
+# To fix
+
+### REFACTORING
+
+- more simply and scrict mysql interface
+- split routes to separate services
+
+### WEB GUI
+
+- pop-up forms instead of redirects
+- HTML div containers instead tables
+- remove unnecessary styles
 
 # Problems and solutions:
 
