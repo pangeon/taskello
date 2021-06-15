@@ -149,6 +149,7 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
 - 0.15.0c - possibility to remove task
 - 0.15.1c - added priority edition in task dashboard, imporove add task form
 - 0.15.2c - added button #change to done# edition in task dashboard
+- 0.15.3c - fixed bugs with delete functionality
 
 # Preview
 

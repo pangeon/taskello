@@ -38,4 +38,4 @@ def update_task_priority(conn, val):
 
 def delete_task_for_id(conn, val):
     sql = "DELETE FROM tasks WHERE id = '{}'".format(val)
-    db.sql_execute(conn, sql, val)
+    db.sql_drop(conn, sql)

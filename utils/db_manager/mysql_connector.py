@@ -65,6 +65,7 @@ def sql_drop(conn, sql):
     try:
         cursor = conn.cursor()
         cursor.execute(sql, multi=True)
+        conn.commit()
     except mysql.connector.Error as e:
         print("sql_drop: ", info.error_drop_info, e)
 

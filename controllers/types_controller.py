@@ -25,4 +25,4 @@ def update_type_properties(conn, val):
 
 def delete_type_for_id(conn, val):
     sql = "DELETE FROM types WHERE id = '{}'".format(val)
-    db.sql_execute(conn, sql, val)
+    db.sql_drop(conn, sql)
