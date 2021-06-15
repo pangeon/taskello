@@ -108,6 +108,14 @@ def task_name_and_description(val):
     return task_man.update_task_name_and_description(conn, val)
 
 
+def task_attachment_link(val):
+    return task_man.update_task_attachment_link(conn, val)
+
+
+def task_expired_time(val):
+    return ass_task_man.update_task_expired_time(conn, val)
+
+
 def all_tasks_details():
     return all_data_man.show_task_full_details(conn)
 

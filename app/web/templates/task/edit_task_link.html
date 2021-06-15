@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+<!-- CONTENT -->
+{% block content %}
+<h1 class="center">:: Edit task attachment link ::</h1>
+<form action="#" method="post">
+  <label>Link</label>
+  <input
+    type="text"
+    name="task_attachment_link"
+    value="{{ task_attachment_link }}"
+  />
+  <br /><br />
+  <input type="submit" class="button" value="Send" />
+</form>
+{% endblock %}
+<!-- CONTENT -->

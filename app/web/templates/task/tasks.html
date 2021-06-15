@@ -33,9 +33,9 @@
         ><i class="fas fa-file-signature"></i>
       </a>
     </td>
-    <td class="td-icon inactive">
+    <td class="td-icon">
       <a
-        href="#"
+        href="{{ url_for('change_attachment_link', task_id=task[0]) }}"
         class="icon-task-edit"
         alt="Edit attachment link"
         title="Edit attachment link"
@@ -70,9 +70,9 @@
         <i class="fas fa-clipboard-check"></i
       ></a>
     </td>
-    <td class="td-icon inactive">
+    <td class="td-icon">
       <a
-        href="#"
+        href="{{ url_for('change_expired_time', task_id=task[0]) }}"
         class="icon-task-edit"
         alt="Edit expired time"
         title="Edit expired time"

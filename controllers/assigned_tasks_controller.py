@@ -23,6 +23,11 @@ def update_ass_task_progress(conn, val):
     db.sql_execute(conn, sql, val)
 
 
+def update_task_expired_time(conn, val):
+    sql = "UPDATE assigned_tasks SET expired_date = %s WHERE task_id = %s"
+    db.sql_execute(conn, sql, val)
+
+
 def delete_assigned_task_for_id(conn, val):
     sql = "DELETE FROM assigned_tasks WHERE id = %s"
     db.sql_execute(conn, sql, val) 

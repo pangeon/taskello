@@ -394,6 +394,58 @@ def change_task_name_and_description(task_id):
 
 ######################################################################################
 
+@app.route("/user/edit/task/attachment-link/<int:task_id>", methods=['POST', 'GET'])
+def change_attachment_link(task_id):
+
+    e_mail = session.get('username', None)
+
+    if e_mail:
+        if request.method == "POST":
+            data.task_attachment_link(
+                val = (
+                    request.form['task_attachment_link'],
+                    task_id
+                )
+            )
+            return __task_dashboard_for_user(e_mail)
+        else:
+            return render_template(
+                'task/edit_task_link.html',
+                title="Edit task link",
+                task_attachment_link = data.show_task(task_id)[4]
+            )
+    else:
+        return redirect(url_for('login'))
+
+######################################################################################
+
+@app.route("/user/edit/task/expired-time/<int:task_id>", methods=['POST', 'GET'])
+def change_expired_time(task_id):
+
+    e_mail = session.get('username', None)
+
+    if e_mail:
+        if request.method == "POST":
+            data.task_expired_time(
+                val = (
+                    request.form['task_expired_date'] + "T" + request.form['task_expired_time'],
+                    task_id
+                )
+            )
+            return __task_dashboard_for_user(e_mail)
+        else:
+
+            return render_template(
+                'task/edit_task_expired_date.html',
+                title="Edit task time",
+                task_expired_time = data.show_task(task_id)[5]
+            )
+    else:
+        return redirect(url_for('login'))
+
+######################################################################################
+
+
 @app.route("/user/remove/task/<int:task_id>")
 def remove_task(task_id):
     e_mail = session.get('username', None)
