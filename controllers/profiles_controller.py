@@ -62,4 +62,4 @@ def grant_profile_active_status(conn, val):
 
 def delete_profile_for_email(conn, val):
     sql = "DELETE FROM profiles WHERE email = '{}'".format(val)
-    db.sql_drop(conn, sql)
+    db.sql_drop(conn, sql, multi=False)

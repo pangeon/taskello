@@ -61,11 +61,13 @@ def sql_create(conn, sql):
         print("sql_create: ", info.error_create_info, e)
 
 
-def sql_drop(conn, sql):
+def sql_drop(conn, sql, multi="True"):
     try:
         cursor = conn.cursor()
-        cursor.execute(sql, multi=True)
-        conn.commit()
+        if multi:
+            cursor.execute(sql, multi=True)
+        else:
+            cursor.execute(sql)
     except mysql.connector.Error as e:
         print("sql_drop: ", info.error_drop_info, e)
 
