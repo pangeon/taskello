@@ -6,7 +6,8 @@ CREATE TABLE `dian_db`.`profiles` (
     `email` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
     `password` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
     `is_active` BOOLEAN NULL DEFAULT NULL , 
-    PRIMARY KEY (`id`), UNIQUE (`email`)
+    PRIMARY KEY (`id`), 
+    UNIQUE (`email`)
 ) ENGINE = InnoDB; 
 '''
 
@@ -16,7 +17,8 @@ CREATE TABLE `dian_db`.`types` (
     `specification` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
     `responsibilities` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
     `color` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL , 
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE (`specification`)
 ) ENGINE = InnoDB; 
 '''
 
@@ -44,7 +46,8 @@ CREATE TABLE `dian_db`.`assigned_tasks` (
     `expired_date` TIMESTAMP NULL DEFAULT NULL , 
     FOREIGN KEY (`profile_id`) REFERENCES profiles(`id`) ON DELETE CASCADE ,
     FOREIGN KEY (`task_id`) REFERENCES tasks(`id`) ON DELETE CASCADE ,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE (`task_id`)
 ) ENGINE = InnoDB;
 '''
 

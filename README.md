@@ -154,13 +154,21 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
 - 0.16.0c - possibility to update task: name, description
 - 0.17.0c - possibility to update task: expired date
 - 0.18.0c - possibility to update task: attachment link
+- 0.19.0c - fixed db model
+- 1.0.0c - full data edition via page without edit task assignments
 
 # Preview
 
-- 1.0.0c - full data edition via page without assignments
-- 1.1.0c - secure password, hash function
-- 1.2.0c - full validation data input form
+- 1.1.0c - add possibility to edit task assignments
+- 1.2.0c - secure password, hash function
+- 1.3.0c - full validation data input form
+- 1.4.0c - add exception handle:
+  - the same names tasks
+  - the same category name
 - 2.0.0c - new look with bootstrap 4
+- 2.1.0c - add pop-up in JS
+- 3.0.0c - after registry send confirmation via email
+- 4.0.0c - project board
 
 # To fix
 

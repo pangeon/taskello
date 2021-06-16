@@ -50,6 +50,7 @@ def sql_execute(conn, sql, val):
         cursor.execute(sql, val)
         conn.commit()
     except mysql.connector.Error as e:
+        # raise Exception("Duplicate key entry") # TODO: raise exception when column is the same
         print("sql_insert: ", info.error_insert_info, e)
 
 

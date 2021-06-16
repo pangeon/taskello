@@ -15,7 +15,7 @@ Types
 | Field            | Type         | Null | Key | Default | Extra          |
 +------------------+--------------+------+-----+---------+----------------+
 | id               | int(11)      | NO   | PRI | NULL    | auto_increment |
-| specification    | text         | NO   |     | NULL    |                |
+| specification    | text         | NO   | UNI | NULL    |                |
 | responsibilities | text         | NO   |     | NULL    |                |
 | color            | varchar(255) | YES  |     | NULL    |                |
 +------------------+--------------+------+-----+---------+----------------+
@@ -38,7 +38,7 @@ Assigned Tasks
 +------------------+--------------+------+-----+---------------------+----------------+
 | id               | int(11)      | NO   | PRI | NULL                | auto_increment |
 | profile_id       | int(11)      | NO   | MUL | NULL                |                |
-| task_id          | int(11)      | NO   | MUL | NULL                |                |
+| task_id          | int(11)      | NO   | UNI | NULL                |                |
 | progress_details | varchar(255) | YES  |     | NULL                |                |
 | activation_date  | timestamp    | NO   |     | current_timestamp() |                |
 | expired_date     | timestamp    | YES  |     | NULL                |                |
