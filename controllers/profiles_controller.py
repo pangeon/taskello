@@ -35,6 +35,16 @@ def get_profile_id(conn, val):
         return None
 
 
+def get_profile_password(conn, val):
+    sql = "SELECT password FROM profiles WHERE email = '{}'".format(val)
+    profile_password = db.sql_single_querry(conn, sql)
+    try: 
+        return profile_password[0]
+    except IndexError as e:
+        print("Profile with the given email does not exist.")
+        return None
+
+
 def insert_profile(conn, val):
     sql = "INSERT INTO profiles (name, surname, email, password, is_active) VALUES (%s, %s, %s, %s, %s)"
     db.sql_execute(conn, sql, val)

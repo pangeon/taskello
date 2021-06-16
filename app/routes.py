@@ -3,12 +3,12 @@ from app import data_service_adapter as data
 from app.forms import LoginForm
 from app.forms import RegistrationForm
 
-from flask import request, redirect, flash, session, url_for
+from flask import request, redirect, session, url_for
 from flask import render_template
 
-from markupsafe import escape
 from random import randint as gen
 
+from utils.security.hash_password import HashPassword
 
 @app.route('/')
 def index():
@@ -42,6 +42,11 @@ def __task_dashboard_for_user(login_user_name):
         title='Your task list', 
         tasks=list(data.user_tasks(login_user_name))) 
 
+def __generate_hash_password(password):
+    hash_password = HashPassword(password)
+    hash_password.generate()
+    
+    return hash_password.password
 
 #################################### SECURITY ########################################
 ######################################################################################
@@ -54,10 +59,11 @@ def register():
         if request.method == 'POST' and 'e_mail' in request.form and 'password' in request.form:
             e_mail = request.form['e_mail']
             password = request.form['password']
+
             data.registry(
                 val = (
                     e_mail,
-                    password
+                    __generate_hash_password(password)
                 )
             )
         return redirect(url_for('login'))
@@ -77,12 +83,16 @@ def login():
         if request.method == 'POST' and 'e_mail' in request.form and 'password' in request.form:
             e_mail = request.form['e_mail']
             password = request.form['password']
-            profile = data.login(
-                val = (
-                    e_mail,
-                    password
+            hash_password = HashPassword(password)
+            hash_password.generate()
+
+            if hash_password.check(password):
+                profile = data.login(
+                    val = (
+                        e_mail,
+                        data.profile_pass(e_mail)
+                    )
                 )
-            )
             if profile == None:
                 return render_template('error.html')
             else:
@@ -170,7 +180,7 @@ def edit_profile_password():
         if pass_1 == pass_2:
             data.edit_profile_pass(
                 val = (
-                    pass_1,
+                    __generate_hash_password(pass_1),
                     e_mail
                 )
             )

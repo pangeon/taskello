@@ -9,6 +9,9 @@ from controllers import tasks_controller as task_man
 from controllers import types_controller as type_man
 from controllers import assigned_tasks_controller as ass_task_man
 from controllers import all_data_controller as all_data_man
+from utils.security import hash_password
+
+from utils.security.hash_password import HashPassword
 
 import itertools
 
@@ -23,4 +26,11 @@ conn = db.define_db(
 )
 
 if __name__ == "__main__":
-    task_man.delete_task_for_id(conn, 5)
+    profile_pass = profile_man.get_profile_password(conn, "roman@tlen.pl")
+    print(profile_pass)
+
+    profile = profile_man.login_profile(conn, val = (
+        "roman@tlen.pl",
+        profile_pass
+    ))
+    print(profile)

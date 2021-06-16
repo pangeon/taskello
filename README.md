@@ -156,13 +156,14 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
 - 0.18.0c - possibility to update task: attachment link
 - 0.19.0c - fixed db model
 - 1.0.0c - full data edition via page without edit task assignments
+- 1.1.0c - secured password, added hash function SHA-256
 
 # Preview
 
-- 1.1.0c - add possibility to edit task assignments
-- 1.2.0c - secure password, hash function
-- 1.3.0c - full validation data input form
-- 1.4.0c - add exception handle:
+<!-- - 1.1.0c - add possibility to edit task assignments -->
+
+- 1.2.0c - full validation data input form
+- 1.3.0c - add exception handle:
   - the same names tasks
   - the same category name
 - 2.0.0c - new look with bootstrap 4

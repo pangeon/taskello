@@ -47,6 +47,8 @@ def registry(val):
 def profile_id(val):
     return profile_man.get_profile_id(conn, val)
 
+def profile_pass(val):
+    return profile_man.get_profile_password(conn, val)
 
 def edit_profile_data(val):
     return profile_man.update_profile_name_and_surname(conn, val)
