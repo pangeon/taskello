@@ -40,8 +40,10 @@ def get_profile_password(conn, val):
     profile_password = db.sql_single_querry(conn, sql)
     try: 
         return profile_password[0]
-    except IndexError as e:
-        print("Profile with the given email does not exist.")
+    except (IndexError, TypeError) as e:
+        print("Profile with the given email does not exist")
+        print("type:", type(e))
+        print("message:", e)
         return None
 
 

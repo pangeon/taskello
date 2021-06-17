@@ -4,7 +4,13 @@
 <h1 class="center">:: Edit profile password ::</h1>
 <form action="#" method="post">
   <label>New password:</label>
-  <input type="password" required name="profile_password" />
+  <input
+    type="password"
+    required
+    name="profile_password"
+    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+    title="Passwords must have minimum eight characters, at least one letter, one number and one special character"
+  />
 
   <label>Reapeat password:</label>
   <input type="password" required name="profile_password_repeat" />

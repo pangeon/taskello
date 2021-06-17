@@ -26,11 +26,19 @@ conn = db.define_db(
 )
 
 if __name__ == "__main__":
-    profile_pass = profile_man.get_profile_password(conn, "roman@tlen.pl")
-    print(profile_pass)
+    # profile_pass = profile_man.get_profile_password(conn, "crazy@vp.pl")
+    # print(profile_pass)
 
-    profile = profile_man.login_profile(conn, val = (
-        "roman@tlen.pl",
-        profile_pass
-    ))
-    print(profile)
+    # profile = profile_man.login_profile(conn, val = (
+    #     "roman@tlen.pl",
+    #     profile_pass
+    # ))
+    # print(profile)
+    password = input("Enter password: ") 
+    hash = HashPassword(password)
+    hash.generate()
+    print(hash.hash)
+    # hash.hash = profile_pass
+    # print(hash.hash)
+
+    # print(hash.check('Alfaromeo88a#'))

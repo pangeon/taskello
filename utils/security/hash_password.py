@@ -2,23 +2,26 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 class HashPassword:
 
-    def __init__(self, password):
-        self._password = password
+    def __init__(self, hash = ""):
+        self._hash = hash
 
     @property
-    def password(self):
-        return self._password
+    def hash(self):
+        return self._hash
 
-    @password.setter
-    def password(self, password):
-        self._password = password
+    @hash.setter
+    def hash(self, hash):
+        self._hash = hash
 
     def __repr__(self):
-        return f'HashPassword{{ password={self._password} }}'
+        return f'HashPassword{{ hash={self._hash} }}'
 
     def generate(self):
-        self._password = generate_password_hash(self._password)
+        self._hash = generate_password_hash(self._hash)
 
     def check(self, password):
-        return check_password_hash(self._password, password)
+        try:
+            return check_password_hash(self._hash, password)
+        except AttributeError:
+            return None
     

@@ -3,11 +3,11 @@
 {% block content %}
 <h1 class="center">:: Edit profile data ::</h1>
 <form action="#" method="post">
-  <label>Name:</label>
-  <input type="text" name="profile_name" />
+  <label>Name:<span>*</span></label>
+  <input type="text" name="profile_name" required />
 
-  <label>Surname:</label>
-  <input type="text" name="profile_surname" />
+  <label>Surname:<span>*</span></label>
+  <input type="text" name="profile_surname" required />
   <br /><br />
   <input type="submit" class="button" value="Send" />
 </form>

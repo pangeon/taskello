@@ -1,5 +1,8 @@
-html {
+html,
+body {
   background-color: beige;
+  height: 100%;
+  margin: 0;
 }
 th,
 td {
@@ -29,7 +32,7 @@ h2 {
   font-size: 30px;
 }
 .button {
-  background-color: coral; /* Green */
+  background-color: coral;
   padding: 15px 32px;
   font-size: 16px;
 }
@@ -58,13 +61,10 @@ label {
 input#remember_me {
   width: 0;
 }
-/* Add a black background color to the top navigation */
 .topnav {
   background-color: coral;
   overflow: hidden;
 }
-
-/* Style the links inside the navigation bar */
 .topnav a {
   float: left;
   color: #f2f2f2;
@@ -73,14 +73,10 @@ input#remember_me {
   text-decoration: none;
   font-size: 17px;
 }
-
-/* Change the color of links on hover */
 .topnav a:hover {
   background-color: orangered;
   color: white;
 }
-
-/* Add a color to the active/current link */
 .topnav a.active {
   background-color: red;
   color: white;
@@ -134,7 +130,7 @@ a.icon-task-edit > i {
 }
 .inactive {
   background-color: grey !important;
-  color: black !important;
+  color: white;
   pointer-events: none;
 }
 .td-icon-check-yes {
@@ -152,4 +148,26 @@ a.icon-task-edit > i {
   padding-top: 20px;
   padding-bottom: 20px;
   width: 100%;
+}
+.footer {
+  height: 100px;
+  margin-top: -100px;
+  background-color: orangered;
+  color: white;
+  text-align: center;
+  padding-top: 20px;
+}
+.content {
+  min-height: 100%;
+}
+.content-inside {
+  padding: 20px;
+  padding-bottom: 50px;
+}
+.footer > p {
+  font-size: 20px;
+}
+.footer > p > a {
+  text-decoration: none;
+  color: darkred;
 }

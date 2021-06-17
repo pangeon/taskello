@@ -46,7 +46,13 @@ def __generate_hash_password(password):
     hash_password = HashPassword(password)
     hash_password.generate()
     
-    return hash_password.password
+    return hash_password.hash
+
+def __template_error(info_for_user):
+    return render_template(
+        'error.html', 
+        msg = info_for_user
+    )
 
 #################################### SECURITY ########################################
 ######################################################################################
@@ -60,12 +66,16 @@ def register():
             e_mail = request.form['e_mail']
             password = request.form['password']
 
-            data.registry(
-                val = (
-                    e_mail,
-                    __generate_hash_password(password)
+            if not data.is_email_exist(e_mail):
+                data.registry(
+                    val = (
+                        e_mail,
+                        __generate_hash_password(password)
+                    )
                 )
-            )
+            else:
+                return __template_error("A profile with the indicated e-mail already exists.")
+
         return redirect(url_for('login'))
     return render_template(
         'profile/register.html', 
@@ -83,9 +93,10 @@ def login():
         if request.method == 'POST' and 'e_mail' in request.form and 'password' in request.form:
             e_mail = request.form['e_mail']
             password = request.form['password']
-            hash_password = HashPassword(password)
-            hash_password.generate()
 
+            hash_password = HashPassword()
+            hash_password.hash = data.profile_pass(e_mail)
+            
             if hash_password.check(password):
                 profile = data.login(
                     val = (
@@ -93,8 +104,11 @@ def login():
                         data.profile_pass(e_mail)
                     )
                 )
+            else:
+                profile = None
+
             if profile == None:
-                return render_template('error.html')
+                return __template_error("Password and login do not match.")
             else:
                 session['loggedin'] = True
                 session['id'] = profile[0]

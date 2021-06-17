@@ -24,12 +24,18 @@ if __name__ == "__main__":
         ## Profiles ##
         db.sql_create(conn, struct_db.sql_create_profiles)
         profile_list = [
-            ("Kamil", "Cecherz", "pangeon@tlen.pl", "123pass", True),
-            ("Adam", "Wolniewicz", "wolnygosc@interia.pl", "passpass", False),
-            ("Weronika", "Bławut", "wera_bla@op.pl", "Kocurek16", True),
-            ("Agnieszka", "Lasota", "agnieszka.lasota1@gmail.com", "Laseczka", False),
-            ("Radosław", "Ignasiak", "radekignasiak13@gmail.com", "radini+ola", True),
-            ("Adam", "Kos", "kos.adam@wp.pl", "BralemHere10", True)
+            ("Kamil", "Cecherz", "pangeon@tlen.pl", "pbkdf2:sha256:260000$FhV9g1w7lWbjwUfe$36a06c967419dd9c11fb697bd0a76e929c287e36339ebd31c218447c7e427270", True), 
+            # 123pass
+            ("Adam", "Wolniewicz", "wolnygosc@interia.pl", "pbkdf2:sha256:260000$4uhKKcC4XS2cSRP2$ffb9af0cff0d246385e6b3d3ebe3f27c6ff228fa9ed9f2ca503b2709e8d306b2", False),
+            # passpass
+            ("Weronika", "Bławut", "wera_bla@op.pl", "pbkdf2:sha256:260000$Olsa92xHWfgocr1p$b3b306ece5ac578a7ee5898c5f514cbedcccacbe9f6e9b5e1f24457a428f2cd2", True),
+            # Kocurek16
+            ("Agnieszka", "Lasota", "agnieszka.lasota1@gmail.com", "pbkdf2:sha256:260000$PSFZD6hqWy9jea0C$f1ef422229d9bbb56d0244cfda02fb42197a3145985b3c93ffe644f8a711b552", False),
+            # Laseczka
+            ("Radosław", "Ignasiak", "radekignasiak13@gmail.com", "pbkdf2:sha256:260000$emI9LuGeCyHJqtDd$809812fd9ff5182a88dcfc2b10853417205af72f350c03ff59a5fab22a46a191", True),
+            # radini+ola
+            ("Adam", "Kos", "kos.adam@wp.pl", "pbkdf2:sha256:260000$28wfkTWZcVwhZrQE$13760edd4e91020fd09f3fd641452dfccbd1c7d34ddcdf9a725a8711c3ea5018", True)
+            # BralemHere10
         ]
         for record in profile_list: profile_man.insert_profile(conn, record)
         ## Profiles ##
