@@ -14,7 +14,7 @@ CREATE TABLE `dian_db`.`profiles` (
 sql_create_types = '''
 CREATE TABLE `dian_db`.`types` ( 
     `id` INT NOT NULL AUTO_INCREMENT , 
-    `specification` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
+    `specification` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
     `responsibilities` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
     `color` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL , 
     PRIMARY KEY (`id`),

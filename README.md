@@ -158,6 +158,7 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
 - 1.0.0c - full data edition via page without edit task assignments
 - 1.1.0c - secured password, added hash function SHA-256
 - 1.2.0c - validation data input form, fixed function SHA-256
+- 1.2.1c - fixed problems with db create scripts
 
 # Preview
 
