@@ -1,6 +1,6 @@
-# Dianetello
+# Taskello
 
-Dianet company CRM.<br />
+Usage CRM wrote in Python<br />
 See working appplication on page: [here](http://192.168.0.69:5000/)
 
 # Deployment guide
