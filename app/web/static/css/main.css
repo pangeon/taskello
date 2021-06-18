@@ -151,7 +151,6 @@ a.icon-task-edit > i {
 }
 .footer {
   height: 100px;
-  margin-top: -100px;
   background-color: orangered;
   color: white;
   text-align: center;

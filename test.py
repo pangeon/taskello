@@ -15,9 +15,6 @@ from utils.security.hash_password import HashPassword
 
 import itertools
 
-def welcome():
-    print("--- {}, ver {} ---\n".format(app.name, app.version))
-
 conn = db.define_db(
     cfg_db.db_host, 
     cfg_db.db_name, 
@@ -26,19 +23,4 @@ conn = db.define_db(
 )
 
 if __name__ == "__main__":
-    # profile_pass = profile_man.get_profile_password(conn, "crazy@vp.pl")
-    # print(profile_pass)
-
-    # profile = profile_man.login_profile(conn, val = (
-    #     "roman@tlen.pl",
-    #     profile_pass
-    # ))
-    # print(profile)
-    password = input("Enter password: ") 
-    hash = HashPassword(password)
-    hash.generate()
-    print(hash.hash)
-    # hash.hash = profile_pass
-    # print(hash.hash)
-
-    # print(hash.check('Alfaromeo88a#'))
+    pass

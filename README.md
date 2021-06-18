@@ -1,7 +1,7 @@
 # Taskello
 
-Usage CRM wrote in Python<br />
-See working appplication on page: [here](http://192.168.0.69:5000/)
+Useful and simple CRM written in Python<br />
+<!-- See working appplication on page: [here]() -->
 
 # Deployment guide
 
@@ -108,7 +108,10 @@ See working appplication on page: [here](http://192.168.0.69:5000/)
   flask run
   flask run -h 0.0.0.0 -p 5000
   ```
-
+3. Debug interactive session:
+  ```
+  python app.py
+  ```
 # Changelog
 
 - 0.0.1 - root of application

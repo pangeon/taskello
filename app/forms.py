@@ -1,4 +1,3 @@
-from dns.message import Message
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, Regexp, ValidationError, Email, EqualTo
