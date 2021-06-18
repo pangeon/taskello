@@ -1,5 +1,8 @@
-# Taskello
 
+
+<div style="text-align:center; width: 50%; margin-left: 25%; margin-right: 50%"><img src="img/taskello_sign.png" /></div>
+
+# Introduction
 Useful and simple CRM written in Python<br />
 <!-- See working appplication on page: [here]() -->
 
