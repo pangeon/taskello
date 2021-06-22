@@ -10,9 +10,11 @@ from random import randint as gen
 
 from utils.security.hash_password import HashPassword
 
+lang = "PL"
+
 @app.route('/')
 def index():
-    return render_template('main.html')
+    return render_template('main.html', lang=lang)
 
 
 ################################# UTILS ##############################################
@@ -40,7 +42,9 @@ def __task_dashboard_for_user(login_user_name):
     return render_template(
         'task/tasks.html', 
         title='Your task list', 
-        tasks=list(data.user_tasks(login_user_name))) 
+        tasks=list(data.user_tasks(login_user_name)),
+        lang=lang
+    ) 
 
 def __generate_hash_password(password):
     hash_password = HashPassword(password)
@@ -137,7 +141,8 @@ def show_all_profiles():
     return render_template(
         'profile/profiles.html', 
         title = 'Profiles list', 
-        profiles = list(data.all_profiles())
+        profiles = list(data.all_profiles()),
+        lang = lang
     )
 ##! test only
 
@@ -150,7 +155,8 @@ def show_login_profile():
             return render_template(
                 'profile/profile.html', 
                 title = 'Profile account', 
-                profile = data.email(session.get('username', None)) 
+                profile = data.email(session.get('username', None)),
+                lang = lang
             )
         else:
             return redirect(url_for('login'))
@@ -178,7 +184,8 @@ def edit_profile():
         if session.get('username', None):
             return render_template(
                 'profile/edit_profile_data.html', 
-                title = 'Edit Profile data'
+                title = 'Edit Profile data',
+                lang = lang
             )
         else:
             return redirect(url_for('login'))
@@ -210,7 +217,8 @@ def edit_profile_password():
         if session.get('username', None):
             return render_template(
                 'profile/edit_profile_pass.html', 
-                title = 'Edit Profile password'
+                title = 'Edit Profile password',
+                lang = lang
             )
         else:
             return redirect(url_for('login'))
@@ -238,7 +246,8 @@ def show_all_types():
         return render_template(
             'category/types.html', 
             title = 'Types of Tasks', 
-            types = list(data.all_types())
+            types = list(data.all_types()),
+            lang = lang
         )
     else:
         return redirect(url_for('login'))
@@ -259,7 +268,8 @@ def add_category():
     else:
         return render_template(
             'category/add_type.html', 
-            title='Add new category'
+            title='Add new category',
+            lang = lang
         )
 
 ######################################################################################
@@ -281,7 +291,8 @@ def edit_type(type_id):
             return render_template(
                 'category/edit_type.html', 
                 title = 'Edit category', 
-                type_item = list(data.show_type(type_id))
+                type_item = list(data.show_type(type_id)),
+                lang = lang
             )
     else:
         return redirect(url_for('login'))
@@ -340,7 +351,8 @@ def add_task():
             return render_template(
                 'task/add_task.html', 
                 title='Add new task', 
-                task_type_list=data.all_types()
+                task_type_list=data.all_types(),
+                lang = lang
             )
         else:
             return redirect(url_for('login'))
@@ -410,8 +422,8 @@ def change_task_name_and_description(task_id):
             return render_template(
                 'task/edit_task.html',
                 title="Edit task properties",
-                tasks_properties = tasks_properties
-
+                tasks_properties = tasks_properties,
+                lang = lang
             )
     else:
         return redirect(url_for('login'))
@@ -436,7 +448,8 @@ def change_attachment_link(task_id):
             return render_template(
                 'task/edit_task_link.html',
                 title="Edit task link",
-                task_attachment_link = data.show_task(task_id)[4]
+                task_attachment_link = data.show_task(task_id)[4],
+                lang = lang
             )
     else:
         return redirect(url_for('login'))
@@ -462,7 +475,8 @@ def change_expired_time(task_id):
             return render_template(
                 'task/edit_task_expired_date.html',
                 title="Edit task time",
-                task_expired_time = data.show_task(task_id)[5]
+                task_expired_time = data.show_task(task_id)[5],
+                lang = lang
             )
     else:
         return redirect(url_for('login'))
@@ -489,7 +503,8 @@ def show_all_tasks_details():
     return render_template(
         'task/tasks_details.html', 
         title='Tasks table', 
-        tasks_details=list(data.all_tasks_details())
+        tasks_details=list(data.all_tasks_details()),
+        lang = lang
     )
 
 ######################################################################################

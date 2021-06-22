@@ -117,77 +117,10 @@ Useful and simple CRM written in Python<br />
   ```
 # Changelog
 
-- 0.0.1 - root of application
-- 0.0.2 - added simple project structure
-- 0.0.3 - created database model to project
-- 0.0.4 - added virtual env
-- 0.0.5 - created connector util for MySQL
-- 0.0.6 - preparing sample data to insert
-- 0.0.7 - selected data using app interface
-- 0.0.8 - inserted data using app interface
-- 0.1.8 - created controllers for app
-- 0.1.9 - support for all CRUD operations
-- 0.1.10 - created inititiation data files
-- 0.2.10b - created sample command line user interface
-- 0.3.0c - first sample web page with Flask
-- 0.3.1c - created view for data from database
-- 0.3.2c - first HTML view and data handle
-- 0.4.0c - built web service - full view
-- 0.4.1c - production version for vm ubuntu linux
-- 0.5.0c - added posibility to add new task
-- 0.5.1c - refactoring code for flask app
-- 0.5.2c - refactoring flask templates
-- 0.6.0c - added posibility to login existing user
-- 0.7.0c - added posibility to registry new user
-- 0.7.1c - fixed bugs with profile account and login
-- 0.8.0c - added posibility profile data edit:
-  - 0.8.1c - enabled name na surname edition
-  - 0.8.2c - change password
-  - 0.8.3c - function delete own profile
-- 0.8.4c - fixed password form and validation data
-- 0.9.0c - show task assign only login profile and fixed nav
-- 0.10.0c - possibility assign task to logined profile during add it via form
-- 0.10.1c - improved data displaying
-- 0.11.0c - possibility to add categories
-- 0.12.0c - extended add forms and correct view - types, tasks
-- 0.13.0c - possibility to add and remove new category/types task
-- 0.14.0c - possibility to edit category/types task
-- 0.15.0c - possibility to remove task
-- 0.15.1c - added priority edition in task dashboard, imporove add task form
-- 0.15.2c - added button #change to done# edition in task dashboard
-- 0.15.3c - fixed bugs with delete functionality
-- 0.15.4c - fixed bugs with sql drop
-- 0.16.0c - possibility to update task: name, description
-- 0.17.0c - possibility to update task: expired date
-- 0.18.0c - possibility to update task: attachment link
-- 0.19.0c - fixed db model
-- 1.0.0c - full data edition via page without edit task assignments
-- 1.1.0c - secured password, added hash function SHA-256
-- 1.2.0c - validation data input form, fixed function SHA-256
-- 1.2.1c - fixed problems with db create scripts
-
-# Preview
-
-- 1.3.0c - add exception handle:
-  - the same names tasks
-  - the same category name
-- 2.0.0c - new look with bootstrap 4
-- 2.1.0c - add pop-up in JS
-- 3.0.0c - after registry send confirmation via email
-- 4.0.0c - project board
-
-# To fix
-
-### REFACTORING
-
-- more simply and scrict mysql interface
-- split routes to separate services
-
-### WEB GUI
-
-- pop-up forms instead of redirects
-- HTML div containers instead tables
-- remove unnecessary styles
+- 1.0.0 - full data edition via page without edit task assignments
+- 1.1.0 - secured password, added hash function SHA-256
+- 1.2.0 - validation data input form, fixed function SHA-256
+- 1.2.1 - fixed problems with db create scripts
 
 # Problems and solutions:
 
@@ -209,4 +142,4 @@ Useful and simple CRM written in Python<br />
 
 # Contact and support
 
-- Kamil Cecherz - kamil.c@dianet.pl
+- Kamil Cecherz - kamil.cecherz@gmail.com

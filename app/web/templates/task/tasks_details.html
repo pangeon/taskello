@@ -1,20 +1,37 @@
 {% extends "base.html" %}
 <!-- CONTENT -->
 {% block content %}
-<h1>:: Tasks table ::</h1>
+<h1>
+  {% if lang == "ENG" %} :: Tasks table :: {% elif lang == "PL" %} :: Tablica zadań :: {% endif %}
+</h1>
 <table>
   <thead>
-    <td>Task name</td>
-    <td>Owner</td>
-    <td>Category</td>
-    <td>Specification</td>
-    <td>Attachment link</td>
-    <td>Priority</td>
-    <td>Progress status</td>
-    <td>Start</td>
-    <td>Expired time</td>
-    {% if session.username %}
-    <td>Assignment</td>
+    {% if lang == "ENG" %}
+      <td>Task name</td>
+      <td>Owner</td>
+      <td>Category</td>
+      <td>Specification</td>
+      <td>Attachment link</td>
+      <td>Priority</td>
+      <td>Progress status</td>
+      <td>Start</td>
+      <td>Expired time</td>
+      {% if session.username %}
+        <td>Assignment</td>
+      {% endif %}
+    {% elif lang == "PL" %}
+      <td>Nazwa zadania</td>
+      <td>Wykonawca</td>
+      <td>Kategoria</td>
+      <td>Specyfikacja</td>
+      <td>Załącznik</td>
+      <td>Priorytet</td>
+      <td>Status wykonania</td>
+      <td>Start</td>
+      <td>Czas zakończenia</td>
+      {% if session.username %}
+        <td>Przypisanie</td>
+      {% endif %}
     {% endif %}
   </thead>
   {% for task in tasks_details %}
