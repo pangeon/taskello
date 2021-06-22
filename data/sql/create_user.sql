@@ -1,6 +1,6 @@
-CREATE USER 'dian_user'@'localhost' 
+CREATE USER '***'@'localhost' 
 IDENTIFIED VIA mysql_native_password USING '***';
-GRANT ALL PRIVILEGES ON *.* TO 'dian_user'@'localhost' 
+GRANT ALL PRIVILEGES ON *.* TO '***'@'localhost' 
 REQUIRE NONE WITH GRANT OPTION 
 MAX_QUERIES_PER_HOUR 0 
 MAX_CONNECTIONS_PER_HOUR 0 

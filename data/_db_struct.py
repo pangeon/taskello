@@ -1,5 +1,5 @@
 sql_create_profiles = '''
-CREATE TABLE `dian_db`.`profiles` ( 
+CREATE TABLE `srv35804_task`.`profiles` ( 
     `id` INT NOT NULL AUTO_INCREMENT, 
     `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL , 
     `surname` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL , 
@@ -12,7 +12,7 @@ CREATE TABLE `dian_db`.`profiles` (
 '''
 
 sql_create_types = '''
-CREATE TABLE `dian_db`.`types` ( 
+CREATE TABLE `srv35804_task`.`types` ( 
     `id` INT NOT NULL AUTO_INCREMENT , 
     `specification` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
     `responsibilities` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
@@ -23,7 +23,7 @@ CREATE TABLE `dian_db`.`types` (
 '''
 
 sql_create_tasks = '''
-CREATE TABLE `dian_db`.`tasks` ( 
+CREATE TABLE `srv35804_task`.`tasks` ( 
     `id` INT NOT NULL AUTO_INCREMENT , 
     `type_id` INT NOT NULL , 
     `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
@@ -37,7 +37,7 @@ CREATE TABLE `dian_db`.`tasks` (
 '''
 
 sql_create_assigned_tasks = '''
-CREATE TABLE `dian_db`.`assigned_tasks` ( 
+CREATE TABLE `srv35804_task`.`assigned_tasks` ( 
     `id` INT NOT NULL AUTO_INCREMENT , 
     `profile_id` INT NOT NULL , 
     `task_id` INT NOT NULL ,

@@ -1,6 +1,5 @@
 from utils import path_finder as path
 from utils.db_manager import mysql_connector as db
-from data import _variables as app
 from data import _db_config as cfg_db
 from data import _db_struct as struct_db
 

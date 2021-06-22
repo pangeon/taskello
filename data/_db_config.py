@@ -1,5 +1,0 @@
-db_name = "dian_db"
-db_user = "dian_user"
-db_pass = "dian_pass_2021MAY"
-db_host = "localhost"
-db_port = "3306"
