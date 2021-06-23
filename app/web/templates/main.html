@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 <!-- CONTENT -->
 {% block content %}
-<h1>Welcome to Taskello</h1>
+<h1>
+  
+  {% if lang == "ENG" %}
+    Welcome to Taskello
+  {% elif lang == "PL" %}
+    Witaj w Taskello
+  {% endif %}
+</h1>
 
 <h2>:: Test only ::</h2>
 <ul>

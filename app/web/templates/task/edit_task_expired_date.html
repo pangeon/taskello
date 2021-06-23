@@ -1,14 +1,24 @@
 {% extends "base.html" %}
 <!-- CONTENT -->
 {% block content %}
-<h1 class="center">:: Edit task expired date ::</h1>
+<h1 class="center">
+  {% if lang == "ENG" %} 
+    :: Edit task expired date ::
+  {% elif lang == "PL" %} 
+    :: Edytuj datę wygaśnięcia ::
+  {% endif %}
+</h1>
 <form action="#" method="post">
-  <label>Expired date:</label>
+  <label>{% if lang == "ENG" %} Expired date: {% elif lang == "PL" %} Data wygaśnięcia {% endif %}</label>
   <input type="date" name="task_expired_date" value="{{ task_expired_time }}" />
   <br />
   <input type="time" name="task_expired_time" value="{{ task_expired_time }}" />
   <br /><br />
-  <input type="submit" class="button" value="Send" />
+  {% if lang == "ENG" %} 
+    <input type="submit" class="button" value="Send" />
+  {% elif lang == "PL" %} 
+    <input type="submit" class="button" value="Wyślij" />
+  {% endif %}
 </form>
 {% endblock %}
 <!-- CONTENT -->

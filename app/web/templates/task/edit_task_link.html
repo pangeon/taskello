@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 <!-- CONTENT -->
 {% block content %}
-<h1 class="center">:: Edit task attachment link ::</h1>
+<h1 class="center"> {% if lang == "ENG" %} :: Edit task attachment link :: {% elif lang == "PL" %} Edytuj link załącznika {% endif %}</h1>
 <form action="#" method="post">
   <label>Link</label>
   <input
@@ -10,7 +10,11 @@
     value="{{ task_attachment_link }}"
   />
   <br /><br />
-  <input type="submit" class="button" value="Send" />
+  {% if lang == "ENG" %}
+    <input type="submit" class="button" value="Send" />  
+  {% elif lang == "PL" %}
+    <input type="submit" class="button" value="Wyślij" />   
+  {% endif %}
 </form>
 {% endblock %}
 <!-- CONTENT -->

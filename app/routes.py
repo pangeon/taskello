@@ -1,6 +1,6 @@
 from app import app
 from app import data_service_adapter as data
-from app.forms import LoginForm
+from app.forms import LoginForm, PL_LoginForm, PL_RegistrationForm
 from app.forms import RegistrationForm
 
 from flask import request, redirect, session, url_for
@@ -63,7 +63,13 @@ def __template_error(info_for_user):
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    form = RegistrationForm()
+    if lang == "ENG":
+        form = RegistrationForm()
+    elif lang == "PL":
+        form = PL_RegistrationForm()
+    else:
+        raise Exception("Language is not support")
+    
 
     if form.validate_on_submit():
         if request.method == 'POST' and 'e_mail' in request.form and 'password' in request.form:
@@ -78,20 +84,31 @@ def register():
                     )
                 )
             else:
-                return __template_error("A profile with the indicated e-mail already exists.")
+                if lang == "ENG":
+                    return __template_error("A profile with the indicated e-mail already exists.")
+                elif lang == "PL":
+                    return __template_error("Profil o wskazanym adresie e-mail już istnieje.")
+                else:
+                    raise Exception("Language is not support")
 
         return redirect(url_for('login'))
     return render_template(
         'profile/register.html', 
         title = 'Register', 
-        form = form
+        form = form,
+        lang = lang
     )
 
 ######################################################################################
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
+    if lang == "ENG":
+        form = LoginForm()
+    elif lang == "PL":
+        form = PL_LoginForm()
+    else:
+        raise Exception("Language is not support")
     
     if form.validate_on_submit():
         if request.method == 'POST' and 'e_mail' in request.form and 'password' in request.form:
@@ -112,16 +129,22 @@ def login():
                 profile = None
 
             if profile == None:
-                return __template_error("Password and login do not match.")
+                if lang == "ENG":
+                    return __template_error("Password and login do not match.")
+                elif lang == "PL":
+                    return __template_error("Hasło i login nie pasują do siebie")
+                else:
+                    raise Exception("Language is not support")
             else:
                 session['loggedin'] = True
                 session['id'] = profile[0]
                 session['username'] = profile[3]
-                return render_template('main.html')
+                return render_template('main.html', lang=lang)
     return render_template(
         'profile/login.html', 
         title = 'Sign In', 
-        form = form
+        form = form,
+        lang=lang
     )
 
 ######################################################################################

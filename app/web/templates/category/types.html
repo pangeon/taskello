@@ -1,17 +1,32 @@
 {% extends "base.html" %}
 <!-- CONTENT -->
 {% block content %}
-<h1>:: Types list ::</h1>
-<h3 style="color: red">
-  When you remove category computer will erase all task assigned to this type.
-</h3>
+  {% if lang == "ENG" %}
+    <h1>:: Types list ::</h1>
+    <h3 style="color: red">
+      When you remove category computer will erase all task assigned to this type.
+    </h3>
+  {% elif lang == "PL" %}
+    <h1>:: Lista typów zadań ::</h1>
+    <h3 style="color: red">
+      Po usunięciu kategorii komputer usunie wszystkie zadania przypisane do tego typu.
+    </h3>
+  {% endif %}
 <table>
   <thead>
-    <td>Id</td>
-    <td>Specification</td>
-    <td>Responsibilities</td>
-    <td>Color</td>
-    <td colspan="2">Actions</td>
+    {% if lang == "ENG" %}
+      <td>Id</td>
+      <td>Specification</td>
+      <td>Responsibilities</td>
+      <td>Color</td>
+      <td colspan="2">Actions</td>
+    {% elif lang == "PL" %}
+      <td>Id</td>
+      <td>Specifikacja</td>
+      <td>Obowiązki</td>
+      <td>Kolor</td>
+      <td colspan="2">Akcje</td>
+    {% endif %}
   </thead>
   {% for type in types %}
   <tr>

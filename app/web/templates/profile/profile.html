@@ -1,14 +1,20 @@
 {% extends "base.html" %}
 <!-- CONTENT -->
 {% block content %}
-<h1>:: Profile account ::</h1>
+<h1>
+  {% if lang == "ENG" %}
+    :: Profile account ::
+  {% elif lang == "PL" %}
+    :: Dane profilowe ::
+  {% endif %}
+</h1>
 <table class="profile_table">
   <tr>
-    <td class="thead">Name</td>
+    <td class="thead">{% if lang == "ENG" %} Name {% elif lang == "PL" %} Imię {% endif %}</td>
     <td>{{ profile[1] }}</td>
   </tr>
   <tr>
-    <td class="thead">Surname</td>
+    <td class="thead">{% if lang == "ENG" %} Surname {% elif lang == "PL" %} Nazwisko {% endif %}</td>
     <td>{{ profile[2] }}</td>
   </tr>
   <tr>
@@ -16,7 +22,7 @@
     <td>{{ profile[3] }}</td>
   </tr>
   <tr>
-    <td class="thead">Password</td>
+    <td class="thead">{% if lang == "ENG" %} Password {% elif lang == "PL" %} Hasło {% endif %}</td>
     <td>*******</td>
   </tr>
   <tr></tr>
@@ -25,26 +31,26 @@
 <div>
   <table>
     <tr>
-      <td class="thead">Actions</td>
+      <td class="thead">{% if lang == "ENG" %} Actions {% elif lang == "PL" %} Akcje {% endif %}</td>
     </tr>
     <tr>
       <td>
         <a href="{{ url_for('edit_profile') }}">
-          <button>Edit personality</button>
+          <button>{% if lang == "ENG" %} Edit personality {% elif lang == "PL" %} Edytuj dane osobowe {% endif %}</button>
         </a>
       </td>
     </tr>
     <tr>
       <td>
         <a href="{{ url_for('edit_profile_password') }}">
-          <button>Change password</button>
+          <button>{% if lang == "ENG" %} Change password {% elif lang == "PL" %} Zmień hasło {% endif %}</button>
         </a>
       </td>
     </tr>
     <tr>
       <td>
         <a href="{{ url_for('remove_profile') }}">
-          <button>Remove account</button>
+          <button>{% if lang == "ENG" %} Remove account {% elif lang == "PL" %} Skasuj konto {% endif %}</button>
         </a>
       </td>
     </tr>

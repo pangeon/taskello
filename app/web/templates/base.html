@@ -27,102 +27,102 @@
       <a href="{{ url_for('index') }}" class="active">
         <i class="fas fa-home"></i>
         {% if lang == "ENG" %}
-        Home
+          Home
         {% elif lang == "PL" %}
-        Strona główna
+          Strona główna
         {% endif %}
       </a>
       {% if session.username %}
       <a href="{{ url_for('logout') }}">
         <i class="fas fa-sign-out-alt"></i>
         {% if lang == "ENG" %}
-        Logout
+          Logout
         {% elif lang == "PL" %}
-        Wyloguj
+          Wyloguj
         {% endif %}
       </a>
       <div id="login_info">
         <a href="#">
           <i class="far fa-user-circle"></i>
           {% if lang == "ENG" %}
-          Logged in as: <strong>{{session.username}}</strong>
+            Logged in as: <strong>{{session.username}}</strong>
           {% elif lang == "PL" %}
-          Zalogowany jako: <strong>{{session.username}}</strong>
+            Zalogowany jako: <strong>{{session.username}}</strong>
           {% endif %}
         </a>
         <a href="{{ url_for('show_login_profile')}}">
           <i class="fas fa-user-edit"></i>
           {% if lang == "ENG" %}
-          Edit
+            Edit
           {% elif lang == "PL" %}
-          Edycja
+            Edycja
           {% endif %}
         </a>
         <a href="{{ url_for('show_profile_tasks') }}">
           <i class="fas fa-thumbtack"></i>
           {% if lang == "ENG" %}
-          Pinned Tasks
+            Pinned Tasks
           {% elif lang == "PL" %}
-          Przypięte zadania
+            Przypięte zadania
           {% endif %}
         </a>
       </div>
       <a href="{{ url_for('add_task') }}">
         <i class="fas fa-thumbtack"></i>
         {% if lang == "ENG" %}
-        Add Task
+          Add Task
         {% elif lang == "PL" %}
-        Dodaj zadanie
+          Dodaj zadanie
         {% endif %}
         </a>
       <a href="{{ url_for('add_category') }}">
         <i class="fas fa-box"></i>
         {% if lang == "ENG" %}
-        New Category
+          New Category
         {% elif lang == "PL" %}
-        Nowa kategoria
+          Nowa kategoria
         {% endif %}
       </a>
       <a href="{{ url_for('show_all_types') }}">
         <i class="fas fa-boxes"></i>
         {% if lang == "ENG" %}
-        Categories
+          Categories
         {% elif lang == "PL" %}
-        Lista kategorii
+          Lista kategorii
         {% endif %}
         </a>
       <a href="{{ url_for('index') }}" class="inactive">
         <i class="fab fa-flipboard"></i>
         {% if lang == "ENG" %}
-        Projects
+          Projects
         {% elif lang == "PL" %}
-        Projekty
+          Projekty
         {% endif %}
         </a>
       {% else %}
       <a href="{{ url_for('login') }}">
         <i class="fas fa-user-circle"></i>
         {% if lang == "ENG" %}
-        Login
+          Login
         {% elif lang == "PL" %}
-        Logowanie
+          Logowanie
         {% endif %}
         </a>
       <a href="{{ url_for('register') }}">
         <i class="fas fa-marker"></i>
         {% if lang == "ENG" %}
-        Register
+          Register
         {% elif lang == "PL" %}
-        Rejestracja
+          Rejestracja
         {% endif %}
       </a>
       {% endif %}
       <a href="{{ url_for('show_all_tasks_details') }}">
         <i class="fas fa-tasks"></i>
         {% if lang == "ENG" %}
-        Task Table
+          Task Table
         {% elif lang == "PL" %}
-        Tablica zadań
+          Tablica zadań
         {% endif %}
         </a>
     </div>
@@ -135,9 +135,9 @@
           <i class="fas fa-ellipsis-h"></i>
         </strong>
         {% if lang == "ENG" %}
-        Author:
+          Author:
         {% elif lang == "PL" %}
-        Autor:
+          Autor:
         {% endif %}
         <a href="http://cecherz.pl/">Kamil Cecherz</a> 2021
       </p>

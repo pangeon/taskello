@@ -1,25 +1,31 @@
 {% extends "base.html" %}
 <!-- CONTENT -->
 {% block content %}
-<h1 class="center">:: Add new task ::</h1>
+<h1 class="center">
+  {% if lang == "ENG" %} 
+    :: Add new task ::
+  {% elif lang == "PL" %}
+    :: Dodaj nowe zadanie ::
+  {% endif %}
+</h1>
 <form action="#" method="post">
-  <label>Type:</label>
+  <label>{% if lang == "ENG" %} Type: {% elif lang == "PL" %} Typ: {% endif %}</label>
   <select name="task_type_id">
     {% for task_type in task_type_list %}
     <option value="{{ task_type[0] }}">{{ task_type[1] }}</option>
     {% endfor %}
   </select>
 
-  <label>Name <span>*</span></label>
+  <label>{% if lang == "ENG" %} Name {% elif lang == "PL" %} Nazwa {% endif %}<span>*</span></label>
   <input type="text" name="task_name" required />
 
-  <label>Description</label>
+  <label>{% if lang == "ENG" %} Description {% elif lang == "PL" %} Opis {% endif %}</label>
   <input type="text" name="task_description" />
 
   <label>Link</label>
   <input type="text" name="task_attachment_link" />
 
-  <label>Priority</label>
+  <label>{% if lang == "ENG" %} Priority {% elif lang == "PL" %} Priorytet {% endif %}</label>
   <div class="priority-radio-choice">
     <label>1</label><input type="radio" name="task_priority" value="1" />
     <label>2</label><input type="radio" name="task_priority" value="2" />
@@ -29,23 +35,37 @@
     <label>6</label><input type="radio" name="task_priority" value="6" />
   </div>
 
-  <label>Progress status</label>
+  <label>{% if lang == "ENG" %} Progress status {% elif lang == "PL" %} Status wykonania {% endif %}</label>
   <select name="task_progress_status">
-    <option value="UPCOMING">UPCOMING</option>
-    <option value="PENDING">PENDING</option>
-    <option value="BLOCKED">BLOCKED</option>
-    <option value="TO DO">TO DO</option>
-    <option value="DOING">DOING</option>
-    <option value="TO TEST">TO TEST</option>
-    <option value="DONE">DONE</option>
+    {% if lang == "ENG" %}
+      <option value="UPCOMING">UPCOMING</option>
+      <option value="PENDING">PENDING</option>
+      <option value="BLOCKED">BLOCKED</option>
+      <option value="TO DO">TO DO</option>
+      <option value="DOING">DOING</option>
+      <option value="TO TEST">TO TEST</option>
+      <option value="DONE">DONE</option>
+    {% elif lang == "PL" %}
+      <option value="UPCOMING">UPCOMING (PRZYSZŁE)</option>
+      <option value="PENDING">PENDING (OCZEKUJĄCE)</option>
+      <option value="BLOCKED">BLOCKED (ZABLOKOWANE)</option>
+      <option value="TO DO">TO DO (DO ZROBIENIA)</option>
+      <option value="DOING">DOING (W TRAKCIE)</option>
+      <option value="TO TEST">TO TEST (DO TESTÓW)</option>
+      <option value="DONE">DONE (ZAKOŃCZONE)</option>
+    {% endif %}
   </select>
 
-  <label>Expired date:</label>
+  <label>{% if lang == "ENG" %} Expired date: {% elif lang == "PL" %} Data wygaśnięcia: {% endif %}</label>
   <input type="date" name="task_expired_date" />
   <br />
   <input type="time" name="task_expired_time" />
   <br /><br />
-  <input type="submit" class="button" value="Send" />
+  {% if lang == "ENG" %} 
+    <input type="submit" class="button" value="Send" />
+  {% elif lang == "PL" %} 
+    <input type="submit" class="button" value="Wyślij" />
+  {% endif %}
 </form>
 {% endblock %}
 <!-- CONTENT -->

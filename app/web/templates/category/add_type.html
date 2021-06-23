@@ -1,29 +1,50 @@
 {% extends "base.html" %}
 <!-- CONTENT -->
 {% block content %}
-<h1 class="center">:: Add new category ::</h1>
+<h1 class="center">
+  {% if lang == "ENG" %}
+    :: Add new category ::
+  {% elif lang == "PL" %}
+    :: Dodaj nową kategorie ::
+  {% endif %}
+</h1>
 <form action="#" method="post">
-  <label>Specification <span>*</span></label>
+  <label>{% if lang == "ENG" %} Specification {% elif lang == "PL" %} Specyfikacja {% endif %}<span>*</span></label>
   <input type="text" name="type_specification" required />
 
-  <label>Responsibilities <span>*</span></label>
+  <label>{% if lang == "ENG" %} Responsibilities {% elif lang == "PL" %} Obowiązki {% endif %}<span>*</span></label>
   <input type="text" name="type_responsibilities" required />
 
-  <label>Color:</label>
+  <label>{% if lang == "ENG" %} Color: {% elif lang == "PL" %} Kolor: {% endif %}</label>
   <select name="type_color">
-    <option value="yellow">yellow</option>
-    <option value="orange">orange</option>
-    <option value="red">red</option>
-    <option value="blue">blue</option>
-    <option value="green">green</option>
-    <option value="pink">pink</option>
-    <option value="purple">purple</option>
-    <option value="grey">grey</option>
-    <option value="black">black</option>
+    {% if lang == "ENG" %}
+      <option value="yellow">yellow</option>
+      <option value="orange">orange</option>
+      <option value="red">red</option>
+      <option value="blue">blue</option>
+      <option value="green">green</option>
+      <option value="pink">pink</option>
+      <option value="purple">purple</option>
+      <option value="grey">grey</option>
+      <option value="black">black</option>
+    {% elif lang == "PL" %}
+      <option value="yellow">yellow (żółty)</option>
+      <option value="orange">orange (pomarańczowy)</option>
+      <option value="red">red (czerwony)</option>
+      <option value="blue">blue (niebieski)</option>
+      <option value="green">green (zielony)</option>
+      <option value="pink">pink (różowy)</option>
+      <option value="purple">purple (fioletowy)</option>
+      <option value="grey">grey (szary)</option>
+      <option value="black">black (czarny)</option>
+    {% endif %}
   </select>
-
   <br /><br />
-  <input type="submit" class="button" value="Send" />
+  {% if lang == "ENG" %}
+    <input type="submit" class="button" value="Send" />  
+  {% elif lang == "PL" %}
+    <input type="submit" class="button" value="Wyślij" />   
+  {% endif %}
 </form>
 {% endblock %}
 <!-- CONTENT -->

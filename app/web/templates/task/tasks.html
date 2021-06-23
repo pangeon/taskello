@@ -1,18 +1,30 @@
 {% extends "base.html" %}
 <!-- CONTENT -->
 {% block content %}
-<h1>:: Profile tasks list ::</h1>
+<h1>{% if lang == "ENG" %} :: Profile tasks list :: {% elif lang == "PL" %} :: Zadania przypięte do profilu :: {% endif %}</h1>
 <table>
   <thead>
-    <td>Name</td>
-    <td>Category</td>
-    <td>Specification</td>
-    <td>Attachment link</td>
-    <td>Priority</td>
-    <td>Progress status</td>
-    <td>Start</td>
-    <td>Expired time</td>
-    <td colspan="7">Actions</td>
+    {% if lang == "ENG" %}
+      <td>Name</td>
+      <td>Category</td>
+      <td>Specification</td>
+      <td>Attachment link</td>
+      <td>Priority</td>
+      <td>Progress status</td>
+      <td>Start</td>
+      <td>Expired time</td>
+      <td colspan="7">Actions</td>
+    {% elif lang == "PL" %}
+      <td>Nazwa zadania</td>
+      <td>Kategoria</td>      
+      <td>Specyfikacja</td>
+      <td>Załącznik</td>
+      <td>Priorytet</td>
+      <td>Status wykonania</td>
+      <td>Start</td>
+      <td>Czas zakończenia</td>
+      <td colspan="7">Akcje</td>
+    {% endif %}
   </thead>
   {% for task in tasks %}
   <tr>
@@ -29,8 +41,8 @@
         href="{{ url_for('change_task_name_and_description', task_id=task[0]) }}"
         class="icon-task-edit"
         alt="Name and describtion"
-        title="Name and describtion"
-        ><i class="fas fa-file-signature"></i>
+        title="Name and describtion">
+        <i class="fas fa-file-signature"></i>
       </a>
     </td>
     <td class="td-icon">
@@ -38,56 +50,54 @@
         href="{{ url_for('change_attachment_link', task_id=task[0]) }}"
         class="icon-task-edit"
         alt="Edit attachment link"
-        title="Edit attachment link"
-        ><i class="fas fa-paperclip"></i
-      ></a>
+        title="Edit attachment link">
+        <i class="fas fa-paperclip"></i>
+      </a>
     </td>
     <td class="td-icon">
       <a
         href="{{ url_for('change_task_priority', task_id=task[0], operation=0) }}"
         class="icon-task-edit"
         alt="Increase priority"
-        title="Increase priority"
-        ><i class="fas fa-sort-amount-up"></i
-      ></a>
+        title="Increase priority">
+        <i class="fas fa-sort-amount-up"></i>
+      </a>
     </td>
     <td class="td-icon">
       <a
         href="{{ url_for('change_task_priority', task_id=task[0], operation=1) }}"
         class="icon-task-edit"
         alt="Deacrease priority"
-        title="Decrease priority"
-        ><i class="fas fa-sort-amount-down"></i
-      ></a>
+        title="Decrease priority">
+        <i class="fas fa-sort-amount-down"></i>
+      </a>
     </td>
     <td class="td-icon">
       <a
         href="{{ url_for('set_progress_done', task_id=task[0]) }}"
         class="icon-task-edit"
         alt="End task"
-        title="End task"
-      >
-        <i class="fas fa-clipboard-check"></i
-      ></a>
+        title="End task">
+        <i class="fas fa-clipboard-check"></i>
+      </a>
     </td>
     <td class="td-icon">
       <a
         href="{{ url_for('change_expired_time', task_id=task[0]) }}"
         class="icon-task-edit"
         alt="Edit expired time"
-        title="Edit expired time"
-        ><i class="fas fa-clock"></i
-      ></a>
+        title="Edit expired time">
+        <i class="fas fa-clock"></i>
+      </a>
     </td>
     <td class="td-icon">
       <a
         href="{{ url_for('remove_task', task_id=task[0]) }}"
         class="icon-task-edit"
         alt="Remove"
-        title="Remove"
-      >
-        <i class="fas fa-trash"></i
-      ></a>
+        title="Remove">
+        <i class="fas fa-trash"></i>
+      </a>
     </td>
   </tr>
   {% endfor %}

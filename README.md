@@ -121,6 +121,12 @@ Useful and simple CRM written in Python<br />
 - 1.1.0 - secured password, added hash function SHA-256
 - 1.2.0 - validation data input form, fixed function SHA-256
 - 1.2.1 - fixed problems with db create scripts
+- 1.3.0 - added polish language support
+
+# Other languages support
+
+- Change language symbol in [routes.py](./app/routes.py) variable lang **["PL", "ENG"]**
+- Support polish and english
 
 # Problems and solutions:
 

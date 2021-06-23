@@ -1,21 +1,41 @@
 {% extends "base.html" %}
 <!-- CONTENT -->
 {% block content %}
-<h1 class="center">:: Edit profile password ::</h1>
+<h1 class="center">
+  {% if lang == "ENG" %}
+    :: Edit profile password ::
+  {% elif lang == "PL" %}
+    :: Edycja hasła ::
+  {% endif %}
+</h1>
 <form action="#" method="post">
-  <label>New password:</label>
-  <input
-    type="password"
-    required
-    name="profile_password"
-    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
-    title="Passwords must have minimum eight characters, at least one letter, one number and one special character"
-  />
+  <label>{% if lang == "ENG" %} New password: {% elif lang == "PL" %} Nowe hasło: {% endif %}</label>
+  {% if lang == "ENG" %}
+    <input
+      type="password"
+      required
+      name="profile_password"
+      pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+      title="Passwords must have minimum eight characters, at least one letter, one number and one special character"
+    />
+  {% elif lang == "PL" %}
+    <input
+      type="password"
+      required
+      name="profile_password"
+      pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+      title="Hasła muszą mieć co najmniej osiem znaków, co najmniej jedną literę, jedną cyfrę i jeden znak specjalny"
+    />
+  {% endif %}
 
-  <label>Reapeat password:</label>
+  <label>{% if lang == "ENG" %} Reapeat password: {% elif lang == "PL" %} Powtórz hasło: {% endif %}</label>
   <input type="password" required name="profile_password_repeat" />
   <br /><span>{{msg}}</span><br /><br />
-  <input type="submit" class="button" value="Send" />
+  {% if lang == "ENG" %} 
+    <input type="submit" class="button" value="Send" />
+  {% elif lang == "PL" %} 
+    <input type="submit" class="button" value="Wyślij" />
+  {% endif %}
 </form>
 
 {% endblock %}
