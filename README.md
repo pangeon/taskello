@@ -3,7 +3,7 @@
 <div style="text-align:center; width: 50%; margin-left: 25%; margin-right: 50%"><img src="img/taskello_sign.png" /></div>
 
 # Introduction
-Useful and simple CRM written in Python<br />
+Useful and simple task planner written in Python<br />
 <!-- See working appplication on page: [here]() -->
 
 # Deployment guide
@@ -115,6 +115,62 @@ Useful and simple CRM written in Python<br />
   ```
   python app.py
   ```
+
+# VM with running application
+## About
+
+### Taskello - Linux Ubutu 22.04 LTS server:
+* the virtual machine includes:
+  * MySQL Server
+  * Taskello configured project:
+      - github: https://github.com/pangeon/Taskello
+
+
+The machine configuration includes port forwarding, which allows access to:
+- Putty SSH
+- Browser
+
+**Taskello.vbox-prev** configuration file:
+```
+<Network>
+  <Adapter slot = "0" enabled = "true" MACAddress = "080027C2BF57" type = "82540EM">
+    <NAT>
+      <Forwarding name = "Rule 1" proto = "1" hostport = "909" guestport = "22" />
+      <Forwarding name = "Rule 2" proto = "1" hostport = "80" guestport = "5000" />
+    </NAT>
+  </Adapter>
+</Network>
+```
+
+## Prepare environment for work:
+1. Install on your PC machine: [Oracle VM VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+
+2. Download from Google Drive prepared [VM - Ubuntu Server 22.04 LTS](https://drive.google.com/drive/folders/1_I8ncht73KGMFiQPxfCGAd6vTOVJUFb8?usp=sharing) with ready-made appplication.
+
+## Running:
+
+1. After starting the machine, enter:
+      - login: **taskello**
+      - password: **root**
+2. Go to the Taskello folder
+3. Enter the command:
+    ``` 
+    source venv/bin/activate
+    ```
+4. Run the applications:
+    ```
+    flask run -h 0.0.0.0 -p 5000
+    ```
+5. Open a browser on localhost
+
+Access to the database is possible after issuing the command:
+
+```
+mysql -u dian_user -p
+$ password: dian_pass_2021MAY
+```
+
+
 # Changelog
 
 - 1.0.0 - full data edition via page without edit task assignments
@@ -130,11 +186,7 @@ Useful and simple CRM written in Python<br />
 
 # Problems and solutions:
 
-## Windows:
-
 - [PowerShell says “execution of scripts is disabled on this system.”](./hints/venv-windows-problem.md)
-
-## Linux
 
 # Online documentation
 
@@ -144,7 +196,6 @@ Useful and simple CRM written in Python<br />
 - [Mega Flask Tutorial by Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
 - [Flask with raw SQL](https://codeshack.io/login-system-python-flask-mysql/)
 
-## MySQL
 
 # Contact and support
 
