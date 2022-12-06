@@ -16,7 +16,7 @@ Edit, copy and paste files:
 - data/sql/create_tables.sql
 - data/sql/create_user.sql
  
-# Deployment guide
+# Deployment guide for local environment
 
 ## 1) Requirements
 
@@ -71,6 +71,22 @@ Edit, copy and paste files:
   pip install Flask
   pip install flask-wtf
   pip install email-validator
+  ```
+## 4) Add file app.py for local environment
+
+  ```
+  from app import app
+  app.run(debug=True, host="0.0.0.0")
+  ```
+
+## 5) Add file data/db_config.py for local environment
+
+  ```
+  db_name = "dian_db"
+  db_user = "dian_user"
+  db_pass = "dian_pass_2021MAY"
+  db_host = "localhost"
+  db_port = "3306"
   ```
 
 ## Model
