@@ -1,5 +1,5 @@
-SELECT Profiles.email, Types.specification, Tasks.description, Assigned_tasks.profile_id 
-FROM Profiles, Types, Tasks, Assigned_tasks 
-WHERE Profiles.id = Assigned_tasks.profile_id 
-AND Assigned_tasks.task_id = Tasks.id 
-AND Types.id = Tasks.type_id;
+SELECT profiles.email, types.specification, tasks.description, assigned_tasks.profile_id 
+FROM profiles, types, tasks, assigned_tasks 
+WHERE profiles.id = assigned_tasks.profile_id 
+AND assigned_tasks.task_id = tasks.id 
+AND types.id = tasks.type_id;

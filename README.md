@@ -1,11 +1,21 @@
-
-
 <div style="text-align:center; width: 50%; margin-left: 25%; margin-right: 50%"><img src="img/taskello_sign.png" /></div>
 
 # Introduction
 Useful and simple task planner written in Python<br />
-<!-- See working appplication on page: [here]() -->
+See working appplication on page: [here](http://srv35804.seohost.com.pl/)
 
+# Special configuration for remote environment
+
+Check instruction on [Google Drive](https://drive.google.com/drive/folders/1HcmL7tYyIOLoUX9QRy_v7FZUelNGA6bY?usp=share_link)
+
+Edit, copy and paste files:
+- app.py
+- data/db_config.py
+- data/db_struct.py
+- data/sql/create_database.sql
+- data/sql/create_tables.sql
+- data/sql/create_user.sql
+ 
 # Deployment guide
 
 ## 1) Requirements
@@ -169,7 +179,6 @@ Access to the database is possible after issuing the command:
 mysql -u dian_user -p
 $ password: dian_pass_2021MAY
 ```
-
 
 # Changelog
 
