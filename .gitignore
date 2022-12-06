@@ -1,3 +1,5 @@
+app.py
+tmp/
 data/_db_config.py
 screenlog.0
 production_env.txt
