@@ -72,14 +72,11 @@ Edit, copy and paste files:
   pip install flask-wtf
   pip install email-validator
   ```
-## 4) Add file app.py for local environment
+## 4) Run [init.bat](init.bat) (on Windows) and set your database configuration. 
 
-  ```
-  from app import app
-  app.run(debug=True, host="0.0.0.0")
-  ```
+  *init.bat add also simple app.py running file.*
 
-## 5) Add file data/db_config.py for local environment
+  ### 1) set default local configuration for app
 
   ```
   db_name = "dian_db"
@@ -88,6 +85,8 @@ Edit, copy and paste files:
   db_host = "localhost"
   db_port = "3306"
   ```
+
+  ### 2) create database -> [link](#create-data-model-and-fill-the-table-with-sample-data)
 
 ## Model
 
@@ -99,6 +98,7 @@ Edit, copy and paste files:
 
 - You can use db_manager on [utils](./utils/db_manager/mysql_connector.py)
 
+<span id="create-data-model-and-fill-the-table-with-sample-data"></span>
 ## Create data model and fill the table with sample data
 
 1. Using **MySQL** and create database dian_db, use file [create_database.sql](./data/sql/create_database.sql)
@@ -220,6 +220,7 @@ $ password: dian_pass_2021MAY
 - [Official documentation](https://flask.palletsprojects.com/en/2.0.x/)
 - [Mega Flask Tutorial by Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
 - [Flask with raw SQL](https://codeshack.io/login-system-python-flask-mysql/)
+- [Direct Admin Python App](https://youtu.be/QbWMs4MHVu0)
 
 
 # Contact and support
